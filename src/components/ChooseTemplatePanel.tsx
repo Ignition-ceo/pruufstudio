@@ -81,21 +81,23 @@ export const ChooseTemplatePanel = () => {
       </div>
 
       {/* Sector chips */}
-      <div className="flex flex-wrap gap-3 justify-center">
-        {sectors.map((sector) => (
-          <button
-            key={sector.id}
-            onClick={() => setActiveSector(sector.id)}
-            className={`flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-medium transition-all ${
-              activeSector === sector.id
-                ? "bg-primary text-primary-foreground shadow-md"
-                : "border border-border hover:border-primary hover:bg-accent"
-            }`}
-          >
-            <sector.icon className="h-4 w-4" />
-            {sector.label}
-          </button>
-        ))}
+      <div className="border-2 border-blue rounded-2xl p-4">
+        <div className="flex flex-wrap gap-3 justify-center">
+          {sectors.map((sector) => (
+            <button
+              key={sector.id}
+              onClick={() => setActiveSector(sector.id)}
+              className={`flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-medium transition-all ${
+                activeSector === sector.id
+                  ? "bg-primary text-primary-foreground shadow-md"
+                  : "border border-border hover:border-primary hover:bg-accent"
+              }`}
+            >
+              <sector.icon className="h-4 w-4" />
+              {sector.label}
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Explore templates section */}
