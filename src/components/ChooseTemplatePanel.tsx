@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Search, SlidersHorizontal, ArrowRight, Shield, GraduationCap, Umbrella, Users, DollarSign, Plane, Heart, Truck, FileText, UserCheck, Briefcase, Building, Stethoscope, MapPin } from "lucide-react";
+import { useState, useRef } from "react";
+import { Search, SlidersHorizontal, ArrowRight, Shield, GraduationCap, Umbrella, Users, DollarSign, Plane, Heart, FileText, Upload } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const sectors = [
@@ -11,23 +11,23 @@ const sectors = [
   { id: "financial", label: "Financial", icon: DollarSign },
   { id: "travel", label: "Travel", icon: Plane },
   { id: "health", label: "Health", icon: Heart },
-  { id: "logistics", label: "Logistics", icon: Truck },
 ];
 
 const templates = [
-  { id: 1, name: "KYC Profile", sector: "kyc", icon: UserCheck, bgColor: "bg-gradient-to-br from-blue/20 to-blue/40" },
-  { id: 2, name: "Proof of Address", sector: "kyc", icon: MapPin, bgColor: "bg-gradient-to-br from-purple/20 to-purple/40" },
-  { id: 3, name: "Employment Letter", sector: "hr", icon: Briefcase, bgColor: "bg-gradient-to-br from-pink/20 to-pink/40" },
-  { id: 4, name: "Student Enrollment", sector: "education", icon: GraduationCap, bgColor: "bg-gradient-to-br from-green/20 to-green/40" },
-  { id: 5, name: "Insurance Policy", sector: "insurance", icon: Umbrella, bgColor: "bg-gradient-to-br from-blue/20 to-purple/40" },
-  { id: 6, name: "Travel Clearance", sector: "travel", icon: Plane, bgColor: "bg-gradient-to-br from-pink/20 to-blue/40" },
-  { id: 7, name: "Health Coverage", sector: "health", icon: Stethoscope, bgColor: "bg-gradient-to-br from-green/20 to-blue/40" },
-  { id: 8, name: "Delivery Manifest", sector: "logistics", icon: Truck, bgColor: "bg-gradient-to-br from-purple/20 to-pink/40" },
+  { id: 1, name: "KYC Profile", sector: "kyc", bgColor: "bg-gradient-to-br from-blue/20 to-blue/40", imageUrl: "" },
+  { id: 2, name: "Proof of Address", sector: "kyc", bgColor: "bg-gradient-to-br from-purple/20 to-purple/40", imageUrl: "" },
+  { id: 3, name: "Employment Letter", sector: "hr", bgColor: "bg-gradient-to-br from-pink/20 to-pink/40", imageUrl: "" },
+  { id: 4, name: "Student Enrollment", sector: "education", bgColor: "bg-gradient-to-br from-green/20 to-green/40", imageUrl: "" },
+  { id: 5, name: "Insurance Policy", sector: "insurance", bgColor: "bg-gradient-to-br from-blue/20 to-purple/40", imageUrl: "" },
+  { id: 6, name: "Travel Clearance", sector: "travel", bgColor: "bg-gradient-to-br from-pink/20 to-blue/40", imageUrl: "" },
+  { id: 7, name: "Health Coverage", sector: "health", bgColor: "bg-gradient-to-br from-green/20 to-blue/40", imageUrl: "" },
 ];
 
 export const ChooseTemplatePanel = () => {
   const [activeSector, setActiveSector] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
+  const [templateImages, setTemplateImages] = useState<{ [key: number]: string }>({});
+  const fileInputRefs = useRef<{ [key: number]: HTMLInputElement | null }>({});
 
   const filteredTemplates = templates.filter((template) => {
     const matchesSector = activeSector === "all" || template.sector === activeSector;
@@ -41,6 +41,20 @@ export const ChooseTemplatePanel = () => {
 
   const handleSearch = () => {
     console.log(`Searching for: ${searchQuery}`);
+  };
+
+  const handleImageUpload = (templateId: number, event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setTemplateImages(prev => ({
+          ...prev,
+          [templateId]: reader.result as string
+        }));
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   return (
@@ -81,21 +95,49 @@ export const ChooseTemplatePanel = () => {
       </div>
 
       {/* Explore templates section */}
-      <div className="flex flex-col gap-4">
-        <h2 className="text-2xl font-bold">Explore templates</h2>
+      <div className="flex flex-col gap-3">
+        <h2 className="text-xl font-bold">Explore templates</h2>
         
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-3">
           {filteredTemplates.map((template) => (
-            <button
+            <div
               key={template.id}
-              onClick={() => handleTemplateClick(template.name)}
-              className={`${template.bgColor} rounded-2xl p-6 flex flex-col items-start gap-4 hover:scale-105 transition-transform shadow-card hover:shadow-card-hover min-h-[160px]`}
+              className={`${template.bgColor} rounded-xl p-4 flex flex-col gap-2 hover:scale-105 transition-transform shadow-card hover:shadow-card-hover min-h-[120px] relative group`}
             >
-              <div className="bg-background/80 backdrop-blur-sm rounded-xl p-3">
-                <template.icon className="h-8 w-8 text-primary" />
+              {templateImages[template.id] ? (
+                <div 
+                  className="absolute inset-0 rounded-xl bg-cover bg-center"
+                  style={{ backgroundImage: `url(${templateImages[template.id]})` }}
+                />
+              ) : null}
+              
+              <div className="relative z-10 flex flex-col h-full justify-between">
+                <button
+                  onClick={() => fileInputRefs.current[template.id]?.click()}
+                  className="self-end bg-background/80 backdrop-blur-sm rounded-lg p-2 hover:bg-background transition-colors"
+                  title="Upload image"
+                >
+                  <Upload className="h-4 w-4 text-primary" />
+                </button>
+                
+                <button
+                  onClick={() => handleTemplateClick(template.name)}
+                  className="text-left"
+                >
+                  <span className="text-sm font-semibold text-foreground bg-background/80 backdrop-blur-sm px-2 py-1 rounded">
+                    {template.name}
+                  </span>
+                </button>
               </div>
-              <span className="text-lg font-semibold text-foreground">{template.name}</span>
-            </button>
+              
+              <input
+                ref={(el) => fileInputRefs.current[template.id] = el}
+                type="file"
+                accept="image/*"
+                onChange={(e) => handleImageUpload(template.id, e)}
+                className="hidden"
+              />
+            </div>
           ))}
         </div>
 

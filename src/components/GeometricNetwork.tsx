@@ -78,7 +78,7 @@ export const GeometricNetwork = () => {
       nodes.forEach((node) => {
         ctx.beginPath();
         ctx.arc(node.x, node.y, 2, 0, Math.PI * 2);
-        ctx.fillStyle = "hsla(120, 100%, 50%, 0.3)";
+        ctx.fillStyle = "hsla(217, 100%, 50%, 0.4)";
         ctx.fill();
       });
 
