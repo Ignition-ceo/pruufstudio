@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { Search, SlidersHorizontal, ArrowRight, Shield, GraduationCap, Umbrella, Users, DollarSign, Plane, Heart, FileText, Upload } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 
 const sectors = [
   { id: "all", label: "All", icon: FileText },
@@ -101,47 +102,59 @@ export const ChooseTemplatePanel = () => {
       <div className="flex flex-col gap-3">
         <h2 className="text-xl font-bold">Explore templates</h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
-          {filteredTemplates.map((template) => (
-            <button
-              key={template.id}
-              onClick={() => fileInputRefs.current[template.id]?.click()}
-              className={`${template.bgColor} rounded-xl p-3 flex items-center justify-between hover:scale-105 transition-transform shadow-card hover:shadow-card-hover min-h-[80px] relative overflow-hidden group`}
-            >
-              {/* Text on left */}
-              <span className="text-sm font-semibold text-foreground z-10">
-                {template.name}
-              </span>
-              
-              {/* Image preview on right */}
-              <div className="relative w-20 h-16 flex-shrink-0">
-                {templateImages[template.id] ? (
-                  <div 
-                    className="absolute inset-0 bg-cover bg-center rounded-lg shadow-md transform rotate-3 group-hover:rotate-6 transition-transform"
-                    style={{ backgroundImage: `url(${templateImages[template.id]})` }}
-                  />
-                ) : (
-                  <div className="absolute inset-0 bg-background/80 backdrop-blur-sm rounded-lg shadow-md transform rotate-3 group-hover:rotate-6 transition-transform flex items-center justify-center border-2 border-dashed border-primary/30">
-                    <Upload className="h-6 w-6 text-primary/40" />
-                  </div>
-                )}
-              </div>
-              
-              <input
-                ref={(el) => fileInputRefs.current[template.id] = el}
-                type="file"
-                accept="image/*"
-                onChange={(e) => handleImageUpload(template.id, e)}
-                className="hidden"
-              />
-            </button>
-          ))}
-        </div>
-
-        {filteredTemplates.length === 0 && (
+        {filteredTemplates.length === 0 ? (
           <div className="text-center py-12 text-muted-foreground">
             No templates found. Try a different search or sector.
           </div>
+        ) : (
+          <Carousel className="w-full" opts={{ align: "start", loop: false }}>
+            <CarouselContent className="-ml-3">
+              {Array.from({ length: Math.ceil(filteredTemplates.length / 8) }).map((_, pageIndex) => (
+                <CarouselItem key={pageIndex} className="pl-3">
+                  <div className="grid grid-cols-4 gap-3">
+                    {filteredTemplates
+                      .slice(pageIndex * 8, (pageIndex + 1) * 8)
+                      .map((template) => (
+                        <button
+                          key={template.id}
+                          onClick={() => fileInputRefs.current[template.id]?.click()}
+                          className={`${template.bgColor} rounded-xl p-3 flex items-center justify-between hover:scale-105 transition-transform shadow-card hover:shadow-card-hover min-h-[80px] relative overflow-hidden group`}
+                        >
+                          {/* Text on left */}
+                          <span className="text-sm font-semibold text-foreground z-10">
+                            {template.name}
+                          </span>
+                          
+                          {/* Image preview on right */}
+                          <div className="relative w-20 h-16 flex-shrink-0">
+                            {templateImages[template.id] ? (
+                              <div 
+                                className="absolute inset-0 bg-cover bg-center rounded-lg shadow-md transform rotate-3 group-hover:rotate-6 transition-transform"
+                                style={{ backgroundImage: `url(${templateImages[template.id]})` }}
+                              />
+                            ) : (
+                              <div className="absolute inset-0 bg-background/80 backdrop-blur-sm rounded-lg shadow-md transform rotate-3 group-hover:rotate-6 transition-transform flex items-center justify-center border-2 border-dashed border-primary/30">
+                                <Upload className="h-6 w-6 text-primary/40" />
+                              </div>
+                            )}
+                          </div>
+                          
+                          <input
+                            ref={(el) => fileInputRefs.current[template.id] = el}
+                            type="file"
+                            accept="image/*"
+                            onChange={(e) => handleImageUpload(template.id, e)}
+                            className="hidden"
+                          />
+                        </button>
+                      ))}
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="-left-12" />
+            <CarouselNext className="-right-12" />
+          </Carousel>
         )}
       </div>
     </div>
