@@ -101,20 +101,20 @@ export const ChooseTemplatePanel = () => {
       <div className="flex flex-col gap-3">
         <h2 className="text-xl font-bold">Explore templates</h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
           {filteredTemplates.map((template) => (
             <button
               key={template.id}
               onClick={() => fileInputRefs.current[template.id]?.click()}
-              className={`${template.bgColor} rounded-2xl p-5 flex items-center justify-between hover:scale-105 transition-transform shadow-card hover:shadow-card-hover min-h-[120px] relative overflow-hidden group`}
+              className={`${template.bgColor} rounded-xl p-3 flex items-center justify-between hover:scale-105 transition-transform shadow-card hover:shadow-card-hover min-h-[80px] relative overflow-hidden group`}
             >
               {/* Text on left */}
-              <span className="text-lg font-semibold text-foreground z-10">
+              <span className="text-sm font-semibold text-foreground z-10">
                 {template.name}
               </span>
               
               {/* Image preview on right */}
-              <div className="relative w-32 h-24 flex-shrink-0">
+              <div className="relative w-20 h-16 flex-shrink-0">
                 {templateImages[template.id] ? (
                   <div 
                     className="absolute inset-0 bg-cover bg-center rounded-lg shadow-md transform rotate-3 group-hover:rotate-6 transition-transform"
@@ -122,7 +122,7 @@ export const ChooseTemplatePanel = () => {
                   />
                 ) : (
                   <div className="absolute inset-0 bg-background/80 backdrop-blur-sm rounded-lg shadow-md transform rotate-3 group-hover:rotate-6 transition-transform flex items-center justify-center border-2 border-dashed border-primary/30">
-                    <Upload className="h-8 w-8 text-primary/40" />
+                    <Upload className="h-6 w-6 text-primary/40" />
                   </div>
                 )}
               </div>
