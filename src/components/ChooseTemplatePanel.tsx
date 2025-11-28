@@ -101,44 +101,30 @@ export const ChooseTemplatePanel = () => {
       <div className="flex flex-col gap-3">
         <h2 className="text-xl font-bold">Explore templates</h2>
         
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
           {filteredTemplates.map((template) => (
-            <div
+            <button
               key={template.id}
-              className={`${template.bgColor} rounded-xl overflow-hidden hover:scale-105 transition-transform shadow-card hover:shadow-card-hover min-h-[180px] relative group`}
+              onClick={() => fileInputRefs.current[template.id]?.click()}
+              className={`${template.bgColor} rounded-2xl p-5 flex items-center justify-between hover:scale-105 transition-transform shadow-card hover:shadow-card-hover min-h-[120px] relative overflow-hidden group`}
             >
-              {/* Image background takes up most of the card */}
-              {templateImages[template.id] ? (
-                <div 
-                  className="absolute inset-0 bg-cover bg-center"
-                  style={{ backgroundImage: `url(${templateImages[template.id]})` }}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-                </div>
-              ) : (
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <Upload className="h-12 w-12 text-primary/30" />
-                </div>
-              )}
+              {/* Text on left */}
+              <span className="text-lg font-semibold text-foreground z-10">
+                {template.name}
+              </span>
               
-              {/* Controls and label overlay */}
-              <div className="relative z-10 h-full p-3 flex flex-col justify-between">
-                <button
-                  onClick={() => fileInputRefs.current[template.id]?.click()}
-                  className="self-end bg-background/90 backdrop-blur-sm rounded-lg p-2 hover:bg-background transition-colors shadow-md"
-                  title="Upload image"
-                >
-                  <Upload className="h-4 w-4 text-primary" />
-                </button>
-                
-                <button
-                  onClick={() => handleTemplateClick(template.name)}
-                  className="text-left mt-auto"
-                >
-                  <span className="text-sm font-semibold text-foreground bg-background/90 backdrop-blur-sm px-3 py-1.5 rounded-lg inline-block shadow-md">
-                    {template.name}
-                  </span>
-                </button>
+              {/* Image preview on right */}
+              <div className="relative w-32 h-24 flex-shrink-0">
+                {templateImages[template.id] ? (
+                  <div 
+                    className="absolute inset-0 bg-cover bg-center rounded-lg shadow-md transform rotate-3 group-hover:rotate-6 transition-transform"
+                    style={{ backgroundImage: `url(${templateImages[template.id]})` }}
+                  />
+                ) : (
+                  <div className="absolute inset-0 bg-background/80 backdrop-blur-sm rounded-lg shadow-md transform rotate-3 group-hover:rotate-6 transition-transform flex items-center justify-center border-2 border-dashed border-primary/30">
+                    <Upload className="h-8 w-8 text-primary/40" />
+                  </div>
+                )}
               </div>
               
               <input
@@ -148,7 +134,7 @@ export const ChooseTemplatePanel = () => {
                 onChange={(e) => handleImageUpload(template.id, e)}
                 className="hidden"
               />
-            </div>
+            </button>
           ))}
         </div>
 
