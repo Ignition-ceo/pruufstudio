@@ -23,11 +23,13 @@ export const SmartDocHero = () => {
         </h1>
         
         <div className="flex flex-col items-center gap-8">
-          <SegmentedControl
-            options={modeOptions}
-            value={mode}
-            onChange={setMode}
-          />
+          <div className="border-2 border-blue rounded-2xl p-2 bg-background/50 backdrop-blur-sm">
+            <SegmentedControl
+              options={modeOptions}
+              value={mode}
+              onChange={setMode}
+            />
+          </div>
           
           {mode === "document" && <CreateFromDocumentPanel />}
           {mode === "template" && <ChooseTemplatePanel />}
