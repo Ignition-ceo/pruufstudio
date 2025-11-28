@@ -3,6 +3,7 @@ import { SegmentedControl } from "@/components/SegmentedControl";
 import { CreateFromDocumentPanel } from "@/components/CreateFromDocumentPanel";
 import { ChooseTemplatePanel } from "@/components/ChooseTemplatePanel";
 import { DescribeTemplateAiPanel } from "@/components/DescribeTemplateAiPanel";
+import { GeometricNetwork } from "@/components/GeometricNetwork";
 
 export const SmartDocHero = () => {
   const [mode, setMode] = useState("document");
@@ -14,8 +15,9 @@ export const SmartDocHero = () => {
   ];
 
   return (
-    <div className="w-full bg-gradient-hero py-16 px-8">
-      <div className="max-w-7xl mx-auto">
+    <div className="w-full bg-gradient-hero py-16 px-8 relative overflow-hidden">
+      <GeometricNetwork />
+      <div className="max-w-7xl mx-auto relative z-10">
         <h1 className="text-5xl font-bold text-foreground mb-8 text-center">
           Create a new SmartDoc
         </h1>
