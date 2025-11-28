@@ -152,8 +152,8 @@ export const ChooseTemplatePanel = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="-left-12" />
-            <CarouselNext className="-right-12" />
+            <CarouselPrevious className="-left-12 data-[disabled=true]:hidden" />
+            <CarouselNext className="-right-12 data-[disabled=true]:hidden" />
           </Carousel>
         )}
       </div>
