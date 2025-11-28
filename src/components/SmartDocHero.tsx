@@ -15,7 +15,7 @@ export const SmartDocHero = () => {
 
   return (
     <div className="w-full bg-gradient-hero py-16 px-8">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <h1 className="text-5xl font-bold text-foreground mb-8 text-center">
           Create a new SmartDoc
         </h1>
