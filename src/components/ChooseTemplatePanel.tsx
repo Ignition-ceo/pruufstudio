@@ -18,9 +18,12 @@ const templates = [
   { id: 2, name: "Proof of Address", sector: "kyc", bgColor: "bg-gradient-to-br from-purple/20 to-purple/40", imageUrl: "" },
   { id: 3, name: "Employment Letter", sector: "hr", bgColor: "bg-gradient-to-br from-pink/20 to-pink/40", imageUrl: "" },
   { id: 4, name: "Student Enrollment", sector: "education", bgColor: "bg-gradient-to-br from-green/20 to-green/40", imageUrl: "" },
-  { id: 5, name: "Insurance Policy", sector: "insurance", bgColor: "bg-gradient-to-br from-blue/20 to-purple/40", imageUrl: "" },
-  { id: 6, name: "Travel Clearance", sector: "travel", bgColor: "bg-gradient-to-br from-pink/20 to-blue/40", imageUrl: "" },
-  { id: 7, name: "Health Coverage", sector: "health", bgColor: "bg-gradient-to-br from-green/20 to-blue/40", imageUrl: "" },
+  { id: 5, name: "Academic Transcript", sector: "education", bgColor: "bg-gradient-to-br from-blue/20 to-green/40", imageUrl: "" },
+  { id: 6, name: "Degree", sector: "education", bgColor: "bg-gradient-to-br from-purple/20 to-green/40", imageUrl: "" },
+  { id: 7, name: "Insurance Policy", sector: "insurance", bgColor: "bg-gradient-to-br from-blue/20 to-purple/40", imageUrl: "" },
+  { id: 8, name: "Travel Clearance", sector: "travel", bgColor: "bg-gradient-to-br from-pink/20 to-blue/40", imageUrl: "" },
+  { id: 9, name: "Health Coverage", sector: "health", bgColor: "bg-gradient-to-br from-green/20 to-blue/40", imageUrl: "" },
+  { id: 10, name: "Proof of Life", sector: "kyc", bgColor: "bg-gradient-to-br from-pink/20 to-purple/40", imageUrl: "" },
 ];
 
 export const ChooseTemplatePanel = () => {
@@ -102,19 +105,27 @@ export const ChooseTemplatePanel = () => {
           {filteredTemplates.map((template) => (
             <div
               key={template.id}
-              className={`${template.bgColor} rounded-xl p-4 flex flex-col gap-2 hover:scale-105 transition-transform shadow-card hover:shadow-card-hover min-h-[120px] relative group`}
+              className={`${template.bgColor} rounded-xl overflow-hidden hover:scale-105 transition-transform shadow-card hover:shadow-card-hover min-h-[180px] relative group`}
             >
+              {/* Image background takes up most of the card */}
               {templateImages[template.id] ? (
                 <div 
-                  className="absolute inset-0 rounded-xl bg-cover bg-center"
+                  className="absolute inset-0 bg-cover bg-center"
                   style={{ backgroundImage: `url(${templateImages[template.id]})` }}
-                />
-              ) : null}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                </div>
+              ) : (
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <Upload className="h-12 w-12 text-primary/30" />
+                </div>
+              )}
               
-              <div className="relative z-10 flex flex-col h-full justify-between">
+              {/* Controls and label overlay */}
+              <div className="relative z-10 h-full p-3 flex flex-col justify-between">
                 <button
                   onClick={() => fileInputRefs.current[template.id]?.click()}
-                  className="self-end bg-background/80 backdrop-blur-sm rounded-lg p-2 hover:bg-background transition-colors"
+                  className="self-end bg-background/90 backdrop-blur-sm rounded-lg p-2 hover:bg-background transition-colors shadow-md"
                   title="Upload image"
                 >
                   <Upload className="h-4 w-4 text-primary" />
@@ -122,9 +133,9 @@ export const ChooseTemplatePanel = () => {
                 
                 <button
                   onClick={() => handleTemplateClick(template.name)}
-                  className="text-left"
+                  className="text-left mt-auto"
                 >
-                  <span className="text-sm font-semibold text-foreground bg-background/80 backdrop-blur-sm px-2 py-1 rounded">
+                  <span className="text-sm font-semibold text-foreground bg-background/90 backdrop-blur-sm px-3 py-1.5 rounded-lg inline-block shadow-md">
                     {template.name}
                   </span>
                 </button>
