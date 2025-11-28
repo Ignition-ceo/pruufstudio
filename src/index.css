@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import './components/ui/keyframes.css';
+
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
 */
@@ -49,9 +51,16 @@ All colors MUST be HSL.
     --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(217 100% 98%) 100%);
     --gradient-accent: linear-gradient(135deg, hsl(217 100% 50%) 0%, hsl(120 100% 50%) 100%);
     
+    /* Magical AI gradients */
+    --gradient-ai-primary: linear-gradient(135deg, hsl(217 100% 55%) 0%, hsl(230 100% 60%) 50%, hsl(250 100% 65%) 100%);
+    --gradient-ai-glow: radial-gradient(circle at 50% 50%, hsl(217 100% 50% / 0.15) 0%, transparent 70%);
+    --gradient-ai-shimmer: linear-gradient(90deg, transparent 0%, hsl(217 100% 80% / 0.4) 50%, transparent 100%);
+    
     /* Custom shadows */
     --shadow-card: 0 2px 8px 0 hsl(217 100% 50% / 0.08);
     --shadow-card-hover: 0 8px 24px 0 hsl(217 100% 50% / 0.15);
+    --shadow-ai-glow: 0 0 40px hsl(217 100% 50% / 0.3), 0 0 80px hsl(217 100% 50% / 0.1);
+    --shadow-ai-strong: 0 20px 60px -10px hsl(217 100% 50% / 0.4);
 
     --sidebar-background: 0 0% 100%;
     --sidebar-foreground: 220 15% 20%;
