@@ -34,9 +34,21 @@ export const SmartDocHero = () => {
             </div>
           </div>
           
-          {mode === "document" && <CreateFromDocumentPanel />}
-          {mode === "template" && <ChooseTemplatePanel />}
-          {mode === "ai" && <DescribeTemplateAiPanel />}
+          {mode === "document" && (
+            <div className="animate-in fade-in slide-in-from-bottom-2 duration-200">
+              <CreateFromDocumentPanel />
+            </div>
+          )}
+          {mode === "template" && (
+            <div className="animate-in fade-in slide-in-from-bottom-2 duration-200">
+              <ChooseTemplatePanel />
+            </div>
+          )}
+          {mode === "ai" && (
+            <div className="animate-in fade-in slide-in-from-bottom-2 duration-200">
+              <DescribeTemplateAiPanel />
+            </div>
+          )}
         </div>
       </div>
     </div>
