@@ -35,7 +35,7 @@ export const CreateFromDocumentPanel = () => {
       {/* Main upload bar */}
       <div 
         onClick={handleFileUpload}
-        className="bg-card rounded-2xl border-2 border-border hover:border-primary/50 transition-all cursor-pointer shadow-card hover:shadow-card-hover p-6 flex items-center gap-4"
+        className="bg-card rounded-xl border border-border hover:border-primary/50 transition-all cursor-pointer shadow-sm hover:shadow-md px-6 py-5 flex items-center gap-4"
       >
         <Upload className="h-6 w-6 text-muted-foreground flex-shrink-0" />
         <div className="flex-1">
@@ -59,7 +59,7 @@ export const CreateFromDocumentPanel = () => {
           <button
             key={chip.label}
             onClick={() => handleActionClick(chip.label)}
-            className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-secondary hover:bg-accent transition-colors text-sm font-medium"
+            className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-secondary hover:bg-accent transition-colors text-sm font-medium shadow-sm"
           >
             <chip.icon className="h-4 w-4" />
             {chip.label}
@@ -73,7 +73,7 @@ export const CreateFromDocumentPanel = () => {
           <button
             key={sector.label}
             onClick={() => handleSectorClick(sector.label)}
-            className="flex items-center gap-2 px-4 py-2 rounded-full border border-border hover:border-primary hover:bg-accent transition-all text-sm font-medium"
+            className="flex items-center gap-2 px-4 py-2 rounded-full border border-border hover:border-primary hover:bg-accent transition-all text-sm font-medium shadow-sm"
           >
             <sector.icon className="h-4 w-4" />
             {sector.label}
