@@ -1,3 +1,16 @@
+import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+
+// Demo data for the chart
+const chartData = [
+  { date: "Nov 1", issued: 8, verified: 12 },
+  { date: "Nov 5", issued: 15, verified: 18 },
+  { date: "Nov 10", issued: 22, verified: 28 },
+  { date: "Nov 15", issued: 18, verified: 25 },
+  { date: "Nov 20", issued: 30, verified: 35 },
+  { date: "Nov 25", issued: 38, verified: 42 },
+  { date: "Nov 29", issued: 45, verified: 48 },
+];
+
 export default function Dashboard() {
   return (
     <div className="min-h-screen bg-[#f7f9fc] p-6 lg:p-8">
@@ -136,13 +149,30 @@ export default function Dashboard() {
         {/* Section 3: Analytics Row - Total Credentials + Chart */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Left Card: Total Credentials */}
-          <div className="bg-white border border-gray-200 rounded-xl p-8 shadow-sm hover:shadow-lg hover:scale-[1.02] transition-all duration-200 flex flex-col items-center justify-center min-h-[360px] space-y-4">
-            <h3 className="text-base font-semibold text-muted-foreground uppercase tracking-wide">
-              Total Credentials
-            </h3>
-            <p className="text-6xl font-bold bg-gradient-to-br from-[#0125cf] to-[#4b7bff] bg-clip-text text-transparent">124</p>
-            <div className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-green-100 text-green-700">
-              <span className="text-sm font-semibold">+26% vs last 30 days</span>
+          <div className="bg-white border border-gray-200 rounded-xl p-8 shadow-sm hover:shadow-lg hover:scale-[1.02] transition-all duration-200 flex flex-col items-center justify-center min-h-[360px] space-y-4 relative overflow-hidden">
+            {/* Decorative Chart Background */}
+            <svg className="absolute inset-0 w-full h-full opacity-[0.07]" viewBox="0 0 400 300" preserveAspectRatio="none">
+              <path 
+                d="M0,150 Q50,100 100,120 T200,140 T300,110 T400,130 L400,300 L0,300 Z" 
+                fill="url(#credentialGradient)" 
+                stroke="none"
+              />
+              <defs>
+                <linearGradient id="credentialGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#0125cf" />
+                  <stop offset="100%" stopColor="#4b7bff" />
+                </linearGradient>
+              </defs>
+            </svg>
+            
+            <div className="relative z-10 flex flex-col items-center space-y-4">
+              <h3 className="text-base font-semibold text-muted-foreground uppercase tracking-wide">
+                Total Credentials
+              </h3>
+              <p className="text-6xl font-bold bg-gradient-to-br from-[#0125cf] to-[#4b7bff] bg-clip-text text-transparent">124</p>
+              <div className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-green-100 text-green-700">
+                <span className="text-sm font-semibold">+26% vs last 30 days</span>
+              </div>
             </div>
           </div>
 
@@ -175,9 +205,56 @@ export default function Dashboard() {
               </select>
             </div>
 
-            {/* Chart Placeholder */}
-            <div className="h-64 rounded-lg bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center border border-gray-200">
-              <span className="text-sm text-muted-foreground font-medium">Chart Area</span>
+            {/* Chart */}
+            <div className="h-64">
+              <ResponsiveContainer width="100%" height="100%">
+                <AreaChart data={chartData}>
+                  <defs>
+                    <linearGradient id="issuedGradient" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="#0125cf" stopOpacity={0.3}/>
+                      <stop offset="95%" stopColor="#0125cf" stopOpacity={0}/>
+                    </linearGradient>
+                    <linearGradient id="verifiedGradient" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="#22c55e" stopOpacity={0.3}/>
+                      <stop offset="95%" stopColor="#22c55e" stopOpacity={0}/>
+                    </linearGradient>
+                  </defs>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                  <XAxis 
+                    dataKey="date" 
+                    stroke="#6b7280"
+                    fontSize={12}
+                    tickLine={false}
+                  />
+                  <YAxis 
+                    stroke="#6b7280"
+                    fontSize={12}
+                    tickLine={false}
+                  />
+                  <Tooltip 
+                    contentStyle={{
+                      backgroundColor: 'white',
+                      border: '1px solid #e5e7eb',
+                      borderRadius: '0.5rem',
+                      padding: '8px 12px'
+                    }}
+                  />
+                  <Area 
+                    type="monotone" 
+                    dataKey="issued" 
+                    stroke="#0125cf" 
+                    strokeWidth={2}
+                    fill="url(#issuedGradient)" 
+                  />
+                  <Area 
+                    type="monotone" 
+                    dataKey="verified" 
+                    stroke="#22c55e" 
+                    strokeWidth={2}
+                    fill="url(#verifiedGradient)" 
+                  />
+                </AreaChart>
+              </ResponsiveContainer>
             </div>
           </div>
         </div>
@@ -213,7 +290,7 @@ export default function Dashboard() {
           {/* Template Library */}
           <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-lg hover:scale-[1.02] transition-all duration-200 flex flex-col h-full">
             <div className="flex-1 space-y-4">
-              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-purple-600 to-purple-500 flex items-center justify-center shadow-md">
+              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[#0125cf] to-[#4b7bff] flex items-center justify-center shadow-md">
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
                 </svg>
@@ -239,7 +316,7 @@ export default function Dashboard() {
           {/* Issue Credentials */}
           <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-lg hover:scale-[1.02] transition-all duration-200 flex flex-col h-full">
             <div className="flex-1 space-y-4">
-              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-green-600 to-green-500 flex items-center justify-center shadow-md">
+              <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[#0125cf] to-[#4b7bff] flex items-center justify-center shadow-md">
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                 </svg>
