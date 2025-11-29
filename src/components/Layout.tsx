@@ -17,7 +17,7 @@ export function Layout({ children }: LayoutProps) {
         style={{ marginLeft: isSidebarCollapsed ? '80px' : '240px' }}
       >
         <TopBar />
-        <div className="flex-1 p-6">
+        <div className="flex-1 p-6 bg-muted/30 rounded-tl-3xl">
           {children}
         </div>
       </main>
