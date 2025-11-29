@@ -235,8 +235,8 @@ export const DescribeTemplateAiPanel = () => {
       {/* Quick prompt cards */}
       <div className="space-y-4 px-4">
         <div className="flex items-center gap-3 py-2">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg animate-pulse">
-            <Edit3 className="h-5 w-5 text-white" />
+          <div className="w-9 h-9 rounded-xl bg-white border border-blue-500 flex items-center justify-center shadow-lg">
+            <Edit3 className="h-5 w-5 text-blue-600" />
           </div>
           <span className="text-gray-900 font-normal text-base">
             Choose one of our suggested prompts
@@ -270,21 +270,21 @@ export const DescribeTemplateAiPanel = () => {
       {result && (
         <div className="relative group px-4">
           <div className="absolute -inset-2 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-600 rounded-[28px] opacity-40 blur-2xl animate-pulse" />
-          <div className="relative bg-white rounded-[24px] border-2 border-blue-300 p-8 shadow-2xl shadow-blue-500/30 animate-in fade-in slide-in-from-bottom-4 duration-500 overflow-hidden">
-            {/* Decorative sparkles */}
-            <Sparkles className="absolute top-4 right-4 h-5 w-5 text-blue-400/40 animate-pulse" />
-            <Sparkles className="absolute bottom-6 left-6 h-4 w-4 text-purple-400/40 animate-pulse" style={{ animationDelay: '0.5s' }} />
-            
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 via-blue-600 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/40">
-                <Sparkles className="h-6 w-6 text-white animate-pulse" />
+            <div className="relative bg-white rounded-[24px] border-2 border-blue-300 p-8 shadow-2xl shadow-blue-500/30 animate-in fade-in slide-in-from-bottom-4 duration-500 overflow-hidden">
+              {/* Decorative sparkles */}
+              <Sparkles className="absolute top-4 right-4 h-5 w-5 text-blue-400/60 animate-pulse" />
+              <Sparkles className="absolute bottom-6 left-6 h-4 w-4 text-purple-400/60 animate-pulse" style={{ animationDelay: '0.5s' }} />
+              
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 bg-white border border-blue-500 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/40">
+                  <Sparkles className="h-6 w-6 text-blue-600 animate-pulse" />
+                </div>
+                <h3 className="font-bold text-xl bg-gradient-to-r from-blue-600 via-blue-700 to-purple-600 bg-clip-text text-transparent">{result.title}</h3>
               </div>
-              <h3 className="font-bold text-xl bg-gradient-to-r from-blue-600 via-blue-700 to-purple-600 bg-clip-text text-transparent">{result.title}</h3>
-            </div>
             <ul className="space-y-3">
               {result.fields.map((field, index) => (
                 <li key={index} className="flex items-start gap-4 text-base text-gray-700 group/item hover:text-gray-900 transition-colors p-3 rounded-xl hover:bg-blue-50/50">
-                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-xs font-bold shadow-md">{index + 1}</span>
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-blue-50 border border-blue-500 flex items-center justify-center text-blue-600 text-xs font-bold shadow-md">{index + 1}</span>
                   <span className="font-medium pt-0.5">{field}</span>
                 </li>
               ))}
