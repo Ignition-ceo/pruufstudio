@@ -6,7 +6,7 @@ export default function Dashboard() {
         {/* Section 1: Hero + Featured App (Two Column) */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Hero Section */}
-          <div className="bg-gradient-to-br from-white to-blue-50/50 border border-gray-200 rounded-xl p-8 lg:p-10 min-h-[280px] flex flex-col justify-between shadow-sm hover:shadow-md transition-all duration-200 relative">
+          <div className="bg-gradient-to-br from-white to-blue-50/50 border border-gray-200 rounded-xl p-8 lg:p-10 min-h-[280px] flex flex-col justify-between shadow-sm hover:shadow-md transition-all duration-200">
             <div className="space-y-6">
               <div className="space-y-3">
                 <h1 className="text-3xl lg:text-4xl font-bold text-foreground leading-tight">
@@ -31,11 +31,6 @@ export default function Dashboard() {
                   Browse Templates
                 </a>
               </div>
-            </div>
-
-            {/* Illustration Placeholder */}
-            <div className="mt-6 lg:absolute lg:right-8 lg:top-1/2 lg:-translate-y-1/2 w-48 h-48 bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl shadow-inner flex items-center justify-center">
-              <span className="text-xs text-muted-foreground font-medium">Illustration</span>
             </div>
           </div>
 
