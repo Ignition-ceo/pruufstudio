@@ -15,10 +15,10 @@ const chartData = [
 export default function Dashboard() {
   return (
     <div className="min-h-screen bg-[#f7f9fc] p-6 lg:p-8">
-      <div className="mx-auto max-w-[1440px] space-y-6">
+      <div className="mx-auto max-w-[1440px]">
         
         {/* Text Hero Section */}
-        <div className="text-center space-y-4 pt-8 pb-8 bg-gradient-to-b from-white to-gray-50 rounded-xl">
+        <div className="text-center space-y-4 pt-8 pb-8 bg-gradient-to-b from-white to-gray-50 rounded-xl mb-6">
           <h1 className="text-3xl font-semibold tracking-tight text-foreground">
             Welcome to PRUUF Studio
           </h1>
@@ -28,7 +28,7 @@ export default function Dashboard() {
         </div>
         
         {/* Hero Section - Quick Actions (3 cards) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
           {/* Issue Credentials */}
           <div className="bg-white border border-gray-200 rounded-xl px-6 py-5 shadow-sm hover:shadow-md transition-shadow duration-200 flex flex-col justify-between h-[220px]">
             <div className="space-y-3">
@@ -113,10 +113,10 @@ export default function Dashboard() {
         </div>
         
         {/* Divider */}
-        <div className="border-b border-gray-100"></div>
+        <div className="border-b border-gray-100 mb-6"></div>
 
         {/* Section 2: KPI Analytics Row (5 metric tiles) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 mb-6">
           {/* Templates */}
           <div className="relative bg-gradient-to-br from-[#0125cf] to-[#4b7bff] border-0 rounded-xl px-6 py-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer overflow-hidden">
             <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full blur-2xl"></div>
@@ -194,7 +194,7 @@ export default function Dashboard() {
         </div>
 
         {/* Section 3: Analytics Row - Total Credentials + Chart */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
           {/* Left Card: Total Credentials */}
           <div className="bg-white border border-gray-200 rounded-xl px-6 py-5 shadow-sm hover:shadow-md hover:scale-[1.02] transition-all duration-200 flex flex-col items-center justify-center min-h-[360px] space-y-4 relative overflow-hidden">
             {/* Decorative Chart Background */}
@@ -306,9 +306,8 @@ export default function Dashboard() {
           </div>
         </div>
 
-
         {/* Section 5: Bottom Row - Recent Activity + PRUUF AI */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
           {/* Recent Activity - 2/3 width */}
           <div className="lg:col-span-2 bg-white border border-gray-200 rounded-xl px-6 py-5 shadow-sm hover:shadow-md transition-shadow duration-200 min-h-[400px]">
             <h3 className="text-xl font-bold text-foreground mb-6">Recent Activity</h3>
