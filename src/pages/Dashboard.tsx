@@ -17,6 +17,16 @@ export default function Dashboard() {
     <div className="min-h-screen bg-[#f7f9fc] p-6 lg:p-8">
       <div className="mx-auto max-w-[1440px] space-y-6">
         
+        {/* Hero Section */}
+        <div className="text-center space-y-4 py-8">
+          <h1 className="text-4xl lg:text-5xl font-bold text-foreground">
+            Welcome to Pruuf Studio
+          </h1>
+          <p className="text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto">
+            Create, manage, and organize your intelligent documents with AI-powered templates
+          </p>
+        </div>
+        
         {/* Section 1: Hero + Featured App (Two Column) */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Hero Section */}
