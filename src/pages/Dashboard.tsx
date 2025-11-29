@@ -17,10 +17,20 @@ export default function Dashboard() {
     <div className="min-h-screen bg-[#f7f9fc] p-6 lg:p-8">
       <div className="mx-auto max-w-[1440px] space-y-6">
         
+        {/* Text Hero Section */}
+        <div className="text-center space-y-4 pt-8 pb-8 bg-gradient-to-b from-white to-gray-50 rounded-xl">
+          <h1 className="text-3xl font-semibold tracking-tight text-foreground">
+            Welcome to PRUUF Studio
+          </h1>
+          <p className="text-base text-gray-500 max-w-xl mx-auto">
+            Create, manage, and organize your intelligent documents with AI-powered templates
+          </p>
+        </div>
+        
         {/* Hero Section - Quick Actions (3 cards) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Smart Doc Creator - Primary Hero Card */}
-          <div className="bg-gradient-to-br from-[#0125cf] to-[#4b7bff] rounded-xl px-6 py-5 shadow-md hover:shadow-lg transition-shadow duration-200 flex flex-col justify-between h-[160px] relative overflow-hidden">
+          <div className="bg-gradient-to-br from-[#0125cf] to-[#4b7bff] rounded-xl px-6 py-5 shadow-md hover:shadow-lg transition-shadow duration-200 flex flex-col justify-between h-[220px] relative overflow-hidden">
             {/* Decorative elements */}
             <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-3xl"></div>
             <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full blur-3xl"></div>
@@ -50,7 +60,7 @@ export default function Dashboard() {
           </div>
 
           {/* Template Library */}
-          <div className="bg-white border border-gray-200 rounded-xl px-6 py-5 shadow-sm hover:shadow-md transition-shadow duration-200 flex flex-col justify-between h-[160px]">
+          <div className="bg-white border border-gray-200 rounded-xl px-6 py-5 shadow-sm hover:shadow-md transition-shadow duration-200 flex flex-col justify-between h-[220px]">
             <div className="space-y-3">
               <div className="w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center">
                 <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -76,7 +86,7 @@ export default function Dashboard() {
           </div>
 
           {/* Issue Credentials */}
-          <div className="bg-white border border-gray-200 rounded-xl px-6 py-5 shadow-sm hover:shadow-md transition-shadow duration-200 flex flex-col justify-between h-[160px]">
+          <div className="bg-white border border-gray-200 rounded-xl px-6 py-5 shadow-sm hover:shadow-md transition-shadow duration-200 flex flex-col justify-between h-[220px]">
             <div className="space-y-3">
               <div className="w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center">
                 <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -104,68 +114,6 @@ export default function Dashboard() {
         
         {/* Divider */}
         <div className="border-b border-gray-100 mt-6"></div>
-        
-        {/* Section 1: Hero + Featured App (Two Column) */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* Hero Section */}
-          <div className="bg-gradient-to-br from-white to-blue-50/50 border border-gray-200 rounded-xl px-6 py-5 min-h-[280px] flex flex-col justify-between shadow-sm hover:shadow-md transition-all duration-200">
-            <div className="space-y-6">
-              <div className="space-y-3">
-                <h1 className="text-2xl lg:text-3xl font-bold text-foreground leading-tight">
-                  Welcome to PRUUF Studio
-                </h1>
-                <p className="text-base lg:text-lg text-muted-foreground leading-relaxed max-w-md">
-                  Turn your existing documents into portable, verifiable credentials — powered by AI.
-                </p>
-              </div>
-              
-              <div className="flex flex-wrap gap-3">
-                <a
-                  href="/smartdocs/create"
-                  className="inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold text-white bg-[#0125cf] hover:bg-[#0125cf]/90 transition-all duration-200 shadow-md hover:shadow-lg hover:scale-105"
-                >
-                  Create SmartDoc
-                </a>
-                <a
-                  href="/templates"
-                  className="inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold text-foreground bg-white border-2 border-gray-200 hover:bg-gray-50 hover:border-[#0125cf]/40 transition-all duration-200 shadow-sm hover:shadow-md"
-                >
-                  Browse Templates
-                </a>
-              </div>
-            </div>
-          </div>
-
-          {/* Featured App Card */}
-          <div className="bg-gradient-to-br from-[#0125cf] to-[#4b7bff] rounded-xl px-6 py-5 min-h-[280px] flex flex-col justify-between shadow-md hover:shadow-lg transition-all duration-200 hover:scale-[1.02] relative overflow-hidden">
-            {/* Decorative elements */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full blur-3xl"></div>
-            
-            <div className="relative z-10 space-y-6">
-              <div className="space-y-3">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm">
-                  <div className="w-2 h-2 rounded-full bg-white animate-pulse"></div>
-                  <span className="text-xs font-semibold text-white">Featured</span>
-                </div>
-                
-                <h2 className="text-xl lg:text-2xl font-bold text-white leading-tight">
-                  Issue your first credential
-                </h2>
-                <p className="text-base lg:text-lg text-white/90 leading-relaxed">
-                  Start issuing verifiable credentials and establish digital trust instantly.
-                </p>
-              </div>
-              
-              <a
-                href="/issuance"
-                className="inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold text-[#0125cf] bg-white hover:bg-white/95 transition-all duration-200 shadow-md hover:shadow-lg hover:scale-105 w-full sm:w-auto"
-              >
-                Open Issuance Center
-              </a>
-            </div>
-          </div>
-        </div>
 
         {/* Section 2: KPI Analytics Row (5 metric tiles) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
