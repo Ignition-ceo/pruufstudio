@@ -23,12 +23,15 @@ export const SmartDocHero = () => {
         </h1>
         
         <div className="flex flex-col items-center gap-8">
-          <div className="border-2 border-blue rounded-2xl p-2 bg-background/50 backdrop-blur-sm">
-            <SegmentedControl
-              options={modeOptions}
-              value={mode}
-              onChange={setMode}
-            />
+          <div className="relative">
+            <div className="absolute -inset-[2px] rounded-2xl bg-gradient-to-r from-[#1e40af] via-[#2563eb] to-[#1e40af] animate-[border-glow_3s_ease-in-out_infinite] opacity-60 blur-sm" />
+            <div className="relative border-2 border-blue rounded-2xl p-2 bg-background/50 backdrop-blur-sm">
+              <SegmentedControl
+                options={modeOptions}
+                value={mode}
+                onChange={setMode}
+              />
+            </div>
           </div>
           
           {mode === "document" && <CreateFromDocumentPanel />}
