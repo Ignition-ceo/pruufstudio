@@ -20,22 +20,26 @@ export default function Dashboard() {
         {/* Hero Section - Quick Actions (3 cards) */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
           {/* Smart Doc Creator - Primary Hero Card */}
-          <div className="bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200/50 rounded-xl px-6 py-5 shadow-md hover:shadow-lg transition-shadow duration-200 flex flex-col justify-between h-[160px]">
-            <div className="space-y-3">
-              <div className="w-12 h-12 rounded-lg bg-white flex items-center justify-center shadow-sm">
-                <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="bg-gradient-to-br from-[#0125cf] to-[#4b7bff] rounded-xl px-6 py-5 shadow-md hover:shadow-lg transition-shadow duration-200 flex flex-col justify-between h-[160px] relative overflow-hidden">
+            {/* Decorative elements */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full blur-3xl"></div>
+            
+            <div className="relative z-10 space-y-3">
+              <div className="w-12 h-12 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center shadow-sm">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
               </div>
               <div className="space-y-1">
-                <h4 className="text-lg font-bold text-foreground">Smart Doc Creator</h4>
-                <p className="text-sm text-gray-600">Transform documents into verifiable credentials with AI.</p>
+                <h4 className="text-lg font-bold text-white">Smart Doc Creator</h4>
+                <p className="text-sm text-white/90">Transform documents into verifiable credentials with AI.</p>
               </div>
             </div>
-            <div className="flex justify-end">
+            <div className="relative z-10 flex justify-end">
               <a 
                 href="/smartdocs/create" 
-                className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:text-primary/80 transition-colors duration-200 group"
+                className="inline-flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-semibold text-[#0125cf] bg-white hover:bg-white/95 transition-all duration-200 shadow-sm hover:shadow-md group"
               >
                 Get Started
                 <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
