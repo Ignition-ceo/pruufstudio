@@ -70,22 +70,71 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* Section 2: KPI Analytics Row (4-5 metric tiles) */}
+        {/* Section 2: KPI Analytics Row (5 metric tiles) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-          <div className="bg-card border border-border rounded-xl p-6 min-h-[140px] flex items-center justify-center">
-            <span className="text-muted-foreground font-medium text-sm">KPI Metric 1</span>
+          {/* Templates */}
+          <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-150">
+            <div className="space-y-3">
+              <p className="text-xs uppercase tracking-wide text-muted-foreground font-semibold">
+                Templates
+              </p>
+              <p className="text-2xl font-bold text-foreground">42</p>
+              <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-green-100 text-green-700">
+                <span className="text-xs font-semibold">+12%</span>
+              </div>
+            </div>
           </div>
-          <div className="bg-card border border-border rounded-xl p-6 min-h-[140px] flex items-center justify-center">
-            <span className="text-muted-foreground font-medium text-sm">KPI Metric 2</span>
+
+          {/* SmartDocs */}
+          <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-150">
+            <div className="space-y-3">
+              <p className="text-xs uppercase tracking-wide text-muted-foreground font-semibold">
+                SmartDocs
+              </p>
+              <p className="text-2xl font-bold text-foreground">18</p>
+              <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-green-100 text-green-700">
+                <span className="text-xs font-semibold">+8%</span>
+              </div>
+            </div>
           </div>
-          <div className="bg-card border border-border rounded-xl p-6 min-h-[140px] flex items-center justify-center">
-            <span className="text-muted-foreground font-medium text-sm">KPI Metric 3</span>
+
+          {/* Issued Credentials */}
+          <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-150">
+            <div className="space-y-3">
+              <p className="text-xs uppercase tracking-wide text-muted-foreground font-semibold">
+                Issued Credentials
+              </p>
+              <p className="text-2xl font-bold text-foreground">124</p>
+              <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-green-100 text-green-700">
+                <span className="text-xs font-semibold">+23%</span>
+              </div>
+            </div>
           </div>
-          <div className="bg-card border border-border rounded-xl p-6 min-h-[140px] flex items-center justify-center">
-            <span className="text-muted-foreground font-medium text-sm">KPI Metric 4</span>
+
+          {/* Verified Credentials */}
+          <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-150">
+            <div className="space-y-3">
+              <p className="text-xs uppercase tracking-wide text-muted-foreground font-semibold">
+                Verified Credentials
+              </p>
+              <p className="text-2xl font-bold text-foreground">687</p>
+              <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-red-100 text-red-700">
+                <span className="text-xs font-semibold">-5%</span>
+              </div>
+            </div>
           </div>
-          <div className="bg-card border border-border rounded-xl p-6 min-h-[140px] flex items-center justify-center">
-            <span className="text-muted-foreground font-medium text-sm">KPI Metric 5</span>
+
+          {/* Wallet Holders */}
+          <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-150">
+            <div className="space-y-3">
+              <p className="text-xs uppercase tracking-wide text-muted-foreground font-semibold">
+                Wallet Holders
+              </p>
+              <p className="text-2xl font-bold text-foreground">0</p>
+              <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-gray-100 text-gray-500">
+                <span className="text-xs font-semibold">—</span>
+              </div>
+            </div>
           </div>
         </div>
 
