@@ -16,6 +16,8 @@ import {
   Menu,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import pruufFavicon from "@/assets/pruuf-favicon.png";
+import pruufStudioLogo from "@/assets/pruuf-studio-logo.png";
 
 const menuSections = [
   {
@@ -67,18 +69,19 @@ export const PruufSidebar = ({
       {/* Toggle Button */}
       <div className={cn("p-4 border-b border-border flex items-center", isCollapsed ? "justify-center" : "justify-between")}>
         {!isCollapsed && (
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded bg-pruuf-blue flex items-center justify-center text-white font-bold text-sm">
-              P
-            </div>
-            <span className="font-bold text-lg">PRUUF Studio</span>
+          <div className="flex items-center gap-3">
+            <img src={pruufFavicon} alt="PRUUF" className="w-8 h-8 rounded" />
+            <img src={pruufStudioLogo} alt="PRUUF Studio" className="h-6" />
           </div>
+        )}
+        {isCollapsed && (
+          <img src={pruufFavicon} alt="PRUUF" className="w-8 h-8 rounded" />
         )}
         <Button
           variant="ghost"
           size="icon"
           onClick={() => onToggle(!isCollapsed)}
-          className={cn("h-8 w-8 hover:bg-blue-100", isCollapsed && "mx-auto")}
+          className={cn("h-8 w-8 hover:bg-blue-100", !isCollapsed && "ml-2")}
         >
           <Menu className="h-5 w-5 text-muted-foreground" />
         </Button>
