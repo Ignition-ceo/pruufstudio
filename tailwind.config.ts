@@ -70,6 +70,7 @@ export default {
         "gradient-hero": "var(--gradient-hero)",
         "gradient-card": "var(--gradient-card)",
         "gradient-accent": "var(--gradient-accent)",
+        "gradient-text-blue-green": "var(--gradient-text-blue-green)",
       },
       boxShadow: {
         "card": "var(--shadow-card)",
