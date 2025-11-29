@@ -121,7 +121,7 @@ export default {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "border-glow": "border-glow 3s ease-in-out infinite",
-        "shimmer": "shimmer 3s ease-in-out infinite",
+        "shimmer": "shimmer 8s ease-in-out infinite",
       },
     },
   },
