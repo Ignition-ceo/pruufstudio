@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { AppSidebar } from "@/components/AppSidebar";
+import { PruufSidebar } from "@/components/PruufSidebar";
 
 interface LayoutProps {
   children: ReactNode;
@@ -8,19 +7,13 @@ interface LayoutProps {
 
 export function Layout({ children }: LayoutProps) {
   return (
-    <SidebarProvider>
-      <div className="min-h-screen flex w-full">
-        <AppSidebar />
-        <main className="flex-1 overflow-x-hidden">
-          <header className="h-14 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-40 flex items-center px-4">
-            <SidebarTrigger />
-            <h1 className="ml-4 text-xl font-semibold">SmartDocs Platform</h1>
-          </header>
-          <div className="flex-1">
-            {children}
-          </div>
-        </main>
-      </div>
-    </SidebarProvider>
+    <div className="min-h-screen flex w-full bg-background">
+      <PruufSidebar />
+      <main className="flex-1 ml-60 overflow-x-hidden">
+        <div className="flex-1 p-6">
+          {children}
+        </div>
+      </main>
+    </div>
   );
 }
