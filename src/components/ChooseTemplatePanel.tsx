@@ -64,7 +64,7 @@ export const ChooseTemplatePanel = () => {
   return (
     <div className="w-full max-w-6xl flex flex-col gap-6">
       {/* Search bar */}
-      <div className="bg-card rounded-2xl border-2 border-border hover:border-primary/50 transition-all shadow-card hover:shadow-card-hover p-6 flex items-center gap-4">
+      <div className="bg-card rounded-xl border border-border hover:border-primary/50 transition-all shadow-sm hover:shadow-md px-6 py-5 flex items-center gap-4">
         <Search className="h-6 w-6 text-muted-foreground flex-shrink-0" />
         <input
           type="text"
@@ -86,7 +86,7 @@ export const ChooseTemplatePanel = () => {
           <button
             key={sector.id}
             onClick={() => setActiveSector(sector.id)}
-            className={`flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-medium transition-all ${
+            className={`flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-medium transition-all shadow-sm ${
               activeSector === sector.id
                 ? "bg-primary text-primary-foreground shadow-md"
                 : "border border-border hover:border-primary hover:bg-accent"
@@ -118,7 +118,7 @@ export const ChooseTemplatePanel = () => {
                         <button
                           key={template.id}
                           onClick={() => fileInputRefs.current[template.id]?.click()}
-                          className={`${template.bgColor} rounded-xl p-3 flex items-center justify-between hover:scale-105 transition-transform shadow-card hover:shadow-card-hover min-h-[80px] relative overflow-hidden group`}
+                          className={`${template.bgColor} rounded-xl px-6 py-5 flex items-center justify-between hover:scale-105 transition-transform shadow-sm hover:shadow-md min-h-[80px] relative overflow-hidden group`}
                         >
                           {/* Text on left */}
                           <span className="text-sm font-semibold text-foreground z-10">

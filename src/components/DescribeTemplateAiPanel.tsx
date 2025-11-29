@@ -190,7 +190,7 @@ export const DescribeTemplateAiPanel = () => {
   return (
     <div className="w-full max-w-5xl space-y-6">
       {/* Magical AI Container */}
-      <div className="relative overflow-hidden rounded-[32px] p-8 shadow-2xl">
+      <div className="relative overflow-hidden rounded-xl px-6 py-5 shadow-md">
         {/* Background Image */}
         <div className="absolute inset-0">
           <img 
@@ -226,13 +226,13 @@ export const DescribeTemplateAiPanel = () => {
         {/* Main prompt bar - white card */}
         <div className="relative group z-10">
           <div className={cn(
-            "absolute -inset-1 rounded-[24px] opacity-0 blur-lg transition-all duration-500",
+            "absolute -inset-1 rounded-xl opacity-0 blur-lg transition-all duration-500",
             "bg-white",
             isFocused && "opacity-40"
           )} />
           <div className={cn(
-            "relative bg-white rounded-[20px] p-1.5 shadow-2xl transition-all duration-150",
-            isFocused && "shadow-[0_0_50px_rgba(59,130,246,0.3)] ring-2 ring-blue-400 ring-offset-2"
+            "relative bg-white rounded-xl px-6 py-5 shadow-sm transition-all duration-150",
+            isFocused && "shadow-md ring-2 ring-primary ring-offset-2"
           )}>
             <div className="flex items-center gap-3 p-4">
               <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center">
@@ -321,7 +321,7 @@ export const DescribeTemplateAiPanel = () => {
             <button
               key={`${activeCategory}-${index}`}
               onClick={() => handleQuickPrompt(quickPrompt)}
-              className="group p-5 text-left rounded-2xl bg-white border-2 border-gray-200 hover:border-blue-400 hover:shadow-xl hover:shadow-blue-500/25 transition-all duration-150 text-sm relative overflow-hidden hover:scale-[1.02] hover:-translate-y-1 cursor-pointer"
+              className="group px-6 py-5 text-left rounded-xl bg-white border border-border hover:border-primary hover:shadow-md hover:shadow-primary/10 transition-all duration-150 text-sm relative overflow-hidden hover:scale-[1.02] cursor-pointer"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 via-blue-500/5 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-150" />
               <div className="absolute top-3 right-3 w-7 h-7 rounded-full bg-blue-100/80 flex items-center justify-center group-hover:bg-blue-500 transition-all duration-150 transform group-hover:scale-110">
@@ -339,16 +339,15 @@ export const DescribeTemplateAiPanel = () => {
       {/* Result card with save button */}
       {result && (
         <div className="relative group px-4 animate-in fade-in slide-in-from-bottom-3 duration-200">
-          <div className="absolute -inset-2 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-600 rounded-[28px] opacity-40 blur-2xl animate-pulse" />
-          <div className="relative bg-white rounded-[24px] border-2 border-blue-300 p-8 shadow-2xl shadow-blue-500/30 overflow-hidden">
+          <div className="relative bg-white rounded-xl border border-primary px-6 py-5 shadow-md overflow-hidden">
             {/* Decorative sparkles */}
-            <Sparkles className="absolute top-4 right-4 h-5 w-5 text-blue-400/60 animate-pulse" />
-            <Sparkles className="absolute bottom-6 left-6 h-4 w-4 text-purple-400/60 animate-pulse" style={{ animationDelay: '0.5s' }} />
+            <Sparkles className="absolute top-4 right-4 h-5 w-5 text-primary/60 animate-pulse" />
+            <Sparkles className="absolute bottom-6 left-6 h-4 w-4 text-primary/40 animate-pulse" style={{ animationDelay: '0.5s' }} />
               
             <div className="mb-6 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-white border border-blue-500 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/40">
-                  <Sparkles className="h-6 w-6 text-blue-600 animate-pulse" />
+                <div className="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center shadow-sm">
+                  <Sparkles className="h-6 w-6 text-primary animate-pulse" />
                 </div>
                 <div className="flex items-center gap-3">
                   <h3 className="font-bold text-2xl text-gray-900">
@@ -438,10 +437,10 @@ export const DescribeTemplateAiPanel = () => {
               {chatMessages.length > 0 && (
                 <div className="space-y-3 max-h-[300px] overflow-y-auto pr-2">
                   {chatMessages.map((msg, idx) => (
-                    <div
+                  <div
                       key={idx}
                       className={cn(
-                        "flex gap-3 p-3 rounded-xl",
+                        "flex gap-3 px-6 py-5 rounded-xl shadow-sm",
                         msg.role === "user"
                           ? "bg-blue-50 ml-8"
                           : "bg-gray-50 mr-8"
