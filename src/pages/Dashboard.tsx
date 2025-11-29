@@ -19,10 +19,10 @@ export default function Dashboard() {
         
         {/* Hero Section */}
         <div className="text-center space-y-4 py-8">
-          <h1 className="text-4xl lg:text-5xl font-bold text-foreground">
+          <h1 className="text-2xl lg:text-3xl font-bold text-foreground">
             Welcome to Pruuf Studio
           </h1>
-          <p className="text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-sm lg:text-base text-muted-foreground max-w-3xl mx-auto">
             Create, manage, and organize your intelligent documents with AI-powered templates
           </p>
         </div>
