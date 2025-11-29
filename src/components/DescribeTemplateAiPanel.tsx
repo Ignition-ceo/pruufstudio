@@ -286,7 +286,7 @@ export const DescribeTemplateAiPanel = () => {
                   <div className="w-12 h-12 bg-white border border-blue-500 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/40">
                     <Sparkles className="h-6 w-6 text-blue-600 animate-pulse" />
                   </div>
-                  <h3 className="font-bold text-2xl bg-gradient-to-r from-blue-600 via-blue-700 to-purple-600 bg-clip-text text-transparent">
+                  <h3 className="font-bold text-2xl text-gray-900">
                     Smart Doc Template
                   </h3>
                 </div>
