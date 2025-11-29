@@ -14,41 +14,41 @@ const chartData = [
 
 export default function Dashboard() {
   return (
-    <div className="min-h-screen bg-[#f7f9fc] p-6 lg:p-8">
+    <div className="min-h-screen bg-[#f7f9fc]">
       <div className="mx-auto max-w-[1440px]">
         
         {/* Text Hero Section */}
-        <div className="text-center space-y-4 pt-8 pb-8 bg-gradient-to-b from-white to-gray-50 rounded-xl mb-6">
-        <h1 className="text-3xl font-semibold tracking-tight bg-gradient-text-blue-green bg-clip-text text-transparent animate-shimmer bg-[length:200%_200%]">
-          Welcome to PRUUF Studio
-        </h1>
-          <p className="text-base text-gray-500 max-w-xl mx-auto">
+        <div className="text-center space-y-3 md:space-y-4 pt-6 pb-6 md:pt-8 md:pb-8 bg-gradient-to-b from-white to-gray-50 rounded-xl mb-4 md:mb-6 px-4">
+          <h1 className="text-xl md:text-2xl lg:text-3xl font-semibold tracking-tight bg-gradient-text-blue-green bg-clip-text text-transparent animate-shimmer bg-[length:200%_200%]">
+            Welcome to PRUUF Studio
+          </h1>
+          <p className="text-sm md:text-base text-gray-500 max-w-xl mx-auto px-4">
             Create, manage, and organize your intelligent documents with AI-powered templates
           </p>
         </div>
         
-        {/* Hero Section - Quick Actions (3 cards) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+        {/* Hero Section - Quick Actions (3 cards on desktop, 2 on tablet, 1 on mobile) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 lg:gap-6 mb-4 md:mb-6">
           {/* Issue Credentials */}
-          <div className="bg-white border border-gray-200 rounded-xl px-6 py-5 shadow-sm hover:shadow-md transition-shadow duration-200 flex flex-col justify-between h-[220px]">
-            <div className="space-y-3">
-              <div className="w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center">
-                <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="bg-white border border-gray-200 rounded-xl px-4 py-4 md:px-6 md:py-5 shadow-sm hover:shadow-md transition-shadow duration-200 flex flex-col justify-between min-h-[180px] md:h-[220px]">
+            <div className="space-y-2 md:space-y-3">
+              <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-blue-50 flex items-center justify-center">
+                <svg className="w-5 h-5 md:w-6 md:h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                 </svg>
               </div>
               <div className="space-y-1">
-                <h4 className="text-lg font-bold text-foreground">Issue Credentials</h4>
-                <p className="text-sm text-muted-foreground">Start issuing and establishing digital trust instantly.</p>
+                <h4 className="text-base md:text-lg font-bold text-foreground">Issue Credentials</h4>
+                <p className="text-xs md:text-sm text-muted-foreground">Start issuing and establishing digital trust instantly.</p>
               </div>
             </div>
-            <div className="flex justify-end">
+            <div className="flex justify-end mt-3 md:mt-0">
               <a 
                 href="/issuance" 
-                className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:text-primary/80 transition-colors duration-200 group"
+                className="inline-flex items-center gap-1 text-xs md:text-sm font-semibold text-primary hover:text-primary/80 transition-colors duration-200 group"
               >
                 Get Started
-                <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-3 h-3 md:w-4 md:h-4 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </a>
@@ -56,25 +56,25 @@ export default function Dashboard() {
           </div>
 
           {/* Template Library */}
-          <div className="bg-white border border-gray-200 rounded-xl px-6 py-5 shadow-sm hover:shadow-md transition-shadow duration-200 flex flex-col justify-between h-[220px]">
-            <div className="space-y-3">
-              <div className="w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center">
-                <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="bg-white border border-gray-200 rounded-xl px-4 py-4 md:px-6 md:py-5 shadow-sm hover:shadow-md transition-shadow duration-200 flex flex-col justify-between min-h-[180px] md:h-[220px]">
+            <div className="space-y-2 md:space-y-3">
+              <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-blue-50 flex items-center justify-center">
+                <svg className="w-5 h-5 md:w-6 md:h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
                 </svg>
               </div>
               <div className="space-y-1">
-                <h4 className="text-lg font-bold text-foreground">Template Library</h4>
-                <p className="text-sm text-muted-foreground">Browse pre-built templates for quick credential creation.</p>
+                <h4 className="text-base md:text-lg font-bold text-foreground">Template Library</h4>
+                <p className="text-xs md:text-sm text-muted-foreground">Browse pre-built templates for quick credential creation.</p>
               </div>
             </div>
-            <div className="flex justify-end">
+            <div className="flex justify-end mt-3 md:mt-0">
               <a 
                 href="/templates" 
-                className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:text-primary/80 transition-colors duration-200 group"
+                className="inline-flex items-center gap-1 text-xs md:text-sm font-semibold text-primary hover:text-primary/80 transition-colors duration-200 group"
               >
                 Get Started
-                <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-3 h-3 md:w-4 md:h-4 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </a>
@@ -82,29 +82,29 @@ export default function Dashboard() {
           </div>
 
           {/* Smart Doc Creator - Primary Hero Card */}
-          <div className="bg-gradient-to-br from-[#0125cf] to-[#4b7bff] rounded-xl px-6 py-5 shadow-md hover:shadow-lg transition-shadow duration-200 flex flex-col justify-between h-[220px] relative overflow-hidden">
+          <div className="bg-gradient-to-br from-[#0125cf] to-[#4b7bff] rounded-xl px-4 py-4 md:px-6 md:py-5 shadow-md hover:shadow-lg transition-shadow duration-200 flex flex-col justify-between min-h-[180px] md:h-[220px] relative overflow-hidden md:col-span-2 lg:col-span-1">
             {/* Decorative elements */}
-            <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full blur-3xl"></div>
+            <div className="absolute top-0 right-0 w-24 h-24 md:w-32 md:h-32 bg-white/5 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 left-0 w-20 h-20 md:w-24 md:h-24 bg-white/5 rounded-full blur-3xl"></div>
             
-            <div className="relative z-10 space-y-3">
-              <div className="w-12 h-12 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center shadow-sm">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="relative z-10 space-y-2 md:space-y-3">
+              <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center shadow-sm">
+                <svg className="w-5 h-5 md:w-6 md:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
               </div>
               <div className="space-y-1">
-                <h4 className="text-lg font-bold text-white">Smart Doc Creator</h4>
-                <p className="text-sm text-white/90">Transform documents into verifiable credentials with AI.</p>
+                <h4 className="text-base md:text-lg font-bold text-white">Smart Doc Creator</h4>
+                <p className="text-xs md:text-sm text-white/90">Transform documents into verifiable credentials with AI.</p>
               </div>
             </div>
-            <div className="relative z-10 flex justify-end">
+            <div className="relative z-10 flex justify-end mt-3 md:mt-0">
               <a 
                 href="/smartdocs/create" 
-                className="inline-flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-semibold text-[#0125cf] bg-white hover:bg-white/95 transition-all duration-200 shadow-sm hover:shadow-md group"
+                className="inline-flex items-center gap-1 px-3 py-1.5 md:px-4 md:py-2 rounded-lg text-xs md:text-sm font-semibold text-[#0125cf] bg-white hover:bg-white/95 transition-all duration-200 shadow-sm hover:shadow-md group"
               >
                 Get Started
-                <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-3 h-3 md:w-4 md:h-4 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </a>
@@ -113,19 +113,19 @@ export default function Dashboard() {
         </div>
         
         {/* Divider */}
-        <div className="border-b border-gray-100 mb-6"></div>
+        <div className="border-b border-gray-100 mb-4 md:mb-6"></div>
 
-        {/* Section 2: KPI Analytics Row (5 metric tiles) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 mb-6">
+        {/* Section 2: KPI Analytics Row (5 on desktop, 3 on tablet, 1 on mobile) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4 lg:gap-6 mb-4 md:mb-6">
           {/* Templates */}
-          <div className="relative bg-gradient-to-br from-[#0125cf] to-[#4b7bff] border-0 rounded-xl px-6 py-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer overflow-hidden">
-            <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full blur-2xl"></div>
+          <div className="relative bg-gradient-to-br from-[#0125cf] to-[#4b7bff] border-0 rounded-xl px-4 py-4 md:px-6 md:py-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer overflow-hidden">
+            <div className="absolute top-0 right-0 w-20 h-20 md:w-24 md:h-24 bg-white/10 rounded-full blur-2xl"></div>
             <GeometricGlobe color="#ffffff" />
-            <div className="relative z-10 space-y-3">
+            <div className="relative z-10 space-y-2 md:space-y-3">
               <p className="text-xs uppercase tracking-wide text-white/80 font-semibold">
                 Templates
               </p>
-              <p className="text-2xl font-bold text-white">42</p>
+              <p className="text-xl md:text-2xl font-bold text-white">42</p>
               <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-white/20 text-white backdrop-blur-sm">
                 <span className="text-xs font-semibold">+12%</span>
               </div>
@@ -133,14 +133,14 @@ export default function Dashboard() {
           </div>
 
           {/* SmartDocs */}
-          <div className="relative bg-gradient-to-br from-[#8b5cf6] to-[#a78bfa] border-0 rounded-xl px-6 py-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer overflow-hidden">
-            <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full blur-2xl"></div>
+          <div className="relative bg-gradient-to-br from-[#8b5cf6] to-[#a78bfa] border-0 rounded-xl px-4 py-4 md:px-6 md:py-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer overflow-hidden">
+            <div className="absolute top-0 right-0 w-20 h-20 md:w-24 md:h-24 bg-white/10 rounded-full blur-2xl"></div>
             <GeometricGlobe color="#ffffff" />
-            <div className="relative z-10 space-y-3">
+            <div className="relative z-10 space-y-2 md:space-y-3">
               <p className="text-xs uppercase tracking-wide text-white/80 font-semibold">
                 SmartDocs
               </p>
-              <p className="text-2xl font-bold text-white">18</p>
+              <p className="text-xl md:text-2xl font-bold text-white">18</p>
               <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-white/20 text-white backdrop-blur-sm">
                 <span className="text-xs font-semibold">+8%</span>
               </div>
@@ -148,14 +148,14 @@ export default function Dashboard() {
           </div>
 
           {/* Issued Credentials */}
-          <div className="relative bg-gradient-to-br from-[#22c55e] to-[#4ade80] border-0 rounded-xl px-6 py-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer overflow-hidden">
-            <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full blur-2xl"></div>
+          <div className="relative bg-gradient-to-br from-[#22c55e] to-[#4ade80] border-0 rounded-xl px-4 py-4 md:px-6 md:py-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer overflow-hidden">
+            <div className="absolute top-0 right-0 w-20 h-20 md:w-24 md:h-24 bg-white/10 rounded-full blur-2xl"></div>
             <GeometricGlobe color="#ffffff" />
-            <div className="relative z-10 space-y-3">
+            <div className="relative z-10 space-y-2 md:space-y-3">
               <p className="text-xs uppercase tracking-wide text-white/80 font-semibold">
                 Issued Credentials
               </p>
-              <p className="text-2xl font-bold text-white">284</p>
+              <p className="text-xl md:text-2xl font-bold text-white">284</p>
               <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-white/20 text-white backdrop-blur-sm">
                 <span className="text-xs font-semibold">+23%</span>
               </div>
@@ -163,14 +163,14 @@ export default function Dashboard() {
           </div>
 
           {/* Verified Credentials */}
-          <div className="relative bg-gradient-to-br from-[#ec4899] to-[#f472b6] border-0 rounded-xl px-6 py-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer overflow-hidden">
-            <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full blur-2xl"></div>
+          <div className="relative bg-gradient-to-br from-[#ec4899] to-[#f472b6] border-0 rounded-xl px-4 py-4 md:px-6 md:py-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer overflow-hidden">
+            <div className="absolute top-0 right-0 w-20 h-20 md:w-24 md:h-24 bg-white/10 rounded-full blur-2xl"></div>
             <GeometricGlobe color="#ffffff" />
-            <div className="relative z-10 space-y-3">
+            <div className="relative z-10 space-y-2 md:space-y-3">
               <p className="text-xs uppercase tracking-wide text-white/80 font-semibold">
                 Verified Credentials
               </p>
-              <p className="text-2xl font-bold text-white">687</p>
+              <p className="text-xl md:text-2xl font-bold text-white">687</p>
               <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-white/20 text-white backdrop-blur-sm">
                 <span className="text-xs font-semibold">-5%</span>
               </div>
@@ -178,14 +178,14 @@ export default function Dashboard() {
           </div>
 
           {/* Wallet Holders */}
-          <div className="relative bg-gradient-to-br from-gray-700 to-gray-800 border-0 rounded-xl px-6 py-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer overflow-hidden">
-            <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full blur-2xl"></div>
+          <div className="relative bg-gradient-to-br from-gray-700 to-gray-800 border-0 rounded-xl px-4 py-4 md:px-6 md:py-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer overflow-hidden">
+            <div className="absolute top-0 right-0 w-20 h-20 md:w-24 md:h-24 bg-white/10 rounded-full blur-2xl"></div>
             <GeometricGlobe color="#ffffff" />
-            <div className="relative z-10 space-y-3">
+            <div className="relative z-10 space-y-2 md:space-y-3">
               <p className="text-xs uppercase tracking-wide text-white/80 font-semibold">
                 Wallet Holders
               </p>
-              <p className="text-2xl font-bold text-white">72</p>
+              <p className="text-xl md:text-2xl font-bold text-white">72</p>
               <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-white/20 text-white backdrop-blur-sm">
                 <span className="text-xs font-semibold">—</span>
               </div>
@@ -193,10 +193,10 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* Section 3: Analytics Row - Total Credentials + Chart */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+        {/* Section 3: Analytics Row - Total Credentials + Chart (stack on mobile) */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 md:gap-4 lg:gap-6 mb-4 md:mb-6">
           {/* Left Card: Total Credentials */}
-          <div className="bg-white border border-gray-200 rounded-xl px-6 py-5 shadow-sm hover:shadow-md hover:scale-[1.02] transition-all duration-200 flex flex-col items-center justify-center min-h-[360px] space-y-4 relative overflow-hidden">
+          <div className="bg-white border border-gray-200 rounded-xl px-4 py-4 md:px-6 md:py-5 shadow-sm hover:shadow-md hover:scale-[1.02] transition-all duration-200 flex flex-col items-center justify-center min-h-[280px] md:min-h-[360px] space-y-3 md:space-y-4 relative overflow-hidden">
             {/* Decorative Chart Background */}
             <svg className="absolute inset-0 w-full h-full opacity-[0.07]" viewBox="0 0 400 300" preserveAspectRatio="none">
               <path 
@@ -212,48 +212,47 @@ export default function Dashboard() {
               </defs>
             </svg>
             
-            <div className="relative z-10 flex flex-col items-center space-y-4">
-              <h3 className="text-base font-semibold text-muted-foreground uppercase tracking-wide">
+            <div className="relative z-10 flex flex-col items-center space-y-3 md:space-y-4">
+              <h3 className="text-sm md:text-base font-semibold text-muted-foreground uppercase tracking-wide">
                 Total Credentials
               </h3>
-              <p className="text-6xl font-bold bg-gradient-to-br from-[#0125cf] to-[#4b7bff] bg-clip-text text-transparent">124</p>
-              <div className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-green-100 text-green-700">
-                <span className="text-sm font-semibold">+26% vs last 30 days</span>
+              <p className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-br from-[#0125cf] to-[#4b7bff] bg-clip-text text-transparent">124</p>
+              <div className="inline-flex items-center gap-1 px-2 py-1 md:px-3 md:py-1.5 rounded-full bg-green-100 text-green-700">
+                <span className="text-xs md:text-sm font-semibold">+26% vs last 30 days</span>
               </div>
             </div>
           </div>
 
           {/* Right Card: Issued & Verified Over Time */}
-          <div className="bg-white border border-gray-200 rounded-xl px-6 py-5 shadow-sm hover:shadow-md transition-shadow duration-200 min-h-[360px] space-y-6">
+          <div className="bg-white border border-gray-200 rounded-xl px-4 py-4 md:px-6 md:py-5 shadow-sm hover:shadow-md transition-shadow duration-200 min-h-[280px] md:min-h-[360px] space-y-4 md:space-y-6">
             {/* Header with title, legend, and dropdown */}
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-              <div className="space-y-2">
-                <h3 className="text-lg font-semibold text-foreground">
+            <div className="flex flex-col gap-3 md:gap-4">
+              <div className="flex items-start justify-between gap-2">
+                <h3 className="text-base md:text-lg font-semibold text-foreground">
                   Issued & Verified Over Time
                 </h3>
-                <div className="flex items-center gap-3">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0125cf]/10 text-[#0125cf]">
-                    <div className="w-2 h-2 rounded-full bg-[#0125cf]"></div>
-                    <span className="text-xs font-semibold">Issued</span>
-                  </div>
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-100 text-green-700">
-                    <div className="w-2 h-2 rounded-full bg-green-700"></div>
-                    <span className="text-xs font-semibold">Verified</span>
-                  </div>
+                {/* Time Range Dropdown */}
+                <select className="h-8 md:h-10 px-2 md:px-4 py-1 md:py-2 rounded-lg border border-gray-200 bg-white text-xs md:text-sm font-medium text-foreground focus:outline-none focus:ring-2 focus:ring-[#0125cf] focus:border-transparent z-10 hover:bg-gray-50 hover:border-[#0125cf]/30 transition-all duration-200 shadow-sm flex-shrink-0">
+                  <option value="30">Last 30 Days</option>
+                  <option value="60">Last 60 Days</option>
+                  <option value="90">Last 90 Days</option>
+                  <option value="365">Last Year</option>
+                </select>
+              </div>
+              <div className="flex items-center gap-2 md:gap-3 flex-wrap">
+                <div className="inline-flex items-center gap-1.5 md:gap-2 px-2 md:px-3 py-0.5 md:py-1 rounded-full bg-[#0125cf]/10 text-[#0125cf]">
+                  <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-[#0125cf]"></div>
+                  <span className="text-xs font-semibold">Issued</span>
+                </div>
+                <div className="inline-flex items-center gap-1.5 md:gap-2 px-2 md:px-3 py-0.5 md:py-1 rounded-full bg-green-100 text-green-700">
+                  <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-green-700"></div>
+                  <span className="text-xs font-semibold">Verified</span>
                 </div>
               </div>
-
-              {/* Time Range Dropdown */}
-              <select className="h-10 px-4 py-2 rounded-lg border border-gray-200 bg-white text-sm font-medium text-foreground focus:outline-none focus:ring-2 focus:ring-[#0125cf] focus:border-transparent z-10 hover:bg-gray-50 hover:border-[#0125cf]/30 transition-all duration-200 shadow-sm">
-                <option value="30">Last 30 Days</option>
-                <option value="60">Last 60 Days</option>
-                <option value="90">Last 90 Days</option>
-                <option value="365">Last Year</option>
-              </select>
             </div>
 
             {/* Chart */}
-            <div className="h-64">
+            <div className="h-48 md:h-64">
               <ResponsiveContainer width="100%" height="100%">
                 <AreaChart data={chartData}>
                   <defs>
@@ -306,11 +305,11 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* Section 5: Bottom Row - Recent Activity + PRUUF AI */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+        {/* Section 5: Bottom Row - Recent Activity + PRUUF AI (stack on mobile) */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 md:gap-4 lg:gap-6 mb-4 md:mb-6">
           {/* Recent Activity - 2/3 width */}
-          <div className="lg:col-span-2 bg-white border border-gray-200 rounded-xl px-6 py-5 shadow-sm hover:shadow-md transition-shadow duration-200 min-h-[400px]">
-            <h3 className="text-xl font-bold text-foreground mb-6">Recent Activity</h3>
+          <div className="lg:col-span-2 bg-white border border-gray-200 rounded-xl px-4 py-4 md:px-6 md:py-5 shadow-sm hover:shadow-md transition-shadow duration-200 min-h-[350px] md:min-h-[400px]">
+            <h3 className="text-lg md:text-xl font-bold text-foreground mb-4 md:mb-6">Recent Activity</h3>
             
             <div className="space-y-6">
               {/* Activity Item 1 */}

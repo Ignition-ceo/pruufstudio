@@ -55,46 +55,62 @@ const menuSections = [
 
 export const PruufSidebar = ({ 
   isCollapsed, 
-  onToggle 
+  onToggle,
+  isMobileMenuOpen = false,
+  onMobileMenuClose
 }: { 
   isCollapsed: boolean; 
   onToggle: (collapsed: boolean) => void;
+  isMobileMenuOpen?: boolean;
+  onMobileMenuClose?: () => void;
 }) => {
   return (
-    <aside
-      className={cn(
-        "fixed left-0 top-0 h-screen bg-blue-50/30 border-r border-border flex flex-col transition-all duration-300",
-        isCollapsed ? "w-20" : "w-60"
+    <>
+      {/* Mobile backdrop overlay */}
+      {isMobileMenuOpen && (
+        <div 
+          className="fixed inset-0 bg-black/50 z-40 md:hidden"
+          onClick={onMobileMenuClose}
+        />
       )}
-    >
+      
+      <aside
+        className={cn(
+          "fixed left-0 top-0 h-screen bg-blue-50/30 border-r border-border flex flex-col transition-all duration-300 z-40",
+          // Mobile: slide in/out from left
+          "md:translate-x-0",
+          isMobileMenuOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0",
+          // Tablet: icon-only (w-20), Desktop: can toggle between w-20 and w-60
+          "w-60 md:w-20 lg:w-60",
+          isCollapsed && "lg:w-20"
+        )}
+      >
       {/* Logo Section */}
-      <div className={cn("p-4 border-b border-border flex items-center", isCollapsed ? "justify-center" : "justify-start")}>
-        {!isCollapsed && (
-          <div className="flex items-center gap-3">
-            <img src={pruufFavicon} alt="PRUUF" className="w-8 h-8 rounded" />
-            <img src={pruufStudioLogo} alt="PRUUF Studio" className="h-6" />
-          </div>
-        )}
-        {isCollapsed && (
+      <div className={cn("p-4 border-b border-border flex items-center", (isCollapsed && "lg:justify-center") || "justify-start md:justify-center lg:justify-start")}>
+        {/* Full logo on mobile and desktop (when expanded) */}
+        <div className={cn("flex items-center gap-3", "md:hidden lg:flex", isCollapsed && "lg:hidden")}>
           <img src={pruufFavicon} alt="PRUUF" className="w-8 h-8 rounded" />
-        )}
+          <img src={pruufStudioLogo} alt="PRUUF Studio" className="h-6" />
+        </div>
+        {/* Icon only on tablet and desktop (when collapsed) */}
+        <img src={pruufFavicon} alt="PRUUF" className={cn("w-8 h-8 rounded hidden md:block lg:hidden", isCollapsed && "lg:block")} />
       </div>
 
       {/* Navigation */}
       <nav className="flex-1 overflow-y-auto p-4">
         {menuSections.map((section, sectionIdx) => (
           <div key={section.label} className={cn(sectionIdx > 0 && "mt-6")}>
-            {!isCollapsed && (
-              <h3 className="text-xs font-semibold text-muted-foreground mb-2 px-3">
-                {section.label}
-              </h3>
-            )}
+            {/* Show labels on mobile and desktop (when expanded), hide on tablet and desktop (when collapsed) */}
+            <h3 className={cn("text-xs font-semibold text-muted-foreground mb-2 px-3", "md:hidden lg:block", isCollapsed && "lg:hidden")}>
+              {section.label}
+            </h3>
             <div className="space-y-1">
               {section.items.map((item) => (
                 <NavLink
                   key={item.url}
                   to={item.url}
                   end={item.url === "/"}
+                  onClick={onMobileMenuClose}
                   className={({ isActive }) =>
                     cn(
                       "flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-150 relative",
@@ -102,13 +118,15 @@ export const PruufSidebar = ({
                       isActive
                         ? "text-pruuf-blue bg-blue-100/60 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-1 before:bg-pruuf-blue before:rounded-r"
                         : "text-foreground",
-                      isCollapsed && "justify-center"
+                      "md:justify-center lg:justify-start",
+                      isCollapsed && "lg:justify-center"
                     )
                   }
-                  title={isCollapsed ? item.title : undefined}
+                  title={item.title}
                 >
                   <item.icon className="h-5 w-5 flex-shrink-0" />
-                  {!isCollapsed && <span>{item.title}</span>}
+                  {/* Show text on mobile and desktop (when expanded) */}
+                  <span className={cn("md:hidden lg:inline", isCollapsed && "lg:hidden")}>{item.title}</span>
                 </NavLink>
               ))}
             </div>
@@ -116,8 +134,8 @@ export const PruufSidebar = ({
         ))}
       </nav>
 
-      {/* Toggle Button at Bottom */}
-      <div className="p-4 border-t border-border">
+      {/* Toggle Button at Bottom - Hidden on mobile and tablet, visible on desktop only */}
+      <div className="p-4 border-t border-border hidden lg:block">
         <Button
           variant="ghost"
           onClick={() => onToggle(!isCollapsed)}
@@ -137,5 +155,6 @@ export const PruufSidebar = ({
         </Button>
       </div>
     </aside>
+    </>
   );
 };
