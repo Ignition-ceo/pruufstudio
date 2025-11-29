@@ -81,65 +81,65 @@ export default function Dashboard() {
         {/* Section 2: KPI Analytics Row (5 metric tiles) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-6">
           {/* Templates */}
-          <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md hover:scale-105 transition-all duration-200 cursor-pointer">
+          <div className="bg-gradient-to-br from-[#0125cf] to-[#4b7bff] border-0 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-200 cursor-pointer">
             <div className="space-y-3">
-              <p className="text-xs uppercase tracking-wide text-muted-foreground font-semibold">
+              <p className="text-xs uppercase tracking-wide text-white/80 font-semibold">
                 Templates
               </p>
-              <p className="text-2xl font-bold text-foreground">42</p>
-              <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-green-100 text-green-700">
+              <p className="text-2xl font-bold text-white">42</p>
+              <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-white/20 text-white backdrop-blur-sm">
                 <span className="text-xs font-semibold">+12%</span>
               </div>
             </div>
           </div>
 
           {/* SmartDocs */}
-          <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md hover:scale-105 transition-all duration-200 cursor-pointer">
+          <div className="bg-gradient-to-br from-[#8b5cf6] to-[#a78bfa] border-0 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-200 cursor-pointer">
             <div className="space-y-3">
-              <p className="text-xs uppercase tracking-wide text-muted-foreground font-semibold">
+              <p className="text-xs uppercase tracking-wide text-white/80 font-semibold">
                 SmartDocs
               </p>
-              <p className="text-2xl font-bold text-foreground">18</p>
-              <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-green-100 text-green-700">
+              <p className="text-2xl font-bold text-white">18</p>
+              <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-white/20 text-white backdrop-blur-sm">
                 <span className="text-xs font-semibold">+8%</span>
               </div>
             </div>
           </div>
 
           {/* Issued Credentials */}
-          <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md hover:scale-105 transition-all duration-200 cursor-pointer">
+          <div className="bg-gradient-to-br from-[#22c55e] to-[#4ade80] border-0 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-200 cursor-pointer">
             <div className="space-y-3">
-              <p className="text-xs uppercase tracking-wide text-muted-foreground font-semibold">
+              <p className="text-xs uppercase tracking-wide text-white/80 font-semibold">
                 Issued Credentials
               </p>
-              <p className="text-2xl font-bold text-foreground">124</p>
-              <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-green-100 text-green-700">
+              <p className="text-2xl font-bold text-white">124</p>
+              <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-white/20 text-white backdrop-blur-sm">
                 <span className="text-xs font-semibold">+23%</span>
               </div>
             </div>
           </div>
 
           {/* Verified Credentials */}
-          <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md hover:scale-105 transition-all duration-200 cursor-pointer">
+          <div className="bg-gradient-to-br from-[#ec4899] to-[#f472b6] border-0 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-200 cursor-pointer">
             <div className="space-y-3">
-              <p className="text-xs uppercase tracking-wide text-muted-foreground font-semibold">
+              <p className="text-xs uppercase tracking-wide text-white/80 font-semibold">
                 Verified Credentials
               </p>
-              <p className="text-2xl font-bold text-foreground">687</p>
-              <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-red-100 text-red-700">
+              <p className="text-2xl font-bold text-white">687</p>
+              <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-white/20 text-white backdrop-blur-sm">
                 <span className="text-xs font-semibold">-5%</span>
               </div>
             </div>
           </div>
 
           {/* Wallet Holders */}
-          <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md hover:scale-105 transition-all duration-200 cursor-pointer">
+          <div className="bg-gradient-to-br from-gray-700 to-gray-800 border-0 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-200 cursor-pointer">
             <div className="space-y-3">
-              <p className="text-xs uppercase tracking-wide text-muted-foreground font-semibold">
+              <p className="text-xs uppercase tracking-wide text-white/80 font-semibold">
                 Wallet Holders
               </p>
-              <p className="text-2xl font-bold text-foreground">0</p>
-              <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-gray-100 text-gray-500">
+              <p className="text-2xl font-bold text-white">0</p>
+              <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-white/20 text-white backdrop-blur-sm">
                 <span className="text-xs font-semibold">—</span>
               </div>
             </div>
