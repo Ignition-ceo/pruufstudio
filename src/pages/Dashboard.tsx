@@ -18,17 +18,20 @@ export default function Dashboard() {
       <div className="mx-auto max-w-[1440px] space-y-6">
         
         {/* Hero Section */}
-        <div className="text-center space-y-4 py-8">
-          <h1 className="text-2xl lg:text-3xl font-bold text-foreground">
+        <div className="text-center space-y-4 pt-8 pb-8 bg-gradient-to-b from-white to-gray-50 rounded-xl">
+          <h1 className="text-3xl font-semibold tracking-tight text-foreground">
             Welcome to Pruuf Studio
           </h1>
-          <p className="text-sm lg:text-base text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-base text-gray-500 max-w-xl mx-auto">
             Create, manage, and organize your intelligent documents with AI-powered templates
           </p>
         </div>
         
+        {/* Divider */}
+        <div className="border-t border-gray-200"></div>
+        
         {/* Section 1: Hero + Featured App (Two Column) */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
           {/* Hero Section */}
           <div className="bg-gradient-to-br from-white to-blue-50/50 border border-gray-200 rounded-xl p-8 lg:p-10 min-h-[280px] flex flex-col justify-between shadow-sm hover:shadow-md transition-all duration-200">
             <div className="space-y-6">
