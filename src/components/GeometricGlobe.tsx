@@ -70,7 +70,7 @@ function LowPolyGlobe({ color = "#ffffff" }: GlobeProps) {
 
 export default function GeometricGlobe({ color = "#ffffff" }: GlobeProps) {
   return (
-    <div className="absolute right-2 bottom-2 w-24 h-24 opacity-40 pointer-events-none">
+    <div className="absolute -right-8 -bottom-8 w-32 h-32 opacity-40 pointer-events-none">
       <Canvas camera={{ position: [0, 0, 2.5], fov: 50 }}>
         <ambientLight intensity={0.5} />
         <LowPolyGlobe color={color} />
