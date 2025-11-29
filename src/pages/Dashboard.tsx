@@ -5,11 +5,68 @@ export default function Dashboard() {
         
         {/* Section 1: Hero + Featured App (Two Column) */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <div className="bg-card border border-border rounded-xl p-8 min-h-[280px] flex items-center justify-center">
-            <span className="text-muted-foreground font-medium">Hero Section</span>
+          {/* Hero Section */}
+          <div className="bg-gradient-to-br from-background to-blue-50/30 border border-border rounded-xl p-10 min-h-[280px] flex flex-col justify-between">
+            <div className="space-y-6">
+              <div className="space-y-3">
+                <h1 className="text-4xl font-bold text-foreground leading-tight">
+                  Welcome to PRUUF Studio
+                </h1>
+                <p className="text-lg text-muted-foreground leading-relaxed max-w-md">
+                  Turn your existing documents into portable, verifiable credentials — powered by AI.
+                </p>
+              </div>
+              
+              <div className="flex flex-wrap gap-3">
+                <a
+                  href="/smartdocs/create"
+                  className="inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold text-white bg-[#0125cf] hover:bg-[#0125cf]/90 transition-all duration-150 shadow-lg hover:shadow-xl hover:scale-105"
+                >
+                  Create SmartDoc
+                </a>
+                <a
+                  href="/templates"
+                  className="inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold text-foreground bg-background border-2 border-border hover:bg-accent hover:border-[#0125cf]/30 transition-all duration-150"
+                >
+                  Browse Templates
+                </a>
+              </div>
+            </div>
+
+            {/* Illustration Placeholder */}
+            <div className="mt-6 lg:absolute lg:right-8 lg:top-1/2 lg:-translate-y-1/2 w-48 h-48 bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl shadow-inner flex items-center justify-center">
+              <span className="text-xs text-muted-foreground font-medium">Illustration</span>
+            </div>
           </div>
-          <div className="bg-card border border-border rounded-xl p-8 min-h-[280px] flex items-center justify-center">
-            <span className="text-muted-foreground font-medium">Featured App Card</span>
+
+          {/* Featured App Card */}
+          <div className="bg-gradient-to-br from-[#0125cf] to-[#0125cf]/80 rounded-xl p-10 min-h-[280px] flex flex-col justify-between shadow-2xl shadow-blue-500/20 relative overflow-hidden">
+            {/* Decorative elements */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full blur-3xl"></div>
+            
+            <div className="relative z-10 space-y-6">
+              <div className="space-y-3">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm">
+                  <div className="w-2 h-2 rounded-full bg-white animate-pulse"></div>
+                  <span className="text-xs font-semibold text-white">Featured</span>
+                </div>
+                
+                <h2 className="text-3xl font-bold text-white leading-tight">
+                  Issue your first credential
+                </h2>
+                <p className="text-lg text-white/90 leading-relaxed">
+                  Start issuing verifiable credentials and establish digital trust instantly.
+                </p>
+              </div>
+              
+              <a
+                href="/issuance"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold text-[#0125cf] bg-white hover:bg-white/95 transition-all duration-150 shadow-lg hover:shadow-xl hover:scale-105 w-full sm:w-auto"
+              >
+                Open Issuance Center
+              </a>
+            </div>
           </div>
         </div>
 
