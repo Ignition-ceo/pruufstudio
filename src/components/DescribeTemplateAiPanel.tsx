@@ -234,11 +234,11 @@ export const DescribeTemplateAiPanel = () => {
 
       {/* Quick prompt cards */}
       <div className="space-y-4 px-4">
-        <div className="flex items-center justify-center gap-3 text-sm py-2">
+        <div className="flex items-center gap-3 py-2">
           <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg animate-pulse">
             <Edit3 className="h-5 w-5 text-white" />
           </div>
-          <span className="bg-gradient-to-r from-blue-600 via-blue-700 to-purple-600 bg-clip-text text-transparent font-bold text-lg">
+          <span className="text-gray-900 font-normal text-base">
             Choose one of our suggested prompts
           </span>
           <div className="text-gray-500 text-xs px-3 py-1 rounded-full bg-gray-100 border border-gray-200 flex items-center gap-1.5">
