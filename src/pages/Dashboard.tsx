@@ -113,7 +113,7 @@ export default function Dashboard() {
         </div>
         
         {/* Divider */}
-        <div className="border-b border-gray-100 mt-6"></div>
+        <div className="border-b border-gray-100"></div>
 
         {/* Section 2: KPI Analytics Row (5 metric tiles) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
