@@ -140,11 +140,50 @@ export default function Dashboard() {
 
         {/* Section 3: Analytics Row - Total Credentials + Chart */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <div className="bg-card border border-border rounded-xl p-8 min-h-[360px] flex items-center justify-center">
-            <span className="text-muted-foreground font-medium">Total Credentials Card</span>
+          {/* Left Card: Total Credentials */}
+          <div className="bg-white border border-gray-200 rounded-xl p-8 shadow-sm flex flex-col items-center justify-center min-h-[360px] space-y-4">
+            <h3 className="text-base font-semibold text-muted-foreground uppercase tracking-wide">
+              Total Credentials
+            </h3>
+            <p className="text-6xl font-bold text-foreground">124</p>
+            <div className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-green-100 text-green-700">
+              <span className="text-sm font-semibold">+26% vs last 30 days</span>
+            </div>
           </div>
-          <div className="bg-card border border-border rounded-xl p-8 min-h-[360px] flex items-center justify-center">
-            <span className="text-muted-foreground font-medium">Issued & Verified Over Time Chart</span>
+
+          {/* Right Card: Issued & Verified Over Time */}
+          <div className="bg-white border border-gray-200 rounded-xl p-8 shadow-sm min-h-[360px] space-y-6">
+            {/* Header with title, legend, and dropdown */}
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <div className="space-y-2">
+                <h3 className="text-lg font-semibold text-foreground">
+                  Issued & Verified Over Time
+                </h3>
+                <div className="flex items-center gap-3">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-700">
+                    <div className="w-2 h-2 rounded-full bg-blue-700"></div>
+                    <span className="text-xs font-semibold">Issued</span>
+                  </div>
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-100 text-green-700">
+                    <div className="w-2 h-2 rounded-full bg-green-700"></div>
+                    <span className="text-xs font-semibold">Verified</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Time Range Dropdown */}
+              <select className="h-10 px-4 py-2 rounded-lg border border-gray-200 bg-white text-sm font-medium text-foreground focus:outline-none focus:ring-2 focus:ring-[#0125cf] focus:border-transparent z-10 hover:bg-gray-50 transition-colors">
+                <option value="30">Last 30 Days</option>
+                <option value="60">Last 60 Days</option>
+                <option value="90">Last 90 Days</option>
+                <option value="365">Last Year</option>
+              </select>
+            </div>
+
+            {/* Chart Placeholder */}
+            <div className="h-64 rounded-lg bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
+              <span className="text-sm text-muted-foreground font-medium">Chart Area</span>
+            </div>
           </div>
         </div>
 
