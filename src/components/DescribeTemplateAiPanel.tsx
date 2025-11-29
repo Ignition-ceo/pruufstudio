@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
 import aiNetworkBg from "@/assets/ai-network-bg.jpeg";
+import { GeometricNetwork } from "./GeometricNetwork";
 
 const categories = [
   "Identity / KYC",
@@ -127,7 +128,8 @@ export const DescribeTemplateAiPanel = () => {
             alt="" 
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-600/40 via-blue-500/30 to-purple-600/40" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#1e3a8a] via-[#2563eb] to-[#3b82f6]" />
+          <GeometricNetwork />
         </div>
         
         {/* Animated background sparkles */}
@@ -208,7 +210,7 @@ export const DescribeTemplateAiPanel = () => {
             className={cn(
               "px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 relative overflow-hidden",
               activeCategory === category
-                ? "bg-blue-600 text-white shadow-lg shadow-blue-500/50 scale-105"
+                ? "bg-gradient-to-r from-[#1e40af] to-[#3b82f6] text-white shadow-lg shadow-blue-500/50 scale-105"
                 : "bg-white text-gray-700 hover:bg-gray-50 hover:scale-105 shadow-md border border-gray-200"
             )}
           >
