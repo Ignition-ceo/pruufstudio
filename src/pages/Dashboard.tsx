@@ -83,6 +83,24 @@ export default function Dashboard() {
           {/* Templates */}
           <div className="relative bg-gradient-to-br from-[#0125cf] to-[#4b7bff] border-0 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-200 cursor-pointer overflow-hidden">
             <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full blur-2xl"></div>
+            {/* Geometric Orb */}
+            <svg className="absolute -right-8 top-1/2 -translate-y-1/2 w-32 h-32 opacity-20" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="40" fill="none" stroke="white" strokeWidth="0.5"/>
+              <circle cx="50" cy="50" r="30" fill="none" stroke="white" strokeWidth="0.5"/>
+              <circle cx="50" cy="50" r="20" fill="none" stroke="white" strokeWidth="0.5"/>
+              <line x1="10" y1="50" x2="90" y2="50" stroke="white" strokeWidth="0.5"/>
+              <line x1="50" y1="10" x2="50" y2="90" stroke="white" strokeWidth="0.5"/>
+              <line x1="20" y1="20" x2="80" y2="80" stroke="white" strokeWidth="0.5"/>
+              <line x1="80" y1="20" x2="20" y2="80" stroke="white" strokeWidth="0.5"/>
+              <circle cx="50" cy="10" r="2" fill="white"/>
+              <circle cx="50" cy="90" r="2" fill="white"/>
+              <circle cx="10" cy="50" r="2" fill="white"/>
+              <circle cx="90" cy="50" r="2" fill="white"/>
+              <circle cx="20" cy="20" r="2" fill="white"/>
+              <circle cx="80" cy="80" r="2" fill="white"/>
+              <circle cx="80" cy="20" r="2" fill="white"/>
+              <circle cx="20" cy="80" r="2" fill="white"/>
+            </svg>
             <div className="relative z-10 space-y-3">
               <p className="text-xs uppercase tracking-wide text-white/80 font-semibold">
                 Templates
@@ -97,6 +115,24 @@ export default function Dashboard() {
           {/* SmartDocs */}
           <div className="relative bg-gradient-to-br from-[#8b5cf6] to-[#a78bfa] border-0 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-200 cursor-pointer overflow-hidden">
             <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full blur-2xl"></div>
+            {/* Geometric Orb */}
+            <svg className="absolute -right-8 top-1/2 -translate-y-1/2 w-32 h-32 opacity-20" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="40" fill="none" stroke="white" strokeWidth="0.5"/>
+              <circle cx="50" cy="50" r="30" fill="none" stroke="white" strokeWidth="0.5"/>
+              <circle cx="50" cy="50" r="20" fill="none" stroke="white" strokeWidth="0.5"/>
+              <line x1="10" y1="50" x2="90" y2="50" stroke="white" strokeWidth="0.5"/>
+              <line x1="50" y1="10" x2="50" y2="90" stroke="white" strokeWidth="0.5"/>
+              <line x1="20" y1="20" x2="80" y2="80" stroke="white" strokeWidth="0.5"/>
+              <line x1="80" y1="20" x2="20" y2="80" stroke="white" strokeWidth="0.5"/>
+              <circle cx="50" cy="10" r="2" fill="white"/>
+              <circle cx="50" cy="90" r="2" fill="white"/>
+              <circle cx="10" cy="50" r="2" fill="white"/>
+              <circle cx="90" cy="50" r="2" fill="white"/>
+              <circle cx="20" cy="20" r="2" fill="white"/>
+              <circle cx="80" cy="80" r="2" fill="white"/>
+              <circle cx="80" cy="20" r="2" fill="white"/>
+              <circle cx="20" cy="80" r="2" fill="white"/>
+            </svg>
             <div className="relative z-10 space-y-3">
               <p className="text-xs uppercase tracking-wide text-white/80 font-semibold">
                 SmartDocs
@@ -111,6 +147,24 @@ export default function Dashboard() {
           {/* Issued Credentials */}
           <div className="relative bg-gradient-to-br from-[#22c55e] to-[#4ade80] border-0 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-200 cursor-pointer overflow-hidden">
             <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full blur-2xl"></div>
+            {/* Geometric Orb */}
+            <svg className="absolute -right-8 top-1/2 -translate-y-1/2 w-32 h-32 opacity-20" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="40" fill="none" stroke="white" strokeWidth="0.5"/>
+              <circle cx="50" cy="50" r="30" fill="none" stroke="white" strokeWidth="0.5"/>
+              <circle cx="50" cy="50" r="20" fill="none" stroke="white" strokeWidth="0.5"/>
+              <line x1="10" y1="50" x2="90" y2="50" stroke="white" strokeWidth="0.5"/>
+              <line x1="50" y1="10" x2="50" y2="90" stroke="white" strokeWidth="0.5"/>
+              <line x1="20" y1="20" x2="80" y2="80" stroke="white" strokeWidth="0.5"/>
+              <line x1="80" y1="20" x2="20" y2="80" stroke="white" strokeWidth="0.5"/>
+              <circle cx="50" cy="10" r="2" fill="white"/>
+              <circle cx="50" cy="90" r="2" fill="white"/>
+              <circle cx="10" cy="50" r="2" fill="white"/>
+              <circle cx="90" cy="50" r="2" fill="white"/>
+              <circle cx="20" cy="20" r="2" fill="white"/>
+              <circle cx="80" cy="80" r="2" fill="white"/>
+              <circle cx="80" cy="20" r="2" fill="white"/>
+              <circle cx="20" cy="80" r="2" fill="white"/>
+            </svg>
             <div className="relative z-10 space-y-3">
               <p className="text-xs uppercase tracking-wide text-white/80 font-semibold">
                 Issued Credentials
@@ -125,6 +179,24 @@ export default function Dashboard() {
           {/* Verified Credentials */}
           <div className="relative bg-gradient-to-br from-[#ec4899] to-[#f472b6] border-0 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-200 cursor-pointer overflow-hidden">
             <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full blur-2xl"></div>
+            {/* Geometric Orb */}
+            <svg className="absolute -right-8 top-1/2 -translate-y-1/2 w-32 h-32 opacity-20" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="40" fill="none" stroke="white" strokeWidth="0.5"/>
+              <circle cx="50" cy="50" r="30" fill="none" stroke="white" strokeWidth="0.5"/>
+              <circle cx="50" cy="50" r="20" fill="none" stroke="white" strokeWidth="0.5"/>
+              <line x1="10" y1="50" x2="90" y2="50" stroke="white" strokeWidth="0.5"/>
+              <line x1="50" y1="10" x2="50" y2="90" stroke="white" strokeWidth="0.5"/>
+              <line x1="20" y1="20" x2="80" y2="80" stroke="white" strokeWidth="0.5"/>
+              <line x1="80" y1="20" x2="20" y2="80" stroke="white" strokeWidth="0.5"/>
+              <circle cx="50" cy="10" r="2" fill="white"/>
+              <circle cx="50" cy="90" r="2" fill="white"/>
+              <circle cx="10" cy="50" r="2" fill="white"/>
+              <circle cx="90" cy="50" r="2" fill="white"/>
+              <circle cx="20" cy="20" r="2" fill="white"/>
+              <circle cx="80" cy="80" r="2" fill="white"/>
+              <circle cx="80" cy="20" r="2" fill="white"/>
+              <circle cx="20" cy="80" r="2" fill="white"/>
+            </svg>
             <div className="relative z-10 space-y-3">
               <p className="text-xs uppercase tracking-wide text-white/80 font-semibold">
                 Verified Credentials
@@ -139,6 +211,24 @@ export default function Dashboard() {
           {/* Wallet Holders */}
           <div className="relative bg-gradient-to-br from-gray-700 to-gray-800 border-0 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-200 cursor-pointer overflow-hidden">
             <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full blur-2xl"></div>
+            {/* Geometric Orb */}
+            <svg className="absolute -right-8 top-1/2 -translate-y-1/2 w-32 h-32 opacity-20" viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="40" fill="none" stroke="white" strokeWidth="0.5"/>
+              <circle cx="50" cy="50" r="30" fill="none" stroke="white" strokeWidth="0.5"/>
+              <circle cx="50" cy="50" r="20" fill="none" stroke="white" strokeWidth="0.5"/>
+              <line x1="10" y1="50" x2="90" y2="50" stroke="white" strokeWidth="0.5"/>
+              <line x1="50" y1="10" x2="50" y2="90" stroke="white" strokeWidth="0.5"/>
+              <line x1="20" y1="20" x2="80" y2="80" stroke="white" strokeWidth="0.5"/>
+              <line x1="80" y1="20" x2="20" y2="80" stroke="white" strokeWidth="0.5"/>
+              <circle cx="50" cy="10" r="2" fill="white"/>
+              <circle cx="50" cy="90" r="2" fill="white"/>
+              <circle cx="10" cy="50" r="2" fill="white"/>
+              <circle cx="90" cy="50" r="2" fill="white"/>
+              <circle cx="20" cy="20" r="2" fill="white"/>
+              <circle cx="80" cy="80" r="2" fill="white"/>
+              <circle cx="80" cy="20" r="2" fill="white"/>
+              <circle cx="20" cy="80" r="2" fill="white"/>
+            </svg>
             <div className="relative z-10 space-y-3">
               <p className="text-xs uppercase tracking-wide text-white/80 font-semibold">
                 Wallet Holders
