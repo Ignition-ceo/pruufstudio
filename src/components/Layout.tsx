@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import { PruufSidebar } from "@/components/PruufSidebar";
 
 interface LayoutProps {
@@ -6,10 +6,15 @@ interface LayoutProps {
 }
 
 export function Layout({ children }: LayoutProps) {
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+
   return (
     <div className="min-h-screen flex w-full bg-background">
-      <PruufSidebar />
-      <main className="flex-1 ml-60 overflow-x-hidden">
+      <PruufSidebar isCollapsed={isSidebarCollapsed} onToggle={setIsSidebarCollapsed} />
+      <main 
+        className="flex-1 overflow-x-hidden transition-all duration-300"
+        style={{ marginLeft: isSidebarCollapsed ? '80px' : '240px' }}
+      >
         <div className="flex-1 p-6">
           {children}
         </div>
