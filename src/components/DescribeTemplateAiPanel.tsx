@@ -88,7 +88,7 @@ export const DescribeTemplateAiPanel = () => {
   const [prompt, setPrompt] = useState("");
   const [activeCategory, setActiveCategory] = useState("Identity / KYC");
   const [isLoading, setIsLoading] = useState(false);
-  const [result, setResult] = useState<{ title: string; fields: string[] } | null>(null);
+  const [result, setResult] = useState<{ schemaName: string; fields: string[] } | null>(null);
   const [isFocused, setIsFocused] = useState(false);
 
   const handleGenerate = async () => {
@@ -100,9 +100,15 @@ export const DescribeTemplateAiPanel = () => {
     // Simulate AI generation
     await new Promise(resolve => setTimeout(resolve, 600));
     
+    // Extract a schema name from the prompt (capitalize first letters)
+    const schemaName = prompt
+      .split(' ')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+      .join(' ');
+    
     setIsLoading(false);
     setResult({
-      title: "Suggested SmartDoc template",
+      schemaName: schemaName,
       fields: [
         "Full Name & Contact Details",
         "Document Upload (ID, Passport)",
@@ -275,11 +281,16 @@ export const DescribeTemplateAiPanel = () => {
               <Sparkles className="absolute top-4 right-4 h-5 w-5 text-blue-400/60 animate-pulse" />
               <Sparkles className="absolute bottom-6 left-6 h-4 w-4 text-purple-400/60 animate-pulse" style={{ animationDelay: '0.5s' }} />
               
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-white border border-blue-500 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/40">
-                  <Sparkles className="h-6 w-6 text-blue-600 animate-pulse" />
+              <div className="mb-6">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-12 h-12 bg-white border border-blue-500 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/40">
+                    <Sparkles className="h-6 w-6 text-blue-600 animate-pulse" />
+                  </div>
+                  <h3 className="font-bold text-2xl bg-gradient-to-r from-blue-600 via-blue-700 to-purple-600 bg-clip-text text-transparent">
+                    Smart Doc Template
+                  </h3>
                 </div>
-                <h3 className="font-bold text-xl bg-gradient-to-r from-blue-600 via-blue-700 to-purple-600 bg-clip-text text-transparent">{result.title}</h3>
+                <p className="text-gray-600 text-lg font-semibold ml-[60px]">{result.schemaName}</p>
               </div>
             <ul className="space-y-3">
               {result.fields.map((field, index) => (
