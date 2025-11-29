@@ -13,7 +13,8 @@ import {
   Users,
   Settings,
   HelpCircle,
-  Menu,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import pruufFavicon from "@/assets/pruuf-favicon.png";
@@ -66,8 +67,8 @@ export const PruufSidebar = ({
         isCollapsed ? "w-20" : "w-60"
       )}
     >
-      {/* Toggle Button */}
-      <div className={cn("p-4 border-b border-border flex items-center", isCollapsed ? "justify-center" : "justify-between")}>
+      {/* Logo Section */}
+      <div className={cn("p-4 border-b border-border flex items-center", isCollapsed ? "justify-center" : "justify-start")}>
         {!isCollapsed && (
           <div className="flex items-center gap-3">
             <img src={pruufFavicon} alt="PRUUF" className="w-8 h-8 rounded" />
@@ -77,14 +78,6 @@ export const PruufSidebar = ({
         {isCollapsed && (
           <img src={pruufFavicon} alt="PRUUF" className="w-8 h-8 rounded" />
         )}
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={() => onToggle(!isCollapsed)}
-          className={cn("h-8 w-8 hover:bg-blue-100", !isCollapsed && "ml-2")}
-        >
-          <Menu className="h-5 w-5 text-muted-foreground" />
-        </Button>
       </div>
 
       {/* Navigation */}
@@ -122,6 +115,27 @@ export const PruufSidebar = ({
           </div>
         ))}
       </nav>
+
+      {/* Toggle Button at Bottom */}
+      <div className="p-4 border-t border-border">
+        <Button
+          variant="ghost"
+          onClick={() => onToggle(!isCollapsed)}
+          className={cn(
+            "w-full hover:bg-blue-100 flex items-center gap-3 text-sm font-medium text-muted-foreground hover:text-pruuf-blue",
+            isCollapsed ? "justify-center px-2" : "justify-start px-3"
+          )}
+        >
+          {isCollapsed ? (
+            <ChevronRight className="h-5 w-5" />
+          ) : (
+            <>
+              <ChevronLeft className="h-5 w-5" />
+              <span>Collapse</span>
+            </>
+          )}
+        </Button>
+      </div>
     </aside>
   );
 };
