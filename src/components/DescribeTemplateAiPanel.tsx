@@ -3,6 +3,7 @@ import { Plus, Mic, ArrowRight, Sparkles, Edit3 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
+import aiNetworkBg from "@/assets/ai-network-bg.jpeg";
 
 const categories = [
   "Identity / KYC",
@@ -118,9 +119,19 @@ export const DescribeTemplateAiPanel = () => {
   return (
     <div className="w-full max-w-5xl space-y-6">
       {/* Magical AI Container */}
-      <div className="relative overflow-hidden rounded-[32px] bg-gradient-to-br from-blue-500 via-blue-600 to-purple-600 p-8 shadow-2xl">
+      <div className="relative overflow-hidden rounded-[32px] p-8 shadow-2xl">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img 
+            src={aiNetworkBg} 
+            alt="" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-600/40 via-blue-500/30 to-purple-600/40" />
+        </div>
+        
         {/* Animated background sparkles */}
-        <div className="absolute inset-0 opacity-20">
+        <div className="absolute inset-0 opacity-30">
           <div className="absolute top-10 left-10 w-2 h-2 bg-white rounded-full animate-pulse" />
           <div className="absolute top-20 right-20 w-1 h-1 bg-white rounded-full animate-pulse" style={{ animationDelay: '0.5s' }} />
           <div className="absolute bottom-20 left-1/4 w-1.5 h-1.5 bg-white rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
