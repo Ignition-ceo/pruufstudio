@@ -19,9 +19,9 @@ export default function Dashboard() {
         
         {/* Text Hero Section */}
         <div className="text-center space-y-4 pt-8 pb-8 bg-gradient-to-b from-white to-gray-50 rounded-xl mb-6">
-          <h1 className="text-3xl font-semibold tracking-tight text-foreground">
-            Welcome to PRUUF Studio
-          </h1>
+        <h1 className="text-3xl font-semibold tracking-tight bg-gradient-text-blue-green bg-clip-text text-transparent">
+          Welcome to PRUUF Studio
+        </h1>
           <p className="text-base text-gray-500 max-w-xl mx-auto">
             Create, manage, and organize your intelligent documents with AI-powered templates
           </p>
