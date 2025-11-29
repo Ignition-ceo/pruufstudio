@@ -208,7 +208,7 @@ export const DescribeTemplateAiPanel = () => {
             className={cn(
               "px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 relative overflow-hidden",
               activeCategory === category
-                ? "bg-gradient-to-r from-blue-500 via-blue-600 to-purple-600 text-white shadow-lg shadow-blue-500/40 scale-105 ring-2 ring-blue-300 ring-offset-2"
+                ? "bg-blue-600 text-white shadow-lg shadow-blue-500/50 scale-105"
                 : "bg-white text-gray-700 hover:bg-gray-50 hover:scale-105 shadow-md border border-gray-200"
             )}
           >
