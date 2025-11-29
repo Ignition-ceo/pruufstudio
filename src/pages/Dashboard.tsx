@@ -19,7 +19,7 @@ export default function Dashboard() {
         
         {/* Text Hero Section */}
         <div className="text-center space-y-4 pt-8 pb-8 bg-gradient-to-b from-white to-gray-50 rounded-xl mb-6">
-        <h1 className="text-3xl font-semibold tracking-tight bg-gradient-text-blue-green bg-clip-text text-transparent">
+        <h1 className="text-3xl font-semibold tracking-tight bg-gradient-text-blue-green bg-clip-text text-transparent animate-shimmer bg-[length:200%_200%]">
           Welcome to PRUUF Studio
         </h1>
           <p className="text-base text-gray-500 max-w-xl mx-auto">
