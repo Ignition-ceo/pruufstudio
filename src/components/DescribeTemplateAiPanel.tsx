@@ -234,27 +234,33 @@ export const DescribeTemplateAiPanel = () => {
 
       {/* Quick prompt cards */}
       <div className="space-y-4 px-4">
-        <div className="flex items-center gap-2 text-sm">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-md">
-            <Edit3 className="h-4 w-4 text-white" />
+        <div className="flex items-center justify-center gap-3 text-sm py-2">
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg animate-pulse">
+            <Edit3 className="h-5 w-5 text-white" />
           </div>
-          <span className="bg-gradient-to-r from-blue-600 via-blue-700 to-purple-600 bg-clip-text text-transparent font-bold text-base">Quick prompts (click to use & edit)</span>
+          <span className="bg-gradient-to-r from-blue-600 via-blue-700 to-purple-600 bg-clip-text text-transparent font-bold text-lg">
+            Choose one of our suggested prompts
+          </span>
+          <div className="text-gray-500 text-xs px-3 py-1 rounded-full bg-gray-100 border border-gray-200 flex items-center gap-1.5">
+            <Sparkles className="h-3 w-3" />
+            Click to edit
+          </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 animate-in fade-in duration-300">
           {promptsByCategory[activeCategory].map((quickPrompt, index) => (
             <button
               key={`${activeCategory}-${index}`}
               onClick={() => handleQuickPrompt(quickPrompt)}
-              className="group p-5 text-left rounded-2xl bg-white border-2 border-gray-200 hover:border-blue-400 hover:shadow-xl hover:shadow-blue-500/25 transition-all duration-300 text-sm relative overflow-hidden hover:scale-[1.03] hover:-translate-y-1"
+              className="group p-5 text-left rounded-2xl bg-white border-2 border-gray-200 hover:border-blue-400 hover:shadow-xl hover:shadow-blue-500/25 transition-all duration-300 text-sm relative overflow-hidden hover:scale-[1.03] hover:-translate-y-1 cursor-pointer"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 via-blue-500/5 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="absolute top-3 right-3 w-7 h-7 rounded-full bg-blue-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-200 transform group-hover:scale-110">
-                <Edit3 className="h-3.5 w-3.5 text-blue-600" />
+              <div className="absolute top-3 right-3 w-7 h-7 rounded-full bg-blue-100/80 flex items-center justify-center group-hover:bg-blue-500 transition-all duration-200 transform group-hover:scale-110">
+                <Edit3 className="h-3.5 w-3.5 text-blue-400 group-hover:text-white transition-colors" />
               </div>
-              <div className="absolute top-2 left-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                <Sparkles className="h-3 w-3 text-blue-500/60" />
+              <div className="absolute top-3 left-3 transition-opacity duration-200">
+                <Sparkles className="h-3 w-3 text-blue-400/40 group-hover:text-blue-500/60" />
               </div>
-              <span className="relative z-10 text-gray-700 group-hover:text-gray-900 font-medium">{quickPrompt}</span>
+              <span className="relative z-10 text-gray-700 group-hover:text-gray-900 font-medium pr-8">{quickPrompt}</span>
             </button>
           ))}
         </div>
