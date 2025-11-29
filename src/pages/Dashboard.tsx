@@ -23,7 +23,7 @@ export default function Dashboard() {
           <div className="bg-gradient-to-br from-white to-blue-50/50 border border-gray-200 rounded-xl p-8 lg:p-10 min-h-[280px] flex flex-col justify-between shadow-sm hover:shadow-md transition-all duration-200">
             <div className="space-y-6">
               <div className="space-y-3">
-                <h1 className="text-3xl lg:text-4xl font-bold text-foreground leading-tight">
+                <h1 className="text-2xl lg:text-3xl font-bold text-foreground leading-tight">
                   Welcome to PRUUF Studio
                 </h1>
                 <p className="text-base lg:text-lg text-muted-foreground leading-relaxed max-w-md">
@@ -61,7 +61,7 @@ export default function Dashboard() {
                   <span className="text-xs font-semibold text-white">Featured</span>
                 </div>
                 
-                <h2 className="text-2xl lg:text-3xl font-bold text-white leading-tight">
+                <h2 className="text-xl lg:text-2xl font-bold text-white leading-tight">
                   Issue your first credential
                 </h2>
                 <p className="text-base lg:text-lg text-white/90 leading-relaxed">
