@@ -282,15 +282,18 @@ export const DescribeTemplateAiPanel = () => {
               <Sparkles className="absolute bottom-6 left-6 h-4 w-4 text-purple-400/60 animate-pulse" style={{ animationDelay: '0.5s' }} />
               
               <div className="mb-6">
-                <div className="flex items-center gap-3 mb-2">
+                <div className="flex items-center gap-3">
                   <div className="w-12 h-12 bg-white border border-blue-500 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/40">
                     <Sparkles className="h-6 w-6 text-blue-600 animate-pulse" />
                   </div>
-                  <h3 className="font-bold text-2xl text-gray-900">
-                    Smart Doc Template
-                  </h3>
+                  <div className="flex items-center gap-3">
+                    <h3 className="font-bold text-2xl text-gray-900">
+                      Smart Doc Template
+                    </h3>
+                    <div className="w-px h-6 bg-gray-300"></div>
+                    <p className="text-blue-600 text-xl font-semibold">{result.schemaName}</p>
+                  </div>
                 </div>
-                <p className="text-gray-600 text-lg font-semibold ml-[60px]">{result.schemaName}</p>
               </div>
             <ul className="space-y-3">
               {result.fields.map((field, index) => (
