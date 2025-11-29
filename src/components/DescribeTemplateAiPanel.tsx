@@ -165,8 +165,8 @@ export const DescribeTemplateAiPanel = () => {
             isFocused && "shadow-[0_0_50px_rgba(255,255,255,0.5)]"
           )}>
             <div className="flex items-center gap-3 p-4">
-              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg">
-                <Sparkles className="h-5 w-5 text-white" />
+              <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center">
+                <div className="w-7 h-7 border-[3px] border-blue-600 rounded-md rotate-12 shadow-md" />
               </div>
               
               <Textarea
