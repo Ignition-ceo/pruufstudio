@@ -1,10 +1,14 @@
 import { useState } from "react";
-import { Plus, Mic, ArrowRight, Sparkles, Edit3 } from "lucide-react";
+import { Plus, Mic, ArrowRight, Sparkles, Edit3, Save, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 import aiNetworkBg from "@/assets/ai-network-bg.jpeg";
 import { GeometricNetwork } from "./GeometricNetwork";
+import { useToast } from "@/hooks/use-toast";
 
 const categories = [
   "Identity / KYC",
@@ -84,12 +88,24 @@ const promptsByCategory: Record<string, string[]> = {
   ],
 };
 
+type ChatMessage = {
+  role: "user" | "assistant";
+  content: string;
+};
+
 export const DescribeTemplateAiPanel = () => {
+  const { toast } = useToast();
   const [prompt, setPrompt] = useState("");
   const [activeCategory, setActiveCategory] = useState("Identity / KYC");
   const [isLoading, setIsLoading] = useState(false);
   const [result, setResult] = useState<{ schemaName: string; fields: string[] } | null>(null);
   const [isFocused, setIsFocused] = useState(false);
+  const [chatMessages, setChatMessages] = useState<ChatMessage[]>([]);
+  const [chatInput, setChatInput] = useState("");
+  const [isChatLoading, setIsChatLoading] = useState(false);
+  const [saveDialogOpen, setSaveDialogOpen] = useState(false);
+  const [templateName, setTemplateName] = useState("");
+  const [templateDescription, setTemplateDescription] = useState("");
 
   const handleGenerate = async () => {
     if (!prompt.trim()) return;
@@ -121,6 +137,54 @@ export const DescribeTemplateAiPanel = () => {
 
   const handleQuickPrompt = (quickPrompt: string) => {
     setPrompt(quickPrompt);
+  };
+
+  const handleChatSend = async () => {
+    if (!chatInput.trim()) return;
+
+    const userMessage: ChatMessage = { role: "user", content: chatInput };
+    setChatMessages(prev => [...prev, userMessage]);
+    setChatInput("");
+    setIsChatLoading(true);
+
+    // Simulate AI response
+    await new Promise(resolve => setTimeout(resolve, 800));
+
+    const aiResponse: ChatMessage = {
+      role: "assistant",
+      content: "I've updated the template based on your feedback. The changes include enhanced validation fields and additional data points for better verification."
+    };
+    setChatMessages(prev => [...prev, aiResponse]);
+    setIsChatLoading(false);
+
+    // Optionally update the result
+    if (result) {
+      setResult({
+        ...result,
+        fields: [...result.fields, "New Field Based on Chat"]
+      });
+    }
+  };
+
+  const handleSaveTemplate = () => {
+    if (!templateName.trim()) {
+      toast({
+        title: "Name required",
+        description: "Please enter a name for your template",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    // Save logic here
+    toast({
+      title: "Template saved!",
+      description: `"${templateName}" has been saved to your templates.`,
+    });
+
+    setSaveDialogOpen(false);
+    setTemplateName("");
+    setTemplateDescription("");
   };
 
   return (
@@ -272,7 +336,7 @@ export const DescribeTemplateAiPanel = () => {
         </div>
       </div>
 
-      {/* Result card */}
+      {/* Result card with save button */}
       {result && (
         <div className="relative group px-4 animate-in fade-in slide-in-from-bottom-3 duration-200">
           <div className="absolute -inset-2 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-600 rounded-[28px] opacity-40 blur-2xl animate-pulse" />
@@ -281,21 +345,80 @@ export const DescribeTemplateAiPanel = () => {
             <Sparkles className="absolute top-4 right-4 h-5 w-5 text-blue-400/60 animate-pulse" />
             <Sparkles className="absolute bottom-6 left-6 h-4 w-4 text-purple-400/60 animate-pulse" style={{ animationDelay: '0.5s' }} />
               
-              <div className="mb-6">
+            <div className="mb-6 flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-white border border-blue-500 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/40">
+                  <Sparkles className="h-6 w-6 text-blue-600 animate-pulse" />
+                </div>
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-white border border-blue-500 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/40">
-                    <Sparkles className="h-6 w-6 text-blue-600 animate-pulse" />
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <h3 className="font-bold text-2xl text-gray-900">
-                      Smart Doc Template
-                    </h3>
-                    <div className="w-px h-6 bg-gray-300"></div>
-                    <p className="text-blue-600 text-xl font-semibold">{result.schemaName}</p>
-                  </div>
+                  <h3 className="font-bold text-2xl text-gray-900">
+                    Smart Doc Template
+                  </h3>
+                  <div className="w-px h-6 bg-gray-300"></div>
+                  <p className="text-blue-600 text-xl font-semibold">{result.schemaName}</p>
                 </div>
               </div>
-            <ul className="space-y-3">
+              
+              <Dialog open={saveDialogOpen} onOpenChange={setSaveDialogOpen}>
+                <DialogTrigger asChild>
+                  <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg">
+                    <Save className="h-4 w-4 mr-2" />
+                    Save Template
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-[500px]">
+                  <DialogHeader>
+                    <DialogTitle>Save Template</DialogTitle>
+                    <DialogDescription>
+                      Give your template a name and description to save it for future use.
+                    </DialogDescription>
+                  </DialogHeader>
+                  <div className="grid gap-4 py-4">
+                    <div className="grid gap-2">
+                      <Label htmlFor="name">Template Name *</Label>
+                      <Input
+                        id="name"
+                        placeholder="e.g., KYC Verification Form"
+                        value={templateName}
+                        onChange={(e) => setTemplateName(e.target.value)}
+                      />
+                    </div>
+                    <div className="grid gap-2">
+                      <Label htmlFor="description">Description (Optional)</Label>
+                      <Textarea
+                        id="description"
+                        placeholder="Describe what this template is used for..."
+                        value={templateDescription}
+                        onChange={(e) => setTemplateDescription(e.target.value)}
+                        rows={3}
+                      />
+                    </div>
+                    <div className="grid gap-2">
+                      <Label htmlFor="category">Category</Label>
+                      <select
+                        id="category"
+                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                        defaultValue={activeCategory}
+                      >
+                        {categories.map((cat) => (
+                          <option key={cat} value={cat}>{cat}</option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+                  <DialogFooter>
+                    <Button variant="outline" onClick={() => setSaveDialogOpen(false)}>
+                      Cancel
+                    </Button>
+                    <Button onClick={handleSaveTemplate}>
+                      Save Template
+                    </Button>
+                  </DialogFooter>
+                </DialogContent>
+              </Dialog>
+            </div>
+            
+            <ul className="space-y-3 mb-6">
               {result.fields.map((field, index) => (
                 <li key={index} className="flex items-start gap-4 text-base text-gray-700 group/item hover:text-gray-900 transition-all duration-150 p-3 rounded-xl hover:bg-blue-50/50 hover:scale-[1.01] hover:-translate-x-1">
                   <span className="flex-shrink-0 w-6 h-6 rounded-full bg-blue-50 border border-blue-500 flex items-center justify-center text-blue-600 text-xs font-bold shadow-md">{index + 1}</span>
@@ -303,6 +426,67 @@ export const DescribeTemplateAiPanel = () => {
                 </li>
               ))}
             </ul>
+
+            {/* Chat Interface */}
+            <div className="border-t border-gray-200 pt-6 space-y-4">
+              <div className="flex items-center gap-2 text-sm font-semibold text-gray-700">
+                <Sparkles className="h-4 w-4 text-blue-600" />
+                Continue conversation to refine template
+              </div>
+              
+              {/* Chat Messages */}
+              {chatMessages.length > 0 && (
+                <div className="space-y-3 max-h-[300px] overflow-y-auto pr-2">
+                  {chatMessages.map((msg, idx) => (
+                    <div
+                      key={idx}
+                      className={cn(
+                        "flex gap-3 p-3 rounded-xl",
+                        msg.role === "user"
+                          ? "bg-blue-50 ml-8"
+                          : "bg-gray-50 mr-8"
+                      )}
+                    >
+                      <div className={cn(
+                        "flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold",
+                        msg.role === "user"
+                          ? "bg-blue-600 text-white"
+                          : "bg-gradient-to-br from-blue-600 to-purple-600 text-white"
+                      )}>
+                        {msg.role === "user" ? "U" : <Sparkles className="h-4 w-4" />}
+                      </div>
+                      <div className="flex-1 text-sm text-gray-700 pt-1">
+                        {msg.content}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* Chat Input */}
+              <div className="flex items-center gap-2">
+                <Input
+                  value={chatInput}
+                  onChange={(e) => setChatInput(e.target.value)}
+                  onKeyDown={(e) => e.key === "Enter" && !e.shiftKey && handleChatSend()}
+                  placeholder="Ask to modify fields, add requirements, etc..."
+                  className="flex-1"
+                  disabled={isChatLoading}
+                />
+                <Button
+                  onClick={handleChatSend}
+                  disabled={!chatInput.trim() || isChatLoading}
+                  size="icon"
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+                >
+                  {isChatLoading ? (
+                    <Sparkles className="h-4 w-4 animate-spin" />
+                  ) : (
+                    <Send className="h-4 w-4" />
+                  )}
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       )}
