@@ -166,7 +166,10 @@ export const DescribeTemplateAiPanel = () => {
           )}>
             <div className="flex items-center gap-3 p-4">
               <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center">
-                <div className="w-7 h-7 border-[3px] border-blue-600 rounded-md rotate-12 shadow-md" />
+                <div className="relative w-10 h-10 bg-gradient-to-br from-[#1e40af] via-[#2563eb] to-[#7c3aed] rounded-xl shadow-lg flex items-center justify-center">
+                  <Sparkles className="h-5 w-5 text-white relative z-10" />
+                  <div className="absolute top-1.5 right-1.5 w-1.5 h-1.5 bg-white rounded-full" />
+                </div>
               </div>
               
               <Textarea
