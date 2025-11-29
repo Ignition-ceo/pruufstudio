@@ -145,7 +145,7 @@ export const DescribeTemplateAiPanel = () => {
         {/* Header */}
         <div className="relative z-10 text-center mb-6">
           <h2 className="text-3xl font-bold text-white mb-2 flex items-center justify-center gap-2">
-            <Sparkles className="h-7 w-7 animate-pulse" />
+            <Sparkles className="h-7 w-7 text-white animate-pulse" />
             How can we assist you today?
           </h2>
           <p className="text-white/90 text-sm">
@@ -242,7 +242,7 @@ export const DescribeTemplateAiPanel = () => {
             Choose one of our suggested prompts
           </span>
           <div className="text-gray-500 text-xs px-3 py-1 rounded-full bg-gray-100 border border-gray-200 flex items-center gap-1.5">
-            <Sparkles className="h-3 w-3" />
+            <Sparkles className="h-3 w-3 text-gray-500" />
             Click to edit
           </div>
         </div>
@@ -258,7 +258,7 @@ export const DescribeTemplateAiPanel = () => {
                 <Edit3 className="h-3.5 w-3.5 text-blue-400 group-hover:text-white transition-colors" />
               </div>
               <div className="absolute top-3 left-3 transition-opacity duration-200">
-                <Sparkles className="h-3 w-3 text-blue-400/40 group-hover:text-blue-500/60" />
+                <Sparkles className="h-3 w-3 text-blue-500 group-hover:text-blue-600" />
               </div>
               <span className="relative z-10 text-gray-700 group-hover:text-gray-900 font-medium pr-8">{quickPrompt}</span>
             </button>
@@ -294,7 +294,7 @@ export const DescribeTemplateAiPanel = () => {
       )}
 
       <p className="text-xs text-gray-500 text-center px-4 flex items-center justify-center gap-2">
-        <Sparkles className="h-3 w-3" />
+        <Sparkles className="h-3 w-3 text-gray-400" />
         AI can make mistakes. Please review generated content carefully.
       </p>
     </div>
