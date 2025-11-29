@@ -119,7 +119,7 @@ export default function Dashboard() {
               <p className="text-xs uppercase tracking-wide text-white/80 font-semibold">
                 Issued Credentials
               </p>
-              <p className="text-2xl font-bold text-white">124</p>
+              <p className="text-2xl font-bold text-white">284</p>
               <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-white/20 text-white backdrop-blur-sm">
                 <span className="text-xs font-semibold">+23%</span>
               </div>
@@ -149,7 +149,7 @@ export default function Dashboard() {
               <p className="text-xs uppercase tracking-wide text-white/80 font-semibold">
                 Wallet Holders
               </p>
-              <p className="text-2xl font-bold text-white">0</p>
+              <p className="text-2xl font-bold text-white">72</p>
               <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-white/20 text-white backdrop-blur-sm">
                 <span className="text-xs font-semibold">—</span>
               </div>
