@@ -108,11 +108,20 @@ export default {
             transform: "scale(1.02)",
           },
         },
+        "shimmer": {
+          "0%": {
+            backgroundPosition: "-200% -200%",
+          },
+          "100%": {
+            backgroundPosition: "200% 200%",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "border-glow": "border-glow 3s ease-in-out infinite",
+        "shimmer": "shimmer 3s ease-in-out infinite",
       },
     },
   },

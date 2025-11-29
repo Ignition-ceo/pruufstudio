@@ -18,7 +18,7 @@ export const SmartDocHero = () => {
     <div className="w-full bg-gradient-hero py-16 px-8 relative overflow-hidden rounded-tl-3xl">
       <GeometricNetwork />
       <div className="max-w-7xl mx-auto relative z-10">
-        <h1 className="text-3xl font-semibold tracking-tight bg-gradient-text-blue-green bg-clip-text text-transparent mb-8 text-center">
+        <h1 className="text-3xl font-semibold tracking-tight bg-gradient-text-blue-green bg-clip-text text-transparent animate-shimmer bg-[length:200%_200%] mb-8 text-center">
           Create a new SmartDoc
         </h1>
         
