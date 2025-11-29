@@ -21,7 +21,7 @@ const menuSections = [
   {
     label: "MAIN",
     items: [
-      { title: "Dashboard", url: "/", icon: LayoutDashboard },
+      { title: "Dashboard", url: "/dashboard", icon: LayoutDashboard },
       { title: "SmartDocs", url: "/smartdocs/create", icon: FileText },
       { title: "Templates", url: "/templates", icon: Layout },
       { title: "Issuance Center", url: "/issuance", icon: Send },

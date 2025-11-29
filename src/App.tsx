@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Layout } from "./components/Layout";
 import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
 import SmartDocCreate from "./pages/SmartDocCreate";
 import SmartDocDocuments from "./pages/SmartDocDocuments";
 import NotFound from "./pages/NotFound";
@@ -20,6 +21,7 @@ const App = () => (
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/smartdocs/create" element={<SmartDocCreate />} />
             <Route path="/smartdocs/documents" element={<SmartDocDocuments />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
