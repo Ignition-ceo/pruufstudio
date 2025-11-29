@@ -4,8 +4,6 @@ import { Button } from "@/components/ui/button";
 const actionChips = [
   { icon: Upload, label: "Upload file" },
   { icon: Link2, label: "Import from URL" },
-  { icon: FileText, label: "Paste text" },
-  { icon: Settings, label: "Connected source" },
 ];
 
 const sectors = [
