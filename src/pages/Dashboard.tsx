@@ -81,8 +81,9 @@ export default function Dashboard() {
         {/* Section 2: KPI Analytics Row (5 metric tiles) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-6">
           {/* Templates */}
-          <div className="bg-gradient-to-br from-[#0125cf] to-[#4b7bff] border-0 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-200 cursor-pointer">
-            <div className="space-y-3">
+          <div className="relative bg-gradient-to-br from-[#0125cf] to-[#4b7bff] border-0 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-200 cursor-pointer overflow-hidden">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full blur-2xl"></div>
+            <div className="relative z-10 space-y-3">
               <p className="text-xs uppercase tracking-wide text-white/80 font-semibold">
                 Templates
               </p>
@@ -94,8 +95,9 @@ export default function Dashboard() {
           </div>
 
           {/* SmartDocs */}
-          <div className="bg-gradient-to-br from-[#8b5cf6] to-[#a78bfa] border-0 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-200 cursor-pointer">
-            <div className="space-y-3">
+          <div className="relative bg-gradient-to-br from-[#8b5cf6] to-[#a78bfa] border-0 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-200 cursor-pointer overflow-hidden">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full blur-2xl"></div>
+            <div className="relative z-10 space-y-3">
               <p className="text-xs uppercase tracking-wide text-white/80 font-semibold">
                 SmartDocs
               </p>
@@ -107,8 +109,9 @@ export default function Dashboard() {
           </div>
 
           {/* Issued Credentials */}
-          <div className="bg-gradient-to-br from-[#22c55e] to-[#4ade80] border-0 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-200 cursor-pointer">
-            <div className="space-y-3">
+          <div className="relative bg-gradient-to-br from-[#22c55e] to-[#4ade80] border-0 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-200 cursor-pointer overflow-hidden">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full blur-2xl"></div>
+            <div className="relative z-10 space-y-3">
               <p className="text-xs uppercase tracking-wide text-white/80 font-semibold">
                 Issued Credentials
               </p>
@@ -120,8 +123,9 @@ export default function Dashboard() {
           </div>
 
           {/* Verified Credentials */}
-          <div className="bg-gradient-to-br from-[#ec4899] to-[#f472b6] border-0 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-200 cursor-pointer">
-            <div className="space-y-3">
+          <div className="relative bg-gradient-to-br from-[#ec4899] to-[#f472b6] border-0 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-200 cursor-pointer overflow-hidden">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full blur-2xl"></div>
+            <div className="relative z-10 space-y-3">
               <p className="text-xs uppercase tracking-wide text-white/80 font-semibold">
                 Verified Credentials
               </p>
@@ -133,8 +137,9 @@ export default function Dashboard() {
           </div>
 
           {/* Wallet Holders */}
-          <div className="bg-gradient-to-br from-gray-700 to-gray-800 border-0 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-200 cursor-pointer">
-            <div className="space-y-3">
+          <div className="relative bg-gradient-to-br from-gray-700 to-gray-800 border-0 rounded-xl p-6 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-200 cursor-pointer overflow-hidden">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full blur-2xl"></div>
+            <div className="relative z-10 space-y-3">
               <p className="text-xs uppercase tracking-wide text-white/80 font-semibold">
                 Wallet Holders
               </p>
