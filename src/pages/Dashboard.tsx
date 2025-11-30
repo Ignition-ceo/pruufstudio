@@ -118,8 +118,8 @@ export default function Dashboard() {
         {/* Section 2: KPI Analytics Row (5 on desktop, 3 on tablet, 1 on mobile) */}
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4 lg:gap-6 mb-4 md:mb-6">
           {/* Templates */}
-          <div className="relative bg-gradient-to-br from-[#0125cf] to-[#4b7bff] border-0 rounded-xl px-4 py-4 md:px-6 md:py-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer overflow-hidden">
-            <div className="absolute top-0 right-0 w-20 h-20 md:w-24 md:h-24 bg-white/10 rounded-full blur-2xl"></div>
+          <div className="relative bg-gradient-to-br from-[hsl(var(--kpi-purple-from))] to-[hsl(var(--kpi-purple-to))] border-0 rounded-xl px-4 py-4 md:px-6 md:py-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer overflow-hidden">
+            <div className="absolute top-0 right-0 w-20 h-20 md:w-24 md:h-24 bg-white/8 rounded-full blur-2xl"></div>
             <GeometricGlobe color="#ffffff" />
             <div className="relative z-10 space-y-2 md:space-y-3">
               <p className="text-xs uppercase tracking-wide text-white/80 font-semibold">
@@ -134,7 +134,7 @@ export default function Dashboard() {
 
           {/* SmartDocs */}
           <div className="relative bg-gradient-to-br from-[#8b5cf6] to-[#a78bfa] border-0 rounded-xl px-4 py-4 md:px-6 md:py-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer overflow-hidden">
-            <div className="absolute top-0 right-0 w-20 h-20 md:w-24 md:h-24 bg-white/10 rounded-full blur-2xl"></div>
+            <div className="absolute top-0 right-0 w-20 h-20 md:w-24 md:h-24 bg-white/8 rounded-full blur-2xl"></div>
             <GeometricGlobe color="#ffffff" />
             <div className="relative z-10 space-y-2 md:space-y-3">
               <p className="text-xs uppercase tracking-wide text-white/80 font-semibold">
@@ -148,8 +148,8 @@ export default function Dashboard() {
           </div>
 
           {/* Issued Credentials */}
-          <div className="relative bg-gradient-to-br from-[#22c55e] to-[#4ade80] border-0 rounded-xl px-4 py-4 md:px-6 md:py-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer overflow-hidden">
-            <div className="absolute top-0 right-0 w-20 h-20 md:w-24 md:h-24 bg-white/10 rounded-full blur-2xl"></div>
+          <div className="relative bg-gradient-to-br from-[hsl(var(--kpi-blue-from))] to-[hsl(var(--kpi-blue-to))] border-0 rounded-xl px-4 py-4 md:px-6 md:py-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer overflow-hidden">
+            <div className="absolute top-0 right-0 w-20 h-20 md:w-24 md:h-24 bg-white/8 rounded-full blur-2xl"></div>
             <GeometricGlobe color="#ffffff" />
             <div className="relative z-10 space-y-2 md:space-y-3">
               <p className="text-xs uppercase tracking-wide text-white/80 font-semibold">
@@ -164,7 +164,7 @@ export default function Dashboard() {
 
           {/* Verified Credentials */}
           <div className="relative bg-gradient-to-br from-[#ec4899] to-[#f472b6] border-0 rounded-xl px-4 py-4 md:px-6 md:py-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer overflow-hidden">
-            <div className="absolute top-0 right-0 w-20 h-20 md:w-24 md:h-24 bg-white/10 rounded-full blur-2xl"></div>
+            <div className="absolute top-0 right-0 w-20 h-20 md:w-24 md:h-24 bg-white/8 rounded-full blur-2xl"></div>
             <GeometricGlobe color="#ffffff" />
             <div className="relative z-10 space-y-2 md:space-y-3">
               <p className="text-xs uppercase tracking-wide text-white/80 font-semibold">
@@ -178,8 +178,8 @@ export default function Dashboard() {
           </div>
 
           {/* Wallet Holders */}
-          <div className="relative bg-gradient-to-br from-gray-700 to-gray-800 border-0 rounded-xl px-4 py-4 md:px-6 md:py-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer overflow-hidden">
-            <div className="absolute top-0 right-0 w-20 h-20 md:w-24 md:h-24 bg-white/10 rounded-full blur-2xl"></div>
+          <div className="relative bg-gradient-to-br from-[hsl(var(--kpi-orange-from))] to-[hsl(var(--kpi-orange-to))] border-0 rounded-xl px-4 py-4 md:px-6 md:py-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer overflow-hidden">
+            <div className="absolute top-0 right-0 w-20 h-20 md:w-24 md:h-24 bg-white/8 rounded-full blur-2xl"></div>
             <GeometricGlobe color="#ffffff" />
             <div className="relative z-10 space-y-2 md:space-y-3">
               <p className="text-xs uppercase tracking-wide text-white/80 font-semibold">
@@ -195,10 +195,10 @@ export default function Dashboard() {
 
         {/* Section 3: Analytics Row - Total Credentials + Chart (stack on mobile) */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 md:gap-4 lg:gap-6 mb-4 md:mb-6">
-          {/* Left Card: Total Credentials */}
+          {/* Left Card: Total Active Credentials */}
           <div className="bg-white border border-gray-200 rounded-xl px-4 py-4 md:px-6 md:py-5 shadow-sm hover:shadow-md hover:scale-[1.02] transition-all duration-200 flex flex-col items-center justify-center min-h-[280px] md:min-h-[360px] space-y-3 md:space-y-4 relative overflow-hidden">
             {/* Decorative Chart Background */}
-            <svg className="absolute inset-0 w-full h-full opacity-[0.07]" viewBox="0 0 400 300" preserveAspectRatio="none">
+            <svg className="absolute inset-0 w-full h-full opacity-[0.08]" viewBox="0 0 400 300" preserveAspectRatio="none">
               <path 
                 d="M0,150 Q50,100 100,120 T200,140 T300,110 T400,130 L400,300 L0,300 Z" 
                 fill="url(#credentialGradient)" 
@@ -214,9 +214,12 @@ export default function Dashboard() {
             
             <div className="relative z-10 flex flex-col items-center space-y-3 md:space-y-4">
               <h3 className="text-sm md:text-base font-semibold text-muted-foreground uppercase tracking-wide">
-                Total Credentials
+                Total Active Credentials
               </h3>
               <p className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-br from-[#0125cf] to-[#4b7bff] bg-clip-text text-transparent">124</p>
+              <p className="text-xs md:text-sm text-muted-foreground text-center max-w-md px-2">
+                Valid, active, non-revoked credentials circulating in the PRUUF network
+              </p>
               <div className="inline-flex items-center gap-1 px-2 py-1 md:px-3 md:py-1.5 rounded-full bg-green-100 text-green-700">
                 <span className="text-xs md:text-sm font-semibold">+26% vs last 30 days</span>
               </div>

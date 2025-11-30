@@ -65,6 +65,12 @@ export default {
         green: "hsl(var(--green))",
         purple: "hsl(var(--purple))",
         pink: "hsl(var(--pink))",
+        "kpi-purple-from": "hsl(var(--kpi-purple-from))",
+        "kpi-purple-to": "hsl(var(--kpi-purple-to))",
+        "kpi-blue-from": "hsl(var(--kpi-blue-from))",
+        "kpi-blue-to": "hsl(var(--kpi-blue-to))",
+        "kpi-orange-from": "hsl(var(--kpi-orange-from))",
+        "kpi-orange-to": "hsl(var(--kpi-orange-to))",
       },
       backgroundImage: {
         "gradient-hero": "var(--gradient-hero)",
