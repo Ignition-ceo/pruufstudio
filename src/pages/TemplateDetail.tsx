@@ -71,7 +71,11 @@ export default function TemplateDetail() {
             </div>
           </div>
         </div>
-        <Button size="lg" className="shadow-sm">
+        <Button 
+          size="lg" 
+          className="shadow-sm"
+          onClick={() => navigate(`/issuance?templateId=${id}`)}
+        >
           Use this Template
         </Button>
       </div>
@@ -337,7 +341,11 @@ export default function TemplateDetail() {
             </div>
 
             <div className="flex justify-center">
-              <Button size="lg" variant="outline">
+              <Button 
+                size="lg" 
+                variant="outline"
+                onClick={() => navigate(`/issuance?templateId=${id}&test=true`)}
+              >
                 Issue Test Credential
               </Button>
             </div>
