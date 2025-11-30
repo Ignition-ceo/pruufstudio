@@ -161,9 +161,20 @@ const templates = [
 ];
 
 const methodColors = {
-  AI: "bg-[hsl(var(--kpi-pink))] text-white",
-  Vision: "bg-[hsl(var(--kpi-blue))] text-white",
-  Manual: "bg-secondary text-secondary-foreground"
+  AI: "bg-[#2563EB] text-white hover:bg-[#2563EB]",
+  Vision: "bg-[#8B5CF6] text-white hover:bg-[#8B5CF6]",
+  Manual: "bg-[#6B7280] text-white hover:bg-[#6B7280]"
+};
+
+const sectorColors: Record<string, string> = {
+  Healthcare: "bg-teal-100 dark:bg-teal-950",
+  "Real Estate": "bg-orange-100 dark:bg-orange-950",
+  Legal: "bg-indigo-100 dark:bg-indigo-950",
+  Education: "bg-blue-100 dark:bg-blue-950",
+  KYC: "bg-purple-100 dark:bg-purple-950",
+  Financial: "bg-emerald-100 dark:bg-emerald-950",
+  Travel: "bg-sky-100 dark:bg-sky-950",
+  Insurance: "bg-amber-100 dark:bg-amber-950",
 };
 
 export default function Templates() {
@@ -179,13 +190,13 @@ export default function Templates() {
 
       {/* Action Buttons */}
       <div className="flex flex-wrap gap-3 mb-6">
-        <Button className="gap-2" asChild>
+        <Button className="gap-2 bg-[#2563EB] hover:bg-[#1e40af] text-white" asChild>
           <a href="/smartdocs/create">
             <Sparkles className="w-4 h-4" />
             Create with AI
           </a>
         </Button>
-        <Button variant="outline" className="gap-2" asChild>
+        <Button variant="outline" className="gap-2 bg-white dark:bg-background border-gray-300 text-[#2563EB] hover:bg-gray-50 dark:hover:bg-accent" asChild>
           <a href="/smartdocs/create">
             <Upload className="w-4 h-4" />
             Upload Document
@@ -239,13 +250,13 @@ export default function Templates() {
         </Select>
 
         {/* View Toggle */}
-        <div className="flex border rounded-md">
+        <div className="flex border border-gray-300 rounded-md bg-white dark:bg-background">
           <Button
             variant="ghost"
             size="icon"
             className={cn(
-              "rounded-r-none",
-              viewMode === "grid" && "bg-accent"
+              "rounded-r-none text-[#374151] hover:bg-gray-50 dark:hover:bg-accent",
+              viewMode === "grid" && "bg-gray-100 dark:bg-accent"
             )}
             onClick={() => setViewMode("grid")}
           >
@@ -255,8 +266,8 @@ export default function Templates() {
             variant="ghost"
             size="icon"
             className={cn(
-              "rounded-l-none border-l",
-              viewMode === "list" && "bg-accent"
+              "rounded-l-none border-l border-gray-300 text-[#374151] hover:bg-gray-50 dark:hover:bg-accent",
+              viewMode === "list" && "bg-gray-100 dark:bg-accent"
             )}
             onClick={() => setViewMode("list")}
           >
@@ -281,8 +292,11 @@ export default function Templates() {
               className="p-6 hover:shadow-md transition-shadow cursor-pointer"
             >
               {/* Icon */}
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                <SectorIcon className="w-6 h-6 text-primary" />
+              <div className={cn(
+                "w-12 h-12 rounded-lg flex items-center justify-center mb-4",
+                sectorColors[template.sector] || "bg-gray-100 dark:bg-gray-900"
+              )}>
+                <SectorIcon className="w-6 h-6 text-foreground" />
               </div>
 
               {/* Template Info */}
@@ -303,10 +317,15 @@ export default function Templates() {
 
               {/* Tags */}
               <div className="flex gap-2">
-                <Badge className={cn("text-xs", methodColors[template.method as keyof typeof methodColors])}>
+                <Badge className={cn("text-xs font-medium border-0", methodColors[template.method as keyof typeof methodColors])}>
                   {template.method}
                 </Badge>
-                <Badge variant="outline" className="text-xs border-green-200 bg-green-50 text-green-700 dark:border-green-800 dark:bg-green-950 dark:text-green-400">
+                <Badge className={cn(
+                  "text-xs font-medium border-0",
+                  template.status === "active" 
+                    ? "bg-[#16A34A] text-white hover:bg-[#16A34A]" 
+                    : "bg-gray-200 text-gray-700 hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300"
+                )}>
                   {template.status}
                 </Badge>
               </div>
