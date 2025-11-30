@@ -11,6 +11,7 @@ import SmartDocCreate from "./pages/SmartDocCreate";
 import SmartDocDocuments from "./pages/SmartDocDocuments";
 import Templates from "./pages/Templates";
 import TemplateDetail from "./pages/TemplateDetail";
+import IssuanceCenter from "./pages/IssuanceCenter";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -31,6 +32,7 @@ const App = () => (
               <Route path="/smartdocs/documents" element={<SmartDocDocuments />} />
               <Route path="/templates" element={<Templates />} />
               <Route path="/templates/:id" element={<TemplateDetail />} />
+              <Route path="/issuance" element={<IssuanceCenter />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
