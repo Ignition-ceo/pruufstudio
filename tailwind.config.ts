@@ -77,7 +77,7 @@ export default {
         "kpi-amber-to": "hsl(var(--kpi-amber-to))",
         "sector-healthcare": "#22C55E",
         "sector-real-estate": "#FB923C",
-        "sector-legal": "#6366F1",
+        "sector-legal": "#F472B6",
         "sector-education": "#FACC15",
         "sector-financial": "#3B82F6",
         "sector-kyc": "#A855F7",
