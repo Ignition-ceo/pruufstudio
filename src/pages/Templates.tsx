@@ -1,11 +1,26 @@
 import { useState } from "react";
-import { FileText, Sparkles, Upload, Grid3x3, List, Calendar, Users, Search } from "lucide-react";
+import { 
+  Sparkles, Upload, Grid3x3, List, Calendar, Users, Search,
+  Activity, Home, Scale, GraduationCap, UserCheck, DollarSign, 
+  Plane, Umbrella, LucideIcon
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+
+const sectorIcons: Record<string, LucideIcon> = {
+  Healthcare: Activity,
+  "Real Estate": Home,
+  Legal: Scale,
+  Education: GraduationCap,
+  KYC: UserCheck,
+  Financial: DollarSign,
+  Travel: Plane,
+  Insurance: Umbrella,
+};
 
 const templates = [
   {
@@ -22,7 +37,7 @@ const templates = [
     name: "Property Lease Agreement",
     sector: "Real Estate",
     date: "Nov 20, 2024",
-    uses: 234,
+    uses: 189,
     method: "Vision",
     status: "active"
   },
@@ -31,62 +46,116 @@ const templates = [
     name: "Non-Disclosure Agreement",
     sector: "Legal",
     date: "Nov 20, 2024",
-    uses: 234,
+    uses: 412,
     method: "Manual",
     status: "active"
   },
   {
     id: 4,
-    name: "Property Lease Agreement",
-    sector: "Real Estate",
-    date: "Nov 20, 2024",
-    uses: 234,
-    method: "Vision",
+    name: "Student ID Credential",
+    sector: "Education",
+    date: "Nov 19, 2024",
+    uses: 567,
+    method: "AI",
     status: "active"
   },
   {
     id: 5,
-    name: "Non-Disclosure Agreement",
-    sector: "Legal",
-    date: "Nov 20, 2024",
-    uses: 234,
-    method: "Manual",
+    name: "Identity Verification",
+    sector: "KYC",
+    date: "Nov 19, 2024",
+    uses: 892,
+    method: "Vision",
     status: "active"
   },
   {
     id: 6,
-    name: "Medical Consent Form",
-    sector: "Healthcare",
-    date: "Nov 20, 2024",
-    uses: 234,
+    name: "Bank Account Verification",
+    sector: "Financial",
+    date: "Nov 18, 2024",
+    uses: 1203,
     method: "AI",
     status: "active"
   },
   {
     id: 7,
-    name: "Non-Disclosure Agreement",
-    sector: "Legal",
-    date: "Nov 20, 2024",
-    uses: 234,
+    name: "Visa Application",
+    sector: "Travel",
+    date: "Nov 18, 2024",
+    uses: 345,
     method: "Manual",
     status: "active"
   },
   {
     id: 8,
-    name: "Medical Consent Form",
-    sector: "Healthcare",
-    date: "Nov 20, 2024",
-    uses: 234,
-    method: "AI",
+    name: "Health Insurance Policy",
+    sector: "Insurance",
+    date: "Nov 17, 2024",
+    uses: 678,
+    method: "Vision",
     status: "active"
   },
   {
     id: 9,
-    name: "Property Lease Agreement",
-    sector: "Real Estate",
-    date: "Nov 20, 2024",
-    uses: 234,
+    name: "Employment Contract",
+    sector: "Legal",
+    date: "Nov 17, 2024",
+    uses: 456,
+    method: "AI",
+    status: "active"
+  },
+  {
+    id: 10,
+    name: "Degree Certificate",
+    sector: "Education",
+    date: "Nov 16, 2024",
+    uses: 789,
     method: "Vision",
+    status: "active"
+  },
+  {
+    id: 11,
+    name: "Credit Score Report",
+    sector: "Financial",
+    date: "Nov 16, 2024",
+    uses: 234,
+    method: "Manual",
+    status: "active"
+  },
+  {
+    id: 12,
+    name: "Travel Insurance Certificate",
+    sector: "Insurance",
+    date: "Nov 15, 2024",
+    uses: 178,
+    method: "AI",
+    status: "active"
+  },
+  {
+    id: 13,
+    name: "Property Title Deed",
+    sector: "Real Estate",
+    date: "Nov 15, 2024",
+    uses: 92,
+    method: "Vision",
+    status: "active"
+  },
+  {
+    id: 14,
+    name: "Vaccination Record",
+    sector: "Healthcare",
+    date: "Nov 14, 2024",
+    uses: 1456,
+    method: "AI",
+    status: "active"
+  },
+  {
+    id: 15,
+    name: "Background Check Certificate",
+    sector: "KYC",
+    date: "Nov 14, 2024",
+    uses: 623,
+    method: "Manual",
     status: "active"
   }
 ];
@@ -110,9 +179,11 @@ export default function Templates() {
 
       {/* Action Buttons */}
       <div className="flex flex-wrap gap-3 mb-6">
-        <Button className="gap-2">
-          <Sparkles className="w-4 h-4" />
-          Create with AI
+        <Button className="gap-2" asChild>
+          <a href="/smartdocs/create">
+            <Sparkles className="w-4 h-4" />
+            Create with AI
+          </a>
         </Button>
         <Button variant="outline" className="gap-2" asChild>
           <a href="/smartdocs/create">
@@ -201,43 +272,47 @@ export default function Templates() {
           ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3" 
           : "grid-cols-1"
       )}>
-        {templates.map((template) => (
-          <Card 
-            key={template.id} 
-            className="p-6 hover:shadow-md transition-shadow cursor-pointer"
-          >
-            {/* Icon */}
-            <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-              <FileText className="w-6 h-6 text-primary" />
-            </div>
-
-            {/* Template Info */}
-            <h3 className="font-semibold text-lg mb-1">{template.name}</h3>
-            <p className="text-sm text-muted-foreground mb-4">{template.sector}</p>
-
-            {/* Meta Info */}
-            <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
-              <div className="flex items-center gap-1">
-                <Calendar className="w-4 h-4" />
-                <span>{template.date}</span>
+        {templates.map((template) => {
+          const SectorIcon = sectorIcons[template.sector] || Activity;
+          
+          return (
+            <Card 
+              key={template.id} 
+              className="p-6 hover:shadow-md transition-shadow cursor-pointer"
+            >
+              {/* Icon */}
+              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                <SectorIcon className="w-6 h-6 text-primary" />
               </div>
-              <div className="flex items-center gap-1">
-                <Users className="w-4 h-4" />
-                <span>{template.uses} users</span>
-              </div>
-            </div>
 
-            {/* Tags */}
-            <div className="flex gap-2">
-              <Badge className={cn("text-xs", methodColors[template.method as keyof typeof methodColors])}>
-                {template.method}
-              </Badge>
-              <Badge variant="outline" className="text-xs border-green-200 bg-green-50 text-green-700">
-                {template.status}
-              </Badge>
-            </div>
-          </Card>
-        ))}
+              {/* Template Info */}
+              <h3 className="font-semibold text-lg mb-1">{template.name}</h3>
+              <p className="text-sm text-muted-foreground mb-4">{template.sector}</p>
+
+              {/* Meta Info */}
+              <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
+                <div className="flex items-center gap-1">
+                  <Calendar className="w-4 h-4" />
+                  <span>{template.date}</span>
+                </div>
+                <div className="flex items-center gap-1">
+                  <Users className="w-4 h-4" />
+                  <span>{template.uses} users</span>
+                </div>
+              </div>
+
+              {/* Tags */}
+              <div className="flex gap-2">
+                <Badge className={cn("text-xs", methodColors[template.method as keyof typeof methodColors])}>
+                  {template.method}
+                </Badge>
+                <Badge variant="outline" className="text-xs border-green-200 bg-green-50 text-green-700 dark:border-green-800 dark:bg-green-950 dark:text-green-400">
+                  {template.status}
+                </Badge>
+              </div>
+            </Card>
+          );
+        })}
       </div>
     </div>
   );
