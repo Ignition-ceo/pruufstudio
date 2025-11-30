@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { 
   Sparkles, Upload, Grid3x3, List, Calendar, Users, Search,
   Activity, Home, Scale, GraduationCap, UserCheck, DollarSign, 
@@ -178,6 +179,7 @@ const sectorColors: Record<string, string> = {
 };
 
 export default function Templates() {
+  const navigate = useNavigate();
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
 
   return (
@@ -289,6 +291,7 @@ export default function Templates() {
           return (
             <Card 
               key={template.id} 
+              onClick={() => navigate(`/templates/${template.id}`)}
               className="p-6 hover:shadow-md transition-shadow cursor-pointer"
             >
               {/* Icon */}
