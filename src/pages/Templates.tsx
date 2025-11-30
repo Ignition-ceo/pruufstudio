@@ -162,7 +162,7 @@ const templates = [
 ];
 
 const methodColors = {
-  AI: "bg-[#2563EB] text-white hover:bg-[#2563EB]",
+  AI: "bg-[#3B82F6] text-white hover:bg-[#3B82F6]",
   Vision: "bg-[#8B5CF6] text-white hover:bg-[#8B5CF6]",
   Manual: "bg-[#6B7280] text-white hover:bg-[#6B7280]"
 };
@@ -185,13 +185,13 @@ export default function Templates() {
   return (
     <div className="container mx-auto py-6 md:py-8 px-4 max-w-7xl">
       {/* Header */}
-      <div className="mb-6">
+      <div className="mb-4">
         <h1 className="text-3xl font-bold mb-2">Templates</h1>
         <p className="text-muted-foreground">Browse, create, and manage your credential templates</p>
       </div>
 
       {/* Action Buttons */}
-      <div className="flex flex-wrap gap-3 mb-6">
+      <div className="flex flex-wrap gap-3 mb-4">
         <Button className="gap-2 bg-[#2563EB] hover:bg-[#1e40af] text-white" asChild>
           <a href="/smartdocs/create">
             <Sparkles className="w-4 h-4" />
@@ -207,12 +207,12 @@ export default function Templates() {
       </div>
 
       {/* Filters and Controls */}
-      <div className="flex flex-wrap gap-3 mb-6">
+      <div className="flex flex-wrap gap-3 mb-5">
         <div className="relative flex-1 min-w-[200px]">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" strokeWidth={2} />
           <Input 
             placeholder="Search templates..." 
-            className="pl-10"
+            className="pl-10 border-[#E5E7EB] bg-gray-50 dark:bg-background"
           />
         </div>
         
@@ -252,28 +252,28 @@ export default function Templates() {
         </Select>
 
         {/* View Toggle */}
-        <div className="flex border border-gray-300 rounded-md bg-white dark:bg-background">
+        <div className="flex border border-gray-300 rounded-md bg-white dark:bg-background overflow-hidden">
           <Button
             variant="ghost"
             size="icon"
             className={cn(
-              "rounded-r-none text-[#374151] hover:bg-gray-50 dark:hover:bg-accent",
-              viewMode === "grid" && "bg-gray-100 dark:bg-accent"
+              "rounded-none text-[#374151] hover:bg-gray-50 dark:hover:bg-accent",
+              viewMode === "grid" && "bg-[#F3F4F6] dark:bg-accent"
             )}
             onClick={() => setViewMode("grid")}
           >
-            <Grid3x3 className="w-4 h-4" />
+            <Grid3x3 className="w-4 h-4" strokeWidth={2} />
           </Button>
           <Button
             variant="ghost"
             size="icon"
             className={cn(
-              "rounded-l-none border-l border-gray-300 text-[#374151] hover:bg-gray-50 dark:hover:bg-accent",
-              viewMode === "list" && "bg-gray-100 dark:bg-accent"
+              "rounded-none border-l border-gray-300 text-[#374151] hover:bg-gray-50 dark:hover:bg-accent",
+              viewMode === "list" && "bg-[#F3F4F6] dark:bg-accent"
             )}
             onClick={() => setViewMode("list")}
           >
-            <List className="w-4 h-4" />
+            <List className="w-4 h-4" strokeWidth={2} />
           </Button>
         </div>
       </div>
@@ -292,14 +292,14 @@ export default function Templates() {
             <Card 
               key={template.id} 
               onClick={() => navigate(`/templates/${template.id}`)}
-              className="p-6 hover:shadow-md transition-shadow cursor-pointer"
+              className="p-6 hover:shadow-[0_2px_6px_rgba(0,0,0,0.04)] transition-shadow cursor-pointer"
             >
               {/* Icon */}
               <div className={cn(
                 "w-12 h-12 rounded-lg flex items-center justify-center mb-4",
                 sectorColors[template.sector] || "bg-gray-100 dark:bg-gray-900"
               )}>
-                <SectorIcon className="w-6 h-6 text-foreground" />
+                <SectorIcon className="w-6 h-6 text-foreground" strokeWidth={2} />
               </div>
 
               {/* Template Info */}
@@ -309,11 +309,11 @@ export default function Templates() {
               {/* Meta Info */}
               <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
                 <div className="flex items-center gap-1">
-                  <Calendar className="w-4 h-4" />
+                  <Calendar className="w-4 h-4" strokeWidth={2} />
                   <span>{template.date}</span>
                 </div>
                 <div className="flex items-center gap-1">
-                  <Users className="w-4 h-4" />
+                  <Users className="w-4 h-4" strokeWidth={2} />
                   <span>{template.uses} users</span>
                 </div>
               </div>
