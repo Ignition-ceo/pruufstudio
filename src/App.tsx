@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import SmartDocCreate from "./pages/SmartDocCreate";
 import SmartDocDocuments from "./pages/SmartDocDocuments";
+import Templates from "./pages/Templates";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,6 +28,7 @@ const App = () => (
             <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/smartdocs/create" element={<SmartDocCreate />} />
               <Route path="/smartdocs/documents" element={<SmartDocDocuments />} />
+              <Route path="/templates" element={<Templates />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

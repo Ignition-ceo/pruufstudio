@@ -1,0 +1,244 @@
+import { useState } from "react";
+import { FileText, Sparkles, Upload, Grid3x3, List, Calendar, Users, Search } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
+
+const templates = [
+  {
+    id: 1,
+    name: "Medical Consent Form",
+    sector: "Healthcare",
+    date: "Nov 20, 2024",
+    uses: 234,
+    method: "AI",
+    status: "active"
+  },
+  {
+    id: 2,
+    name: "Property Lease Agreement",
+    sector: "Real Estate",
+    date: "Nov 20, 2024",
+    uses: 234,
+    method: "Vision",
+    status: "active"
+  },
+  {
+    id: 3,
+    name: "Non-Disclosure Agreement",
+    sector: "Legal",
+    date: "Nov 20, 2024",
+    uses: 234,
+    method: "Manual",
+    status: "active"
+  },
+  {
+    id: 4,
+    name: "Property Lease Agreement",
+    sector: "Real Estate",
+    date: "Nov 20, 2024",
+    uses: 234,
+    method: "Vision",
+    status: "active"
+  },
+  {
+    id: 5,
+    name: "Non-Disclosure Agreement",
+    sector: "Legal",
+    date: "Nov 20, 2024",
+    uses: 234,
+    method: "Manual",
+    status: "active"
+  },
+  {
+    id: 6,
+    name: "Medical Consent Form",
+    sector: "Healthcare",
+    date: "Nov 20, 2024",
+    uses: 234,
+    method: "AI",
+    status: "active"
+  },
+  {
+    id: 7,
+    name: "Non-Disclosure Agreement",
+    sector: "Legal",
+    date: "Nov 20, 2024",
+    uses: 234,
+    method: "Manual",
+    status: "active"
+  },
+  {
+    id: 8,
+    name: "Medical Consent Form",
+    sector: "Healthcare",
+    date: "Nov 20, 2024",
+    uses: 234,
+    method: "AI",
+    status: "active"
+  },
+  {
+    id: 9,
+    name: "Property Lease Agreement",
+    sector: "Real Estate",
+    date: "Nov 20, 2024",
+    uses: 234,
+    method: "Vision",
+    status: "active"
+  }
+];
+
+const methodColors = {
+  AI: "bg-[hsl(var(--kpi-pink))] text-white",
+  Vision: "bg-[hsl(var(--kpi-blue))] text-white",
+  Manual: "bg-secondary text-secondary-foreground"
+};
+
+export default function Templates() {
+  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
+
+  return (
+    <div className="container mx-auto py-6 md:py-8 px-4 max-w-7xl">
+      {/* Header */}
+      <div className="mb-6">
+        <h1 className="text-3xl font-bold mb-2">Templates</h1>
+        <p className="text-muted-foreground">Browse, create, and manage your credential templates</p>
+      </div>
+
+      {/* Action Buttons */}
+      <div className="flex flex-wrap gap-3 mb-6">
+        <Button className="gap-2">
+          <Sparkles className="w-4 h-4" />
+          Create with AI
+        </Button>
+        <Button variant="outline" className="gap-2" asChild>
+          <a href="/smartdocs/create">
+            <Upload className="w-4 h-4" />
+            Upload Document
+          </a>
+        </Button>
+      </div>
+
+      {/* Filters and Controls */}
+      <div className="flex flex-wrap gap-3 mb-6">
+        <div className="relative flex-1 min-w-[200px]">
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+          <Input 
+            placeholder="Search templates..." 
+            className="pl-10"
+          />
+        </div>
+        
+        <Select defaultValue="all-sectors">
+          <SelectTrigger className="w-[160px]">
+            <SelectValue placeholder="All Sectors" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="all-sectors">All Sectors</SelectItem>
+            <SelectItem value="healthcare">Healthcare</SelectItem>
+            <SelectItem value="real-estate">Real Estate</SelectItem>
+            <SelectItem value="legal">Legal</SelectItem>
+          </SelectContent>
+        </Select>
+
+        <Select defaultValue="all-types">
+          <SelectTrigger className="w-[160px]">
+            <SelectValue placeholder="All Types" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="all-types">All Types</SelectItem>
+            <SelectItem value="ai">AI</SelectItem>
+            <SelectItem value="vision">Vision</SelectItem>
+            <SelectItem value="manual">Manual</SelectItem>
+          </SelectContent>
+        </Select>
+
+        <Select defaultValue="all-status">
+          <SelectTrigger className="w-[160px]">
+            <SelectValue placeholder="All Status" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="all-status">All Status</SelectItem>
+            <SelectItem value="active">Active</SelectItem>
+            <SelectItem value="inactive">Inactive</SelectItem>
+          </SelectContent>
+        </Select>
+
+        {/* View Toggle */}
+        <div className="flex border rounded-md">
+          <Button
+            variant="ghost"
+            size="icon"
+            className={cn(
+              "rounded-r-none",
+              viewMode === "grid" && "bg-accent"
+            )}
+            onClick={() => setViewMode("grid")}
+          >
+            <Grid3x3 className="w-4 h-4" />
+          </Button>
+          <Button
+            variant="ghost"
+            size="icon"
+            className={cn(
+              "rounded-l-none border-l",
+              viewMode === "list" && "bg-accent"
+            )}
+            onClick={() => setViewMode("list")}
+          >
+            <List className="w-4 h-4" />
+          </Button>
+        </div>
+      </div>
+
+      {/* Template Grid */}
+      <div className={cn(
+        "grid gap-4",
+        viewMode === "grid" 
+          ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3" 
+          : "grid-cols-1"
+      )}>
+        {templates.map((template) => (
+          <Card 
+            key={template.id} 
+            className="p-6 hover:shadow-md transition-shadow cursor-pointer"
+          >
+            {/* Icon */}
+            <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+              <FileText className="w-6 h-6 text-primary" />
+            </div>
+
+            {/* Template Info */}
+            <h3 className="font-semibold text-lg mb-1">{template.name}</h3>
+            <p className="text-sm text-muted-foreground mb-4">{template.sector}</p>
+
+            {/* Meta Info */}
+            <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
+              <div className="flex items-center gap-1">
+                <Calendar className="w-4 h-4" />
+                <span>{template.date}</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <Users className="w-4 h-4" />
+                <span>{template.uses} users</span>
+              </div>
+            </div>
+
+            {/* Tags */}
+            <div className="flex gap-2">
+              <Badge className={cn("text-xs", methodColors[template.method as keyof typeof methodColors])}>
+                {template.method}
+              </Badge>
+              <Badge variant="outline" className="text-xs border-green-200 bg-green-50 text-green-700">
+                {template.status}
+              </Badge>
+            </div>
+          </Card>
+        ))}
+      </div>
+    </div>
+  );
+}
