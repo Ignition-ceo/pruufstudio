@@ -48,12 +48,16 @@ All colors MUST be HSL.
     --pink: 315 100% 60%;
     
     /* KPI Card colors */
-    --kpi-purple-from: 263 70% 64%; /* Soft purple/indigo #8b5cf6 */
-    --kpi-purple-to: 270 60% 72%; /* Light purple #a78bfa */
-    --kpi-blue-from: 221 99% 41%; /* PRUUF blue #0125cf */
-    --kpi-blue-to: 221 91% 62%; /* Light blue #4b7bff */
-    --kpi-orange-from: 33 100% 60%; /* Warm orange #ff9f1c */
-    --kpi-orange-to: 38 100% 62%; /* Light orange #ffa94d */
+    --kpi-indigo-from: 239 84% 67%; /* Indigo #6366F1 */
+    --kpi-indigo-to: 239 84% 75%; /* Light Indigo */
+    --kpi-pink-from: 330 81% 60%; /* Pink #EC4899 */
+    --kpi-pink-to: 330 81% 70%; /* Light Pink */
+    --kpi-blue-from: 221 83% 53%; /* Blue #2563EB */
+    --kpi-blue-to: 221 83% 65%; /* Light Blue */
+    --kpi-violet-from: 258 90% 66%; /* Violet #8B5CF6 */
+    --kpi-violet-to: 258 90% 75%; /* Light Violet */
+    --kpi-amber-from: 38 92% 50%; /* Amber #F59E0B */
+    --kpi-amber-to: 38 92% 62%; /* Light Amber */
 
     /* Custom gradients */
     --gradient-hero: linear-gradient(to bottom, transparent 0%, transparent 30%, hsl(0 0% 100%) 50%), linear-gradient(90deg, hsl(217 100% 96%) 0%, hsl(120 100% 97%) 100%);
