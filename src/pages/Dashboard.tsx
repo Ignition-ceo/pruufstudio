@@ -30,7 +30,7 @@ export default function Dashboard() {
         {/* Hero Section - Quick Actions (reordered: SmartDoc Creator last) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 lg:gap-6 mb-6">
           {/* Issue Credentials */}
-          <div className="bg-white border border-gray-200 rounded-xl px-6 py-5 shadow-sm hover:shadow-md transition-shadow duration-200 flex flex-col justify-between h-[160px]">
+          <div className="bg-white border border-gray-200 rounded-xl px-6 py-6 shadow-sm hover:shadow-md transition-shadow duration-200 flex flex-col justify-between h-[200px]">
             <div className="space-y-2">
               <div className="w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center">
                 <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -56,7 +56,7 @@ export default function Dashboard() {
           </div>
 
           {/* Template Library */}
-          <div className="bg-white border border-gray-200 rounded-xl px-6 py-5 shadow-sm hover:shadow-md transition-shadow duration-200 flex flex-col justify-between h-[160px]">
+          <div className="bg-white border border-gray-200 rounded-xl px-6 py-6 shadow-sm hover:shadow-md transition-shadow duration-200 flex flex-col justify-between h-[200px]">
             <div className="space-y-2">
               <div className="w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center">
                 <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -82,7 +82,7 @@ export default function Dashboard() {
           </div>
 
           {/* Smart Doc Creator - Primary Hero Card (now last) */}
-          <div className="bg-gradient-to-br from-[#0020b8] via-[#0125cf] to-[#3b6fff] rounded-xl px-6 py-5 shadow-lg hover:shadow-xl transition-all duration-200 flex flex-col justify-between h-[160px] relative overflow-hidden md:col-span-2 lg:col-span-1">
+          <div className="bg-gradient-to-br from-[#0020b8] via-[#0125cf] to-[#3b6fff] rounded-xl px-6 py-6 shadow-lg hover:shadow-xl transition-all duration-200 flex flex-col justify-between h-[200px] relative overflow-hidden md:col-span-2 lg:col-span-1">
             {/* Enhanced decorative elements */}
             <div className="absolute top-0 right-0 w-28 h-28 md:w-40 md:h-40 bg-white/10 rounded-full blur-3xl"></div>
             <div className="absolute bottom-0 left-0 w-24 h-24 md:w-32 md:h-32 bg-[#4b7bff]/20 rounded-full blur-3xl"></div>
@@ -119,7 +119,7 @@ export default function Dashboard() {
         {/* Section 2: KPI Analytics Row (5 on desktop, 3 on tablet, 1 on mobile) */}
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4 lg:gap-6 mb-6">
           {/* Templates */}
-          <div className="relative bg-gradient-to-br from-[hsl(var(--kpi-purple-from))] to-[hsl(var(--kpi-purple-to))] border-0 rounded-xl px-4 py-4 md:px-6 md:py-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer overflow-hidden">
+          <div className="relative bg-gradient-to-br from-[hsl(var(--kpi-indigo-from))] to-[hsl(var(--kpi-indigo-to))] border-0 rounded-xl px-4 py-4 md:px-6 md:py-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer overflow-hidden">
             <div className="absolute top-0 right-0 w-20 h-20 md:w-24 md:h-24 bg-white/8 rounded-full blur-2xl"></div>
             <GeometricGlobe color="#ffffff" />
             <div className="relative z-10 space-y-2 md:space-y-3">
@@ -134,7 +134,7 @@ export default function Dashboard() {
           </div>
 
           {/* SmartDocs */}
-          <div className="relative bg-gradient-to-br from-[#8b5cf6] to-[#a78bfa] border-0 rounded-xl px-4 py-4 md:px-6 md:py-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer overflow-hidden">
+          <div className="relative bg-gradient-to-br from-[hsl(var(--kpi-pink-from))] to-[hsl(var(--kpi-pink-to))] border-0 rounded-xl px-4 py-4 md:px-6 md:py-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer overflow-hidden">
             <div className="absolute top-0 right-0 w-20 h-20 md:w-24 md:h-24 bg-white/8 rounded-full blur-2xl"></div>
             <GeometricGlobe color="#ffffff" />
             <div className="relative z-10 space-y-2 md:space-y-3">
@@ -164,7 +164,7 @@ export default function Dashboard() {
           </div>
 
           {/* Verified Credentials */}
-          <div className="relative bg-gradient-to-br from-[#ec4899] to-[#f472b6] border-0 rounded-xl px-4 py-4 md:px-6 md:py-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer overflow-hidden">
+          <div className="relative bg-gradient-to-br from-[hsl(var(--kpi-violet-from))] to-[hsl(var(--kpi-violet-to))] border-0 rounded-xl px-4 py-4 md:px-6 md:py-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer overflow-hidden">
             <div className="absolute top-0 right-0 w-20 h-20 md:w-24 md:h-24 bg-white/8 rounded-full blur-2xl"></div>
             <GeometricGlobe color="#ffffff" />
             <div className="relative z-10 space-y-2 md:space-y-3">
@@ -179,7 +179,7 @@ export default function Dashboard() {
           </div>
 
           {/* Wallet Holders */}
-          <div className="relative bg-gradient-to-br from-[hsl(var(--kpi-orange-from))] to-[hsl(var(--kpi-orange-to))] border-0 rounded-xl px-4 py-4 md:px-6 md:py-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer overflow-hidden">
+          <div className="relative bg-gradient-to-br from-[hsl(var(--kpi-amber-from))] to-[hsl(var(--kpi-amber-to))] border-0 rounded-xl px-4 py-4 md:px-6 md:py-5 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer overflow-hidden">
             <div className="absolute top-0 right-0 w-20 h-20 md:w-24 md:h-24 bg-white/8 rounded-full blur-2xl"></div>
             <GeometricGlobe color="#ffffff" />
             <div className="relative z-10 space-y-2 md:space-y-3">
@@ -215,7 +215,7 @@ export default function Dashboard() {
             </svg>
             
             {/* Enhanced Wave Pattern */}
-            <svg className="absolute inset-0 w-full h-full opacity-[0.12]" viewBox="0 0 400 300" preserveAspectRatio="none">
+            <svg className="absolute inset-0 w-full h-full opacity-[0.15]" viewBox="0 0 400 300" preserveAspectRatio="none">
               <path 
                 d="M0,150 Q50,100 100,120 T200,140 T300,110 T400,130 L400,300 L0,300 Z" 
                 fill="url(#credentialGradient)" 
