@@ -82,26 +82,27 @@ export default function Dashboard() {
           </div>
 
           {/* Smart Doc Creator - Primary Hero Card */}
-          <div className="bg-gradient-to-br from-[#0125cf] to-[#4b7bff] rounded-xl px-4 py-4 md:px-6 md:py-5 shadow-md hover:shadow-lg transition-shadow duration-200 flex flex-col justify-between min-h-[180px] md:h-[220px] relative overflow-hidden md:col-span-2 lg:col-span-1">
-            {/* Decorative elements */}
-            <div className="absolute top-0 right-0 w-24 h-24 md:w-32 md:h-32 bg-white/5 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-0 left-0 w-20 h-20 md:w-24 md:h-24 bg-white/5 rounded-full blur-3xl"></div>
+          <div className="bg-gradient-to-br from-[#0020b8] via-[#0125cf] to-[#3b6fff] rounded-xl px-4 py-4 md:px-6 md:py-5 shadow-lg hover:shadow-xl transition-all duration-200 flex flex-col justify-between min-h-[180px] md:h-[220px] relative overflow-hidden md:col-span-2 lg:col-span-1">
+            {/* Enhanced decorative elements */}
+            <div className="absolute top-0 right-0 w-28 h-28 md:w-40 md:h-40 bg-white/10 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 left-0 w-24 h-24 md:w-32 md:h-32 bg-[#4b7bff]/20 rounded-full blur-3xl"></div>
+            <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent"></div>
             
             <div className="relative z-10 space-y-2 md:space-y-3">
-              <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center shadow-sm">
-                <svg className="w-5 h-5 md:w-6 md:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-12 h-12 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center shadow-md">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
               </div>
               <div className="space-y-1">
                 <h4 className="text-base md:text-lg font-bold text-white">Smart Doc Creator</h4>
-                <p className="text-xs md:text-sm text-white/90">Transform documents into verifiable credentials with AI.</p>
+                <p className="text-xs md:text-sm text-white/95">Transform documents into verifiable credentials with AI.</p>
               </div>
             </div>
             <div className="relative z-10 flex justify-end mt-3 md:mt-0">
               <a 
                 href="/smartdocs/create" 
-                className="inline-flex items-center gap-1 px-3 py-1.5 md:px-4 md:py-2 rounded-lg text-xs md:text-sm font-semibold text-[#0125cf] bg-white hover:bg-white/95 transition-all duration-200 shadow-sm hover:shadow-md group"
+                className="inline-flex items-center gap-1 px-3 py-1.5 md:px-4 md:py-2 rounded-lg text-xs md:text-sm font-semibold text-[#0125cf] bg-white hover:bg-white/95 transition-all duration-200 shadow-md hover:shadow-lg group"
               >
                 Get Started
                 <svg className="w-3 h-3 md:w-4 md:h-4 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -196,9 +197,22 @@ export default function Dashboard() {
         {/* Section 3: Analytics Row - Total Credentials + Chart (stack on mobile) */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 md:gap-4 lg:gap-6 mb-4 md:mb-6">
           {/* Left Card: Total Active Credentials */}
-          <div className="bg-white border border-gray-200 rounded-xl px-4 py-4 md:px-6 md:py-5 shadow-sm hover:shadow-md hover:scale-[1.02] transition-all duration-200 flex flex-col items-center justify-center min-h-[280px] md:min-h-[360px] space-y-3 md:space-y-4 relative overflow-hidden">
-            {/* Decorative Chart Background */}
-            <svg className="absolute inset-0 w-full h-full opacity-[0.08]" viewBox="0 0 400 300" preserveAspectRatio="none">
+          <div className="bg-white border border-gray-200 rounded-xl px-4 py-3 md:px-6 md:py-4 shadow-sm hover:shadow-md hover:scale-[1.02] transition-all duration-200 flex flex-col items-center justify-center min-h-[280px] md:min-h-[360px] space-y-2 md:space-y-3 relative overflow-hidden">
+            {/* Network Grid Texture */}
+            <svg className="absolute inset-0 w-full h-full opacity-[0.03]" viewBox="0 0 400 300" preserveAspectRatio="none">
+              <defs>
+                <pattern id="networkGrid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+                  <circle cx="20" cy="20" r="1" fill="#0125cf" />
+                  <line x1="20" y1="20" x2="40" y2="20" stroke="#0125cf" strokeWidth="0.5" opacity="0.3" />
+                  <line x1="20" y1="20" x2="20" y2="40" stroke="#0125cf" strokeWidth="0.5" opacity="0.3" />
+                  <line x1="20" y1="20" x2="30" y2="10" stroke="#0125cf" strokeWidth="0.5" opacity="0.2" />
+                </pattern>
+              </defs>
+              <rect width="400" height="300" fill="url(#networkGrid)" />
+            </svg>
+            
+            {/* Enhanced Wave Pattern */}
+            <svg className="absolute inset-0 w-full h-full opacity-[0.12]" viewBox="0 0 400 300" preserveAspectRatio="none">
               <path 
                 d="M0,150 Q50,100 100,120 T200,140 T300,110 T400,130 L400,300 L0,300 Z" 
                 fill="url(#credentialGradient)" 
@@ -206,17 +220,18 @@ export default function Dashboard() {
               />
               <defs>
                 <linearGradient id="credentialGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#0125cf" />
-                  <stop offset="100%" stopColor="#4b7bff" />
+                  <stop offset="0%" stopColor="#0125cf" stopOpacity="0.8" />
+                  <stop offset="50%" stopColor="#2e5ede" stopOpacity="0.6" />
+                  <stop offset="100%" stopColor="#4b7bff" stopOpacity="0.8" />
                 </linearGradient>
               </defs>
             </svg>
             
-            <div className="relative z-10 flex flex-col items-center space-y-3 md:space-y-4">
+            <div className="relative z-10 flex flex-col items-center space-y-2 md:space-y-3">
               <h3 className="text-sm md:text-base font-semibold text-muted-foreground uppercase tracking-wide">
                 Total Active Credentials
               </h3>
-              <p className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-br from-[#0125cf] to-[#4b7bff] bg-clip-text text-transparent">124</p>
+              <p className="text-5xl md:text-6xl lg:text-7xl font-extrabold bg-gradient-to-br from-[#0125cf] to-[#4b7bff] bg-clip-text text-transparent">124</p>
               <p className="text-xs md:text-sm text-muted-foreground text-center max-w-md px-2">
                 Valid, active, non-revoked credentials circulating in the PRUUF network
               </p>
