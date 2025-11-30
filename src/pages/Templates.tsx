@@ -167,14 +167,14 @@ const methodColors = {
 };
 
 const sectorColors: Record<string, string> = {
-  Healthcare: "bg-[#D1FAE5] dark:bg-emerald-950",
-  Financial: "bg-[#DBEAFE] dark:bg-blue-950",
-  "Real Estate": "bg-[#FEF3C7] dark:bg-yellow-950",
-  Legal: "bg-[#E0E7FF] dark:bg-indigo-950",
-  Education: "bg-[#FFE4E6] dark:bg-pink-950",
-  Insurance: "bg-[#FFEDD5] dark:bg-orange-950",
-  KYC: "bg-[#FAE8FF] dark:bg-purple-950",
-  Travel: "bg-[#CFFAFE] dark:bg-cyan-950",
+  Healthcare: "bg-[#D1FADF] dark:bg-emerald-950",
+  "Real Estate": "bg-[#FDECC8] dark:bg-yellow-950",
+  Legal: "bg-[#E5D5FF] dark:bg-indigo-950",
+  Education: "bg-[#FFDAD2] dark:bg-pink-950",
+  Financial: "bg-[#CDE9FF] dark:bg-blue-950",
+  KYC: "bg-[#F0D9FF] dark:bg-purple-950",
+  Insurance: "bg-[#FFF4C4] dark:bg-orange-950",
+  Travel: "bg-[#C9F0FF] dark:bg-cyan-950",
 };
 
 export default function Templates() {
