@@ -20,6 +20,10 @@ import {
   Building2,
   Users,
   HelpCircle,
+  PlayCircle,
+  FileSpreadsheet,
+  Printer,
+  ClipboardList,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import pruufFavicon from "@/assets/pruuf-favicon.png";
@@ -29,9 +33,15 @@ const mainItems = [
   { title: "Dashboard", url: "/dashboard", icon: LayoutDashboard },
   { title: "Smart Docs", url: "/smartdocs/create", icon: FileText },
   { title: "Templates", url: "/templates", icon: Layout },
-  { title: "Issuance Center", url: "/issuance", icon: Send },
   { title: "Activity", url: "/activity", icon: Activity },
   { title: "Analytics", url: "/analytics", icon: BarChart3 },
+];
+
+const issuanceSubItems = [
+  { title: "Start Issuance", url: "/issuance", icon: PlayCircle },
+  { title: "CSV Upload & Issue", url: "/issuance/csv", icon: FileSpreadsheet },
+  { title: "Print Profiles (TREAP Printer)", url: "/issuance/print-profiles", icon: Printer },
+  { title: "Issuance Jobs", url: "/issuance/jobs", icon: ClipboardList },
 ];
 
 const adminItems = [
@@ -60,6 +70,9 @@ export const PruufSidebar = ({
   onMobileMenuClose?: () => void;
 }) => {
   const location = useLocation();
+  const [issuanceOpen, setIssuanceOpen] = useState(
+    location.pathname.startsWith("/issuance")
+  );
   const [devToolsOpen, setDevToolsOpen] = useState(
     location.pathname.startsWith("/dev")
   );
@@ -125,6 +138,54 @@ export const PruufSidebar = ({
                   <span className={cn("md:hidden lg:inline", isCollapsed && "lg:hidden")}>{item.title}</span>
                 </NavLink>
               ))}
+
+              {/* Issuance Center with sub-items */}
+              <button
+                onClick={() => setIssuanceOpen(!issuanceOpen)}
+                className={cn(
+                  "flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-150 w-full",
+                  "hover:bg-blue-100/80 hover:text-pruuf-blue text-foreground",
+                  "md:justify-center lg:justify-start",
+                  isCollapsed && "lg:justify-center",
+                  issuanceOpen && "text-pruuf-blue"
+                )}
+                title="Issuance Center"
+              >
+                <Send className="h-5 w-5 flex-shrink-0" />
+                <span className={cn("flex-1 text-left md:hidden lg:inline", isCollapsed && "lg:hidden")}>Issuance Center</span>
+                <ChevronDown className={cn(
+                  "h-4 w-4 transition-transform md:hidden lg:inline",
+                  isCollapsed && "lg:hidden",
+                  issuanceOpen && "rotate-180"
+                )} />
+              </button>
+              {issuanceOpen && (
+                <div className={cn("ml-4 space-y-1", "md:ml-0 lg:ml-4", isCollapsed && "lg:ml-0")}>
+                  {issuanceSubItems.map((item) => (
+                    <NavLink
+                      key={item.url}
+                      to={item.url}
+                      end={item.url === "/issuance"}
+                      onClick={onMobileMenuClose}
+                      className={({ isActive }) =>
+                        cn(
+                          "flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-150 relative",
+                          "hover:bg-blue-100/80 hover:text-pruuf-blue",
+                          isActive
+                            ? "text-pruuf-blue bg-blue-100/60 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-1 before:bg-pruuf-blue before:rounded-r"
+                            : "text-muted-foreground",
+                          "md:justify-center lg:justify-start",
+                          isCollapsed && "lg:justify-center"
+                        )
+                      }
+                      title={item.title}
+                    >
+                      <item.icon className="h-4 w-4 flex-shrink-0" />
+                      <span className={cn("md:hidden lg:inline", isCollapsed && "lg:hidden")}>{item.title}</span>
+                    </NavLink>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
 
