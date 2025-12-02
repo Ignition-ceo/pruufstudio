@@ -33,6 +33,9 @@ const App = () => (
               <Route path="/templates" element={<Templates />} />
               <Route path="/templates/:id" element={<TemplateDetail />} />
               <Route path="/issuance" element={<IssuanceCenter />} />
+              <Route path="/issuance/csv" element={<IssuanceCenter />} />
+              <Route path="/issuance/print-profiles" element={<IssuanceCenter />} />
+              <Route path="/issuance/jobs" element={<IssuanceCenter />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
