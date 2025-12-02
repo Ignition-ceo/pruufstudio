@@ -34,10 +34,11 @@ const mainItems = [
   { title: "Analytics", url: "/analytics", icon: BarChart3 },
 ];
 
-const settingsSubItems = [
-  { title: "Organization", url: "/settings/organization", icon: Building2 },
-  { title: "Team", url: "/settings/team", icon: Users },
-  { title: "Support", url: "/settings/support", icon: HelpCircle },
+const adminItems = [
+  { title: "Organization", url: "/organization", icon: Building2 },
+  { title: "Team", url: "/team", icon: Users },
+  { title: "Support", url: "/support", icon: HelpCircle },
+  { title: "Settings", url: "/settings", icon: Settings },
 ];
 
 const devToolsSubItems = [
@@ -59,9 +60,6 @@ export const PruufSidebar = ({
   onMobileMenuClose?: () => void;
 }) => {
   const location = useLocation();
-  const [settingsOpen, setSettingsOpen] = useState(
-    location.pathname.startsWith("/settings")
-  );
   const [devToolsOpen, setDevToolsOpen] = useState(
     location.pathname.startsWith("/dev")
   );
@@ -136,52 +134,28 @@ export const PruufSidebar = ({
               ADMIN
             </h3>
             <div className="space-y-1">
-              {/* Settings with sub-items */}
-              <button
-                onClick={() => setSettingsOpen(!settingsOpen)}
-                className={cn(
-                  "flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-150 w-full",
-                  "hover:bg-blue-100/80 hover:text-pruuf-blue text-foreground",
-                  "md:justify-center lg:justify-start",
-                  isCollapsed && "lg:justify-center",
-                  settingsOpen && "text-pruuf-blue"
-                )}
-                title="Settings"
-              >
-                <Settings className="h-5 w-5 flex-shrink-0" />
-                <span className={cn("flex-1 text-left md:hidden lg:inline", isCollapsed && "lg:hidden")}>Settings</span>
-                <ChevronDown className={cn(
-                  "h-4 w-4 transition-transform md:hidden lg:inline",
-                  isCollapsed && "lg:hidden",
-                  settingsOpen && "rotate-180"
-                )} />
-              </button>
-              {settingsOpen && (
-                <div className={cn("ml-4 space-y-1", "md:ml-0 lg:ml-4", isCollapsed && "lg:ml-0")}>
-                  {settingsSubItems.map((item) => (
-                    <NavLink
-                      key={item.url}
-                      to={item.url}
-                      onClick={onMobileMenuClose}
-                      className={({ isActive }) =>
-                        cn(
-                          "flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-150 relative",
-                          "hover:bg-blue-100/80 hover:text-pruuf-blue",
-                          isActive
-                            ? "text-pruuf-blue bg-blue-100/60 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-1 before:bg-pruuf-blue before:rounded-r"
-                            : "text-muted-foreground",
-                          "md:justify-center lg:justify-start",
-                          isCollapsed && "lg:justify-center"
-                        )
-                      }
-                      title={item.title}
-                    >
-                      <item.icon className="h-4 w-4 flex-shrink-0" />
-                      <span className={cn("md:hidden lg:inline", isCollapsed && "lg:hidden")}>{item.title}</span>
-                    </NavLink>
-                  ))}
-                </div>
-              )}
+              {adminItems.map((item) => (
+                <NavLink
+                  key={item.url}
+                  to={item.url}
+                  onClick={onMobileMenuClose}
+                  className={({ isActive }) =>
+                    cn(
+                      "flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-150 relative",
+                      "hover:bg-blue-100/80 hover:text-pruuf-blue",
+                      isActive
+                        ? "text-pruuf-blue bg-blue-100/60 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-1 before:bg-pruuf-blue before:rounded-r"
+                        : "text-foreground",
+                      "md:justify-center lg:justify-start",
+                      isCollapsed && "lg:justify-center"
+                    )
+                  }
+                  title={item.title}
+                >
+                  <item.icon className="h-5 w-5 flex-shrink-0" />
+                  <span className={cn("md:hidden lg:inline", isCollapsed && "lg:hidden")}>{item.title}</span>
+                </NavLink>
+              ))}
             </div>
           </div>
 
