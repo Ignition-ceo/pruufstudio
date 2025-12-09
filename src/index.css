@@ -59,8 +59,13 @@ All colors MUST be HSL.
     --kpi-amber-from: 38 92% 50%; /* Amber #F59E0B */
     --kpi-amber-to: 38 92% 62%; /* Light Amber */
 
+    /* Enterprise brand colors */
+    --brand-grey: 0 0% 87%; /* #DDDDDD */
+    --brand-muted: 215 16% 47%; /* #64748B */
+    --hero-bg: 220 27% 98%; /* #F7F9FC */
+    
     /* Custom gradients */
-    --gradient-hero: linear-gradient(to bottom, transparent 0%, transparent 30%, hsl(0 0% 100%) 50%), linear-gradient(90deg, hsl(217 100% 96%) 0%, hsl(120 100% 97%) 100%);
+    --gradient-hero: radial-gradient(ellipse 80% 60% at 0% 0%, hsl(225 98% 41% / 0.06) 0%, transparent 60%), linear-gradient(180deg, hsl(var(--hero-bg)) 0%, hsl(var(--hero-bg)) 100%);
     --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(217 100% 98%) 100%);
     --gradient-accent: linear-gradient(135deg, hsl(217 100% 50%) 0%, hsl(120 100% 50%) 100%);
     --gradient-text-blue-green: linear-gradient(135deg, hsl(221, 99%, 41%) 0%, hsl(221, 99%, 41%) 30%, hsl(175, 70%, 45%) 50%, hsl(221, 99%, 41%) 70%, hsl(221, 99%, 41%) 100%);
@@ -75,6 +80,7 @@ All colors MUST be HSL.
     --shadow-card-hover: 0 8px 24px 0 hsl(217 100% 50% / 0.15);
     --shadow-ai-glow: 0 0 40px hsl(217 100% 50% / 0.3), 0 0 80px hsl(217 100% 50% / 0.1);
     --shadow-ai-strong: 0 20px 60px -10px hsl(217 100% 50% / 0.4);
+    --shadow-hero-card: 0 18px 40px rgba(15, 23, 42, 0.06);
 
     --sidebar-background: 0 0% 100%;
     --sidebar-foreground: 220 15% 20%;
