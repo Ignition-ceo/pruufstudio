@@ -9,9 +9,9 @@ const issuanceOptions = [
   {
     id: "individual",
     title: "Issue to Individuals (Quick)",
-    description: "Issue a credential to a single user using a fast guided modal.",
+    description: "Issue a Smart Doc to a single recipient using a fast guided modal.",
     icon: UserCheck,
-    iconColor: "text-emerald-500",
+    iconColor: "text-emerald-600",
     iconBg: "bg-emerald-50",
     buttonText: "Issue Now",
     action: "modal",
@@ -21,8 +21,8 @@ const issuanceOptions = [
     title: "Issue to a Group (CSV Upload)",
     description: "Best for cohorts, batches, or annual graduating classes.",
     icon: Users,
-    iconColor: "text-brand",
-    iconBg: "bg-blue-50",
+    iconColor: "text-primary",
+    iconBg: "bg-accent",
     buttonText: "Go to CSV Upload",
     action: "navigate",
     route: "/issuance/csv",
@@ -30,9 +30,9 @@ const issuanceOptions = [
   {
     id: "treap",
     title: "Invisible Issuance (TREAP)",
-    description: "Bind your printing workflow to automatic credential issuance.",
+    description: "Bind your printing workflow to automatic Smart Doc issuance.",
     icon: Printer,
-    iconColor: "text-violet-500",
+    iconColor: "text-violet-600",
     iconBg: "bg-violet-50",
     buttonText: "Go to Invisible Issuance",
     action: "navigate",
@@ -54,48 +54,48 @@ const StartIssuance = () => {
 
   return (
     <div className="min-h-screen bg-hero-bg">
-      <div className="container mx-auto px-6 py-12">
+      <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 max-w-6xl">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-3xl font-semibold text-foreground mb-2">
+        <div className="mb-8 sm:mb-12">
+          <h1 className="text-2xl sm:text-3xl font-semibold text-foreground tracking-tight">
             Start Issuance
           </h1>
-          <p className="text-muted-foreground text-lg">
-            Choose how you want to issue credentials
+          <p className="text-muted-foreground mt-1 text-sm sm:text-base">
+            Choose how you want to issue Smart Docs
           </p>
         </div>
 
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
           {issuanceOptions.map((option) => {
             const Icon = option.icon;
             return (
               <Card
                 key={option.id}
-                className="bg-card border border-brand-grey rounded-3xl shadow-hero-card hover:shadow-lg transition-shadow duration-200"
+                className="bg-card border border-border rounded-2xl shadow-[0_2px_12px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)] transition-shadow duration-200"
               >
-                <CardContent className="p-8 flex flex-col items-center text-center h-full">
+                <CardContent className="p-6 sm:p-8 flex flex-col h-full">
                   {/* Icon */}
                   <div
-                    className={`w-16 h-16 rounded-2xl ${option.iconBg} flex items-center justify-center mb-6`}
+                    className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl ${option.iconBg} flex items-center justify-center mb-5`}
                   >
-                    <Icon className={`w-8 h-8 ${option.iconColor}`} />
+                    <Icon className={`w-6 h-6 sm:w-7 sm:h-7 ${option.iconColor}`} />
                   </div>
 
                   {/* Title */}
-                  <h2 className="text-xl font-semibold text-foreground mb-3">
+                  <h2 className="text-lg sm:text-xl font-semibold text-foreground mb-2">
                     {option.title}
                   </h2>
 
                   {/* Description */}
-                  <p className="text-muted-foreground text-sm mb-6 flex-grow">
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-grow">
                     {option.description}
                   </p>
 
                   {/* Button */}
                   <Button
                     onClick={() => handleCardAction(option)}
-                    className="w-full rounded-full bg-brand hover:bg-brand/90 text-white font-medium py-3"
+                    className="w-full rounded-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium h-11"
                   >
                     {option.buttonText}
                   </Button>
