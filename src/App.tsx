@@ -12,6 +12,7 @@ import SmartDocDocuments from "./pages/SmartDocDocuments";
 import Templates from "./pages/Templates";
 import TemplateDetail from "./pages/TemplateDetail";
 import IssuanceCenter from "./pages/IssuanceCenter";
+import StartIssuance from "./pages/StartIssuance";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -25,14 +26,14 @@ const App = () => (
         <BrowserRouter>
           <Layout>
             <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/smartdocs/create" element={<SmartDocCreate />} />
               <Route path="/smartdocs/documents" element={<SmartDocDocuments />} />
               <Route path="/templates" element={<Templates />} />
               <Route path="/templates/:id" element={<TemplateDetail />} />
-              <Route path="/issuance" element={<IssuanceCenter />} />
+              <Route path="/issuance" element={<StartIssuance />} />
               <Route path="/issuance/csv" element={<IssuanceCenter />} />
               <Route path="/issuance/print-profiles" element={<IssuanceCenter />} />
               <Route path="/issuance/jobs" element={<IssuanceCenter />} />
