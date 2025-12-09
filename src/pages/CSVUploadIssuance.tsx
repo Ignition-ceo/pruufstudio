@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { ChevronRight, Upload, Search, Filter } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -111,9 +112,9 @@ const CSVUploadIssuance = () => {
       <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 max-w-6xl">
         {/* Breadcrumb */}
         <nav className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
-          <span className="hover:text-foreground cursor-pointer transition-colors">
+          <Link to="/issuance" className="hover:text-foreground transition-colors">
             Issuance Center
-          </span>
+          </Link>
           <ChevronRight className="w-4 h-4" />
           <span className="text-foreground font-medium">CSV Upload & Issue</span>
         </nav>
