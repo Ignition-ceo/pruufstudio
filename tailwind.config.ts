@@ -94,6 +94,7 @@ export default {
       boxShadow: {
         "card": "var(--shadow-card)",
         "card-hover": "var(--shadow-card-hover)",
+        "hero-card": "var(--shadow-hero-card)",
       },
       borderRadius: {
         lg: "var(--radius)",
