@@ -1,55 +1,46 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { UserCheck, Users, Printer } from "lucide-react";
+import { Users, Printer, Activity } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { IndividualIssuanceModal } from "@/components/IndividualIssuanceModal";
 
 const issuanceOptions = [
   {
-    id: "individual",
-    title: "Issue to Individuals (Quick)",
-    description: "Issue a Smart Doc to a single recipient using a fast guided modal.",
-    icon: UserCheck,
-    iconColor: "text-emerald-600",
-    iconBg: "bg-emerald-50",
-    buttonText: "Issue Now",
-    action: "modal",
-  },
-  {
-    id: "group",
-    title: "Issue to a Group (CSV Upload)",
-    description: "Best for cohorts, batches, or annual graduating classes.",
+    id: "csv",
+    title: "CSV Upload & Issue",
+    description: "Issue Smart Docs in bulk using a verified CSV dataset.",
     icon: Users,
     iconColor: "text-primary",
-    iconBg: "bg-accent",
-    buttonText: "Go to CSV Upload",
-    action: "navigate",
+    iconBg: "bg-primary/10",
+    buttonText: "Start CSV Issuance",
     route: "/issuance/csv",
   },
   {
     id: "treap",
     title: "Invisible Issuance (TREAP)",
-    description: "Bind your printing workflow to automatic Smart Doc issuance.",
+    description: "Issue Smart Docs automatically when you print using the PRUUF virtual printer.",
     icon: Printer,
     iconColor: "text-violet-600",
     iconBg: "bg-violet-50",
-    buttonText: "Go to Invisible Issuance",
-    action: "navigate",
-    route: "/issuance/print-profiles",
+    buttonText: "Configure Invisible Issuance",
+    route: "/issuance/treap",
+  },
+  {
+    id: "jobs",
+    title: "Issuance Jobs & History",
+    description: "Review all Smart Doc issuance jobs, status, and logs.",
+    icon: Activity,
+    iconColor: "text-amber-600",
+    iconBg: "bg-amber-50",
+    buttonText: "View Issuance Jobs",
+    route: "/issuance/jobs",
   },
 ];
 
 const StartIssuance = () => {
   const navigate = useNavigate();
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleCardAction = (option: typeof issuanceOptions[0]) => {
-    if (option.action === "modal") {
-      setIsModalOpen(true);
-    } else if (option.action === "navigate" && option.route) {
-      navigate(option.route);
-    }
+  const handleCardAction = (route: string) => {
+    navigate(route);
   };
 
   return (
@@ -58,7 +49,7 @@ const StartIssuance = () => {
         {/* Header */}
         <div className="mb-8 sm:mb-12">
           <h1 className="text-2xl sm:text-3xl font-semibold text-foreground tracking-tight">
-            Start Issuance
+            Issuance Center
           </h1>
           <p className="text-muted-foreground mt-1 text-sm sm:text-base">
             Choose how you want to issue Smart Docs
@@ -94,7 +85,7 @@ const StartIssuance = () => {
 
                   {/* Button */}
                   <Button
-                    onClick={() => handleCardAction(option)}
+                    onClick={() => handleCardAction(option.route)}
                     className="w-full rounded-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium h-11"
                   >
                     {option.buttonText}
@@ -105,12 +96,6 @@ const StartIssuance = () => {
           })}
         </div>
       </div>
-
-      {/* Individual Issuance Modal */}
-      <IndividualIssuanceModal
-        open={isModalOpen}
-        onOpenChange={setIsModalOpen}
-      />
     </div>
   );
 };
