@@ -38,7 +38,6 @@ const mainItems = [
 ];
 
 const issuanceSubItems = [
-  { title: "Start Issuance", url: "/issuance", icon: PlayCircle },
   { title: "CSV Upload & Issue", url: "/issuance/csv", icon: FileSpreadsheet },
   { title: "Invisible Issuance (TREAP)", url: "/issuance/treap", icon: Printer },
   { title: "Issuance Jobs", url: "/issuance/jobs", icon: ClipboardList },
