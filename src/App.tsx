@@ -15,6 +15,7 @@ import StartIssuance from "./pages/StartIssuance";
 import CSVUploadIssuance from "./pages/CSVUploadIssuance";
 import InvisibleIssuance from "./pages/InvisibleIssuance";
 import IssuanceJobs from "./pages/IssuanceJobs";
+import Organization from "./pages/Organization";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -39,6 +40,8 @@ const App = () => (
               <Route path="/issuance/csv" element={<CSVUploadIssuance />} />
               <Route path="/issuance/treap" element={<InvisibleIssuance />} />
               <Route path="/issuance/jobs" element={<IssuanceJobs />} />
+              <Route path="/organization" element={<Organization />} />
+              <Route path="/organization/:id" element={<Organization />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
