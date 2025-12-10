@@ -1,8 +1,6 @@
 import { useState } from "react";
 import {
-  Building2,
   Copy,
-  Upload,
   Plus,
   Pencil,
   Ban,
@@ -10,21 +8,12 @@ import {
   Award,
   Users,
   Check,
+  Settings,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
 import { Badge } from "@/components/ui/badge";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import {
   Table,
   TableBody,
@@ -40,6 +29,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { AddDepartmentModal } from "@/components/AddDepartmentModal";
+import { EditOrganizationModal } from "@/components/EditOrganizationModal";
 import { toast } from "sonner";
 
 interface Department {
@@ -130,9 +120,10 @@ export default function Organization() {
   const [departments, setDepartments] = useState<Department[]>(mockDepartments);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [editingDepartment, setEditingDepartment] = useState<Department | null>(null);
+  const [isEditOrgModalOpen, setIsEditOrgModalOpen] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  // Branding state
+  // Organization branding state
   const [orgName, setOrgName] = useState(mockOrganization.name);
   const [shortCode, setShortCode] = useState(mockOrganization.shortCode);
   const [category, setCategory] = useState(mockOrganization.category);
@@ -200,8 +191,17 @@ export default function Organization() {
     toast.success("Department status updated");
   };
 
-  const handleSaveBranding = () => {
-    toast.success("Branding changes saved");
+  const handleSaveOrganization = (data: {
+    name: string;
+    shortCode: string;
+    category: string;
+    description: string;
+  }) => {
+    setOrgName(data.name);
+    setShortCode(data.shortCode);
+    setCategory(data.category);
+    setDescription(data.description);
+    toast.success("Organization profile updated");
   };
 
   return (
@@ -226,18 +226,18 @@ export default function Organization() {
                 {mockOrganization.logo ? (
                   <img
                     src={mockOrganization.logo}
-                    alt={mockOrganization.name}
+                    alt={orgName}
                     className="h-12 w-12 object-contain rounded-lg"
                   />
                 ) : (
                   <span className="text-xl font-bold text-primary">
-                    {getInitials(mockOrganization.name)}
+                    {getInitials(orgName)}
                   </span>
                 )}
               </div>
               <div>
                 <h2 className="text-xl font-semibold text-foreground">
-                  {mockOrganization.name}
+                  {orgName}
                 </h2>
                 <p className="text-sm text-muted-foreground">
                   {mockOrganization.type} • Created on {formatDate(mockOrganization.createdAt)}
@@ -272,7 +272,7 @@ export default function Organization() {
               </TooltipProvider>
             </div>
 
-            {/* Right: Stats + Status */}
+            {/* Right: Stats + Status + Edit Button */}
             <div className="flex flex-wrap items-center gap-3">
               <div className="flex items-center gap-1.5 px-3 py-1.5 bg-muted/50 rounded-full text-sm">
                 <Users className="h-4 w-4 text-muted-foreground" />
@@ -299,190 +299,121 @@ export default function Organization() {
               >
                 {mockOrganization.status}
               </Badge>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setIsEditOrgModalOpen(true)}
+                className="ml-2"
+              >
+                <Settings className="h-4 w-4 mr-1.5" />
+                Edit Branding & Profile
+              </Button>
             </div>
           </div>
         </CardContent>
       </Card>
 
-      {/* Two Column Layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Departments Card */}
-        <Card className="border border-border shadow-sm lg:order-1 order-1">
-          <CardHeader className="flex flex-row items-center justify-between pb-4">
-            <CardTitle className="text-lg font-semibold">Departments</CardTitle>
-            <Button size="sm" onClick={() => setIsAddModalOpen(true)}>
-              <Plus className="h-4 w-4 mr-1.5" />
-              Add Department
-            </Button>
-          </CardHeader>
-          <CardContent className="pt-0">
-            <div className="rounded-lg border border-border overflow-hidden">
-              <Table>
-                <TableHeader>
-                  <TableRow className="bg-muted/30">
-                    <TableHead className="font-medium">Department</TableHead>
-                    <TableHead className="font-medium hidden sm:table-cell">Code</TableHead>
-                    <TableHead className="font-medium hidden md:table-cell">Type</TableHead>
-                    <TableHead className="font-medium text-center hidden sm:table-cell">Templates</TableHead>
-                    <TableHead className="font-medium text-center hidden sm:table-cell">Issued</TableHead>
-                    <TableHead className="font-medium text-center">Status</TableHead>
-                    <TableHead className="font-medium text-right">Actions</TableHead>
+      {/* Full-Width Departments Card */}
+      <Card className="border border-border shadow-sm">
+        <CardHeader className="flex flex-row items-center justify-between pb-4">
+          <CardTitle className="text-lg font-semibold">Departments</CardTitle>
+          <Button size="sm" onClick={() => setIsAddModalOpen(true)}>
+            <Plus className="h-4 w-4 mr-1.5" />
+            Add Department
+          </Button>
+        </CardHeader>
+        <CardContent className="pt-0">
+          <div className="rounded-lg border border-border overflow-x-auto">
+            <Table>
+              <TableHeader>
+                <TableRow className="bg-muted/30">
+                  <TableHead className="font-medium">Department</TableHead>
+                  <TableHead className="font-medium">Code</TableHead>
+                  <TableHead className="font-medium">Type</TableHead>
+                  <TableHead className="font-medium text-center">Templates</TableHead>
+                  <TableHead className="font-medium text-center">Issued</TableHead>
+                  <TableHead className="font-medium text-center">Status</TableHead>
+                  <TableHead className="font-medium text-right">Actions</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {departments.map((dept) => (
+                  <TableRow key={dept.id} className="hover:bg-muted/20">
+                    <TableCell className="font-medium">{dept.name}</TableCell>
+                    <TableCell className="text-muted-foreground">
+                      {dept.code || "—"}
+                    </TableCell>
+                    <TableCell className="text-muted-foreground">
+                      {dept.type}
+                    </TableCell>
+                    <TableCell className="text-center">
+                      {dept.templateCount}
+                    </TableCell>
+                    <TableCell className="text-center">
+                      {dept.issuedCount}
+                    </TableCell>
+                    <TableCell className="text-center">
+                      <Badge
+                        variant={dept.active ? "default" : "secondary"}
+                        className={
+                          dept.active
+                            ? "bg-green-100 text-green-700 hover:bg-green-100"
+                            : "bg-muted text-muted-foreground"
+                        }
+                      >
+                        {dept.active ? "Active" : "Inactive"}
+                      </Badge>
+                    </TableCell>
+                    <TableCell className="text-right">
+                      <div className="flex items-center justify-end gap-1">
+                        <TooltipProvider>
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <Button
+                                variant="ghost"
+                                size="icon"
+                                className="h-8 w-8"
+                                onClick={() => setEditingDepartment(dept)}
+                              >
+                                <Pencil className="h-4 w-4" />
+                              </Button>
+                            </TooltipTrigger>
+                            <TooltipContent>Edit</TooltipContent>
+                          </Tooltip>
+                        </TooltipProvider>
+                        <TooltipProvider>
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <Button
+                                variant="ghost"
+                                size="icon"
+                                className="h-8 w-8"
+                                onClick={() => toggleDepartmentStatus(dept.id)}
+                              >
+                                <Ban className="h-4 w-4" />
+                              </Button>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              {dept.active ? "Disable" : "Enable"}
+                            </TooltipContent>
+                          </Tooltip>
+                        </TooltipProvider>
+                      </div>
+                    </TableCell>
                   </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {departments.map((dept) => (
-                    <TableRow key={dept.id} className="hover:bg-muted/20">
-                      <TableCell className="font-medium">{dept.name}</TableCell>
-                      <TableCell className="text-muted-foreground hidden sm:table-cell">
-                        {dept.code || "—"}
-                      </TableCell>
-                      <TableCell className="text-muted-foreground hidden md:table-cell">
-                        {dept.type}
-                      </TableCell>
-                      <TableCell className="text-center hidden sm:table-cell">
-                        {dept.templateCount}
-                      </TableCell>
-                      <TableCell className="text-center hidden sm:table-cell">
-                        {dept.issuedCount}
-                      </TableCell>
-                      <TableCell className="text-center">
-                        <Badge
-                          variant={dept.active ? "default" : "secondary"}
-                          className={
-                            dept.active
-                              ? "bg-green-100 text-green-700 hover:bg-green-100"
-                              : "bg-muted text-muted-foreground"
-                          }
-                        >
-                          {dept.active ? "Active" : "Inactive"}
-                        </Badge>
-                      </TableCell>
-                      <TableCell className="text-right">
-                        <div className="flex items-center justify-end gap-1">
-                          <TooltipProvider>
-                            <Tooltip>
-                              <TooltipTrigger asChild>
-                                <Button
-                                  variant="ghost"
-                                  size="icon"
-                                  className="h-8 w-8"
-                                  onClick={() => setEditingDepartment(dept)}
-                                >
-                                  <Pencil className="h-4 w-4" />
-                                </Button>
-                              </TooltipTrigger>
-                              <TooltipContent>Edit</TooltipContent>
-                            </Tooltip>
-                          </TooltipProvider>
-                          <TooltipProvider>
-                            <Tooltip>
-                              <TooltipTrigger asChild>
-                                <Button
-                                  variant="ghost"
-                                  size="icon"
-                                  className="h-8 w-8"
-                                  onClick={() => toggleDepartmentStatus(dept.id)}
-                                >
-                                  <Ban className="h-4 w-4" />
-                                </Button>
-                              </TooltipTrigger>
-                              <TooltipContent>
-                                {dept.active ? "Disable" : "Enable"}
-                              </TooltipContent>
-                            </Tooltip>
-                          </TooltipProvider>
-                        </div>
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                  {departments.length === 0 && (
-                    <TableRow>
-                      <TableCell colSpan={7} className="text-center py-8 text-muted-foreground">
-                        No departments yet. Add your first department to get started.
-                      </TableCell>
-                    </TableRow>
-                  )}
-                </TableBody>
-              </Table>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Branding & Profile Card */}
-        <Card className="border border-border shadow-sm lg:order-2 order-2">
-          <CardHeader className="pb-4">
-            <CardTitle className="text-lg font-semibold">Branding & Profile</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-5">
-            {/* Logo Upload */}
-            <div className="space-y-2">
-              <Label>Organization Logo</Label>
-              <div className="flex items-center gap-4">
-                <div className="h-16 w-16 rounded-xl bg-muted/50 border-2 border-dashed border-border flex items-center justify-center">
-                  <Upload className="h-6 w-6 text-muted-foreground" />
-                </div>
-                <Button variant="outline" size="sm">
-                  Upload Logo
-                </Button>
-              </div>
-            </div>
-
-            {/* Organization Name */}
-            <div className="space-y-2">
-              <Label htmlFor="org-name">Organization Name</Label>
-              <Input
-                id="org-name"
-                value={orgName}
-                onChange={(e) => setOrgName(e.target.value)}
-              />
-            </div>
-
-            {/* Short Code */}
-            <div className="space-y-2">
-              <Label htmlFor="short-code">Short Code / Label</Label>
-              <Input
-                id="short-code"
-                value={shortCode}
-                onChange={(e) => setShortCode(e.target.value)}
-                placeholder="e.g. ACME-U"
-              />
-            </div>
-
-            {/* Category */}
-            <div className="space-y-2">
-              <Label htmlFor="category">Organization Category</Label>
-              <Select value={category} onValueChange={setCategory}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Select category" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="Education">Education</SelectItem>
-                  <SelectItem value="Financial">Financial</SelectItem>
-                  <SelectItem value="Government">Government</SelectItem>
-                  <SelectItem value="Healthcare">Healthcare</SelectItem>
-                  <SelectItem value="Other">Other</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-
-            {/* Description */}
-            <div className="space-y-2">
-              <Label htmlFor="org-desc">Description</Label>
-              <Textarea
-                id="org-desc"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                rows={3}
-                placeholder="Brief description of your organization..."
-              />
-            </div>
-
-            <Button onClick={handleSaveBranding} className="w-full">
-              Save Changes
-            </Button>
-          </CardContent>
-        </Card>
-      </div>
+                ))}
+                {departments.length === 0 && (
+                  <TableRow>
+                    <TableCell colSpan={7} className="text-center py-8 text-muted-foreground">
+                      No departments yet. Add your first department to get started.
+                    </TableCell>
+                  </TableRow>
+                )}
+              </TableBody>
+            </Table>
+          </div>
+        </CardContent>
+      </Card>
 
       {/* Issuance Capabilities */}
       <Card className="border border-border shadow-sm">
@@ -561,6 +492,19 @@ export default function Organization() {
               }
             : null
         }
+      />
+
+      {/* Edit Organization Modal */}
+      <EditOrganizationModal
+        open={isEditOrgModalOpen}
+        onOpenChange={setIsEditOrgModalOpen}
+        onSubmit={handleSaveOrganization}
+        initialData={{
+          name: orgName,
+          shortCode,
+          category,
+          description,
+        }}
       />
     </div>
   );
