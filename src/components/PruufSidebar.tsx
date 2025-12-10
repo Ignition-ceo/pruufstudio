@@ -139,25 +139,42 @@ export const PruufSidebar = ({
               ))}
 
               {/* Issuance Center with sub-items */}
-              <button
-                onClick={() => setIssuanceOpen(!issuanceOpen)}
-                className={cn(
-                  "flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-150 w-full",
-                  "hover:bg-blue-100/80 hover:text-pruuf-blue text-foreground",
-                  "md:justify-center lg:justify-start",
-                  isCollapsed && "lg:justify-center",
-                  issuanceOpen && "text-pruuf-blue"
-                )}
-                title="Issuance Center"
-              >
-                <Send className="h-5 w-5 flex-shrink-0" />
-                <span className={cn("flex-1 text-left md:hidden lg:inline", isCollapsed && "lg:hidden")}>Issuance Center</span>
-                <ChevronDown className={cn(
-                  "h-4 w-4 transition-transform md:hidden lg:inline",
-                  isCollapsed && "lg:hidden",
-                  issuanceOpen && "rotate-180"
-                )} />
-              </button>
+              <div className="flex items-center">
+                <NavLink
+                  to="/issuance"
+                  end
+                  onClick={onMobileMenuClose}
+                  className={({ isActive }) =>
+                    cn(
+                      "flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-150 flex-1",
+                      "hover:bg-blue-100/80 hover:text-pruuf-blue",
+                      isActive
+                        ? "text-pruuf-blue bg-blue-100/60 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-1 before:bg-pruuf-blue before:rounded-r relative"
+                        : "text-foreground",
+                      "md:justify-center lg:justify-start",
+                      isCollapsed && "lg:justify-center"
+                    )
+                  }
+                  title="Issuance Center"
+                >
+                  <Send className="h-5 w-5 flex-shrink-0" />
+                  <span className={cn("md:hidden lg:inline", isCollapsed && "lg:hidden")}>Issuance Center</span>
+                </NavLink>
+                <button
+                  onClick={() => setIssuanceOpen(!issuanceOpen)}
+                  className={cn(
+                    "p-2 rounded-lg hover:bg-blue-100/80 hover:text-pruuf-blue text-muted-foreground transition-all duration-150",
+                    "md:hidden lg:flex",
+                    isCollapsed && "lg:hidden"
+                  )}
+                  title="Toggle submenu"
+                >
+                  <ChevronDown className={cn(
+                    "h-4 w-4 transition-transform",
+                    issuanceOpen && "rotate-180"
+                  )} />
+                </button>
+              </div>
               {issuanceOpen && (
                 <div className={cn("ml-4 space-y-1", "md:ml-0 lg:ml-4", isCollapsed && "lg:ml-0")}>
                   {issuanceSubItems.map((item) => (
