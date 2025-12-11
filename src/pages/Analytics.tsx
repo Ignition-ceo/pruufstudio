@@ -39,7 +39,7 @@ import {
   Pie,
   Legend,
 } from "recharts";
-import GeometricGlobe from "@/components/GeometricGlobe";
+
 
 // Mock data for charts
 const issuanceOverTimeData = [
@@ -222,82 +222,62 @@ export default function Analytics() {
         {/* KPI Row */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 md:gap-4 mb-6">
           {/* Total Active Credentials */}
-          <div className="relative bg-gradient-to-br from-[hsl(var(--kpi-indigo-from))] to-[hsl(var(--kpi-indigo-to))] rounded-xl px-4 py-4 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200 overflow-hidden">
-            <div className="absolute top-0 right-0 w-20 h-20 bg-white/10 rounded-full blur-2xl"></div>
-            <GeometricGlobe color="#ffffff" />
-            <div className="relative z-10 space-y-2">
-              <p className="text-xs uppercase tracking-wide text-white/80 font-semibold">
-                Total Active Credentials
-              </p>
-              <p className="text-2xl font-bold text-white">1,284</p>
-              <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-white/20 text-white">
-                <TrendingUp className="h-3 w-3" />
-                <span className="text-xs font-semibold">+12%</span>
-              </div>
+          <div className="bg-[#F7F7F9] border border-[#E5E7EB] rounded-xl px-4 py-4 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">
+            <p className="text-xs uppercase tracking-wide text-muted-foreground font-medium mb-2">
+              Total Active Credentials
+            </p>
+            <p className="text-2xl font-bold text-foreground mb-2">1,284</p>
+            <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700">
+              <TrendingUp className="h-3 w-3" />
+              <span className="text-xs font-semibold">+12%</span>
             </div>
           </div>
 
           {/* Credentials Issued */}
-          <div className="relative bg-gradient-to-br from-[hsl(var(--kpi-pink-from))] to-[hsl(var(--kpi-pink-to))] rounded-xl px-4 py-4 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200 overflow-hidden">
-            <div className="absolute top-0 right-0 w-20 h-20 bg-white/10 rounded-full blur-2xl"></div>
-            <GeometricGlobe color="#ffffff" />
-            <div className="relative z-10 space-y-2">
-              <p className="text-xs uppercase tracking-wide text-white/80 font-semibold">
-                Issued (Selected Period)
-              </p>
-              <p className="text-2xl font-bold text-white">428</p>
-              <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-white/20 text-white">
-                <TrendingUp className="h-3 w-3" />
-                <span className="text-xs font-semibold">+23%</span>
-              </div>
+          <div className="bg-[#F7F7F9] border border-[#E5E7EB] rounded-xl px-4 py-4 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">
+            <p className="text-xs uppercase tracking-wide text-muted-foreground font-medium mb-2">
+              Issued (Selected Period)
+            </p>
+            <p className="text-2xl font-bold text-foreground mb-2">428</p>
+            <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700">
+              <TrendingUp className="h-3 w-3" />
+              <span className="text-xs font-semibold">+23%</span>
             </div>
           </div>
 
           {/* Smart Docs Created */}
-          <div className="relative bg-gradient-to-br from-[hsl(var(--kpi-blue-from))] to-[hsl(var(--kpi-blue-to))] rounded-xl px-4 py-4 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200 overflow-hidden">
-            <div className="absolute top-0 right-0 w-20 h-20 bg-white/10 rounded-full blur-2xl"></div>
-            <GeometricGlobe color="#ffffff" />
-            <div className="relative z-10 space-y-2">
-              <p className="text-xs uppercase tracking-wide text-white/80 font-semibold">
-                Smart Docs Created
-              </p>
-              <p className="text-2xl font-bold text-white">56</p>
-              <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-white/20 text-white">
-                <TrendingUp className="h-3 w-3" />
-                <span className="text-xs font-semibold">+8%</span>
-              </div>
+          <div className="bg-[#F7F7F9] border border-[#E5E7EB] rounded-xl px-4 py-4 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">
+            <p className="text-xs uppercase tracking-wide text-muted-foreground font-medium mb-2">
+              Smart Docs Created
+            </p>
+            <p className="text-2xl font-bold text-foreground mb-2">56</p>
+            <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700">
+              <TrendingUp className="h-3 w-3" />
+              <span className="text-xs font-semibold">+8%</span>
             </div>
           </div>
 
           {/* TREAP Jobs */}
-          <div className="relative bg-gradient-to-br from-[hsl(var(--kpi-violet-from))] to-[hsl(var(--kpi-violet-to))] rounded-xl px-4 py-4 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200 overflow-hidden">
-            <div className="absolute top-0 right-0 w-20 h-20 bg-white/10 rounded-full blur-2xl"></div>
-            <GeometricGlobe color="#ffffff" />
-            <div className="relative z-10 space-y-2">
-              <p className="text-xs uppercase tracking-wide text-white/80 font-semibold">
-                Invisible Issuance Jobs
-              </p>
-              <p className="text-2xl font-bold text-white">36</p>
-              <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-white/20 text-white">
-                <TrendingUp className="h-3 w-3" />
-                <span className="text-xs font-semibold">+15%</span>
-              </div>
+          <div className="bg-[#F7F7F9] border border-[#E5E7EB] rounded-xl px-4 py-4 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">
+            <p className="text-xs uppercase tracking-wide text-muted-foreground font-medium mb-2">
+              Invisible Issuance Jobs
+            </p>
+            <p className="text-2xl font-bold text-foreground mb-2">36</p>
+            <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700">
+              <TrendingUp className="h-3 w-3" />
+              <span className="text-xs font-semibold">+15%</span>
             </div>
           </div>
 
           {/* CSV Batch Success Rate */}
-          <div className="relative bg-gradient-to-br from-[hsl(var(--kpi-amber-from))] to-[hsl(var(--kpi-amber-to))] rounded-xl px-4 py-4 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200 overflow-hidden">
-            <div className="absolute top-0 right-0 w-20 h-20 bg-white/10 rounded-full blur-2xl"></div>
-            <GeometricGlobe color="#ffffff" />
-            <div className="relative z-10 space-y-2">
-              <p className="text-xs uppercase tracking-wide text-white/80 font-semibold">
-                CSV Batch Success Rate
-              </p>
-              <p className="text-2xl font-bold text-white">98.5%</p>
-              <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-white/20 text-white">
-                <TrendingUp className="h-3 w-3" />
-                <span className="text-xs font-semibold">+2.1%</span>
-              </div>
+          <div className="bg-[#F7F7F9] border border-[#E5E7EB] rounded-xl px-4 py-4 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">
+            <p className="text-xs uppercase tracking-wide text-muted-foreground font-medium mb-2">
+              CSV Batch Success Rate
+            </p>
+            <p className="text-2xl font-bold text-foreground mb-2">98.5%</p>
+            <div className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700">
+              <TrendingUp className="h-3 w-3" />
+              <span className="text-xs font-semibold">+2.1%</span>
             </div>
           </div>
         </div>
