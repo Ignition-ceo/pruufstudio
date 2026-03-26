@@ -39,6 +39,7 @@ const mainItems = [
   { title: "Templates", url: "/templates", icon: Layout },
   { title: "Activity", url: "/activity", icon: Activity },
   { title: "Analytics", url: "/analytics", icon: BarChart3 },
+  { title: "Reports", url: "/analytics/reports", icon: FileBarChart },
 ];
 
 const issuanceSubItems = [
