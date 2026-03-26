@@ -24,6 +24,8 @@ import Organization from "./pages/Organization";
 import Activity from "./pages/Activity";
 import Analytics from "./pages/Analytics";
 import NotFound from "./pages/NotFound";
+import ClaimCredential from "./pages/ClaimCredential";
+import VerifyCredential from "./pages/VerifyCredential";
 
 const queryClient = new QueryClient();
 
@@ -39,6 +41,11 @@ const App = () => (
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
+
+            {/* Public credential pages — no Layout, no auth */}
+            <Route path="/claim/:claimId" element={<ClaimCredential />} />
+            <Route path="/verify" element={<VerifyCredential />} />
+            <Route path="/verify/:credentialId" element={<VerifyCredential />} />
 
             {/* Protected routes — wrapped in Layout + ProtectedRoute */}
             <Route
