@@ -450,6 +450,15 @@ export const DescribeTemplateAiPanel = () => {
         <Sparkles className="h-3 w-3 text-muted-foreground" />
         AI can make mistakes. Please review generated content carefully.
       </p>
+
+      {result && (
+        <TemplatePublishWizard
+          open={publishOpen}
+          onOpenChange={setPublishOpen}
+          defaultName={result.schemaName}
+          fields={result.fields.map((f) => ({ name: f, type: "text", required: false }))}
+        />
+      )}
     </div>
   );
 };
