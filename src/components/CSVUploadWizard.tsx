@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { X, Upload, CheckCircle2, AlertCircle, FileSpreadsheet, ArrowRight, ArrowLeft } from "lucide-react";
+import { BatchIssuanceProgress } from "./BatchIssuanceProgress";
 import {
   Dialog,
   DialogContent,
@@ -27,6 +28,7 @@ const steps = [
   { id: 2, title: "Map Columns", description: "Match fields to template" },
   { id: 3, title: "Validate", description: "Preview and verify" },
   { id: 4, title: "Confirm", description: "Start issuance" },
+  { id: 5, title: "Progress", description: "Issuing credentials" },
 ];
 
 // Mock template fields
@@ -105,7 +107,7 @@ export const CSVUploadWizard = ({
   };
 
   const handleNext = () => {
-    if (currentStep < 4) {
+    if (currentStep < 5) {
       setCurrentStep(currentStep + 1);
     }
   };
@@ -117,12 +119,7 @@ export const CSVUploadWizard = ({
   };
 
   const handleConfirm = () => {
-    toast({
-      title: "Issuance job started",
-      description: "Your CSV issuance job has been queued for processing.",
-    });
-    onOpenChange(false);
-    resetWizard();
+    setCurrentStep(5);
   };
 
   const resetWizard = () => {
@@ -389,46 +386,37 @@ export const CSVUploadWizard = ({
               </div>
             </div>
           )}
+
+          {/* Step 5: Progress */}
+          {currentStep === 5 && (
+            <BatchIssuanceProgress
+              total={15}
+              templateName={selectedTemplate || "University Diploma"}
+              onClose={handleClose}
+            />
+          )}
         </div>
 
-        {/* Footer */}
-        <div className="p-6 pt-4 border-t border-border flex items-center justify-between">
-          <Button
-            variant="outline"
-            onClick={handleBack}
-            disabled={currentStep === 1}
-            className="rounded-full h-10 px-5"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back
-          </Button>
-          <div className="flex gap-3">
-            <Button
-              variant="outline"
-              onClick={handleClose}
-              className="rounded-full h-10 px-5"
-            >
-              Cancel
+        {/* Footer — hidden during progress */}
+        {currentStep < 5 && (
+          <div className="p-6 pt-4 border-t border-border flex items-center justify-between">
+            <Button variant="outline" onClick={handleBack} disabled={currentStep === 1} className="rounded-full h-10 px-5">
+              <ArrowLeft className="w-4 h-4 mr-2" /> Back
             </Button>
-            {currentStep < 4 ? (
-              <Button
-                onClick={handleNext}
-                disabled={!canProceed()}
-                className="rounded-full bg-primary hover:bg-primary/90 text-primary-foreground h-10 px-5"
-              >
-                Next
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            ) : (
-              <Button
-                onClick={handleConfirm}
-                className="rounded-full bg-primary hover:bg-primary/90 text-primary-foreground h-10 px-5"
-              >
-                Start Issuance
-              </Button>
-            )}
+            <div className="flex gap-3">
+              <Button variant="outline" onClick={handleClose} className="rounded-full h-10 px-5">Cancel</Button>
+              {currentStep < 4 ? (
+                <Button onClick={handleNext} disabled={!canProceed()} className="rounded-full bg-primary hover:bg-primary/90 text-primary-foreground h-10 px-5">
+                  Next <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              ) : (
+                <Button onClick={handleConfirm} className="rounded-full bg-primary hover:bg-primary/90 text-primary-foreground h-10 px-5">
+                  Start Issuance
+                </Button>
+              )}
+            </div>
           </div>
-        </div>
+        )}
       </DialogContent>
     </Dialog>
   );

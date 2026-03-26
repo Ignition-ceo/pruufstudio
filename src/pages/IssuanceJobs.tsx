@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ChevronRight, Search, FileText, Printer, Inbox } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -109,6 +109,7 @@ const statusConfig: Record<string, { label: string; variant: "default" | "second
 };
 
 const IssuanceJobs = () => {
+  const navigate = useNavigate();
   const [sourceFilter, setSourceFilter] = useState("all");
   const [statusFilter, setStatusFilter] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
@@ -250,6 +251,7 @@ const IssuanceJobs = () => {
                           <TableRow
                             key={job.id}
                             className="border-border hover:bg-muted/50 transition-colors cursor-pointer"
+                            onClick={() => navigate(`/issuance/jobs/${job.id}`)}
                           >
                             <TableCell className="font-mono text-sm text-foreground">
                               {job.id}
