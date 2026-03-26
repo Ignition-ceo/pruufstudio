@@ -252,6 +252,7 @@ const IssuanceJobs = () => {
                             key={job.id}
                             className="border-border hover:bg-muted/50 transition-colors cursor-pointer"
                             onClick={() => navigate(`/issuance/jobs/${job.id}`)}
+                          >
                             <TableCell className="font-mono text-sm text-foreground">
                               {job.id}
                             </TableCell>
