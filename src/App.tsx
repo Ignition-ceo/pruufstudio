@@ -27,6 +27,7 @@ import Settings from "./pages/Settings";
 import CredentialDetail from "./pages/CredentialDetail";
 import AuditLog from "./pages/AuditLog";
 import ReportBuilder from "./pages/ReportBuilder";
+import Onboarding from "./pages/Onboarding";
 import NotFound from "./pages/NotFound";
 import ClaimCredential from "./pages/ClaimCredential";
 import VerifyCredential from "./pages/VerifyCredential";
@@ -50,6 +51,9 @@ const App = () => (
             <Route path="/claim/:claimId" element={<ClaimCredential />} />
             <Route path="/verify" element={<VerifyCredential />} />
             <Route path="/verify/:credentialId" element={<VerifyCredential />} />
+
+            {/* Onboarding — protected but no Layout */}
+            <Route path="/onboarding" element={<ProtectedRoute><Onboarding /></ProtectedRoute>} />
 
             {/* Protected routes — wrapped in Layout + ProtectedRoute */}
             <Route
