@@ -374,6 +374,8 @@ const InvisibleIssuance = () => {
             </div>
           </CardContent>
         </Card>
+        </>
+        )}
       </div>
 
       {/* Add Profile Modal */}
