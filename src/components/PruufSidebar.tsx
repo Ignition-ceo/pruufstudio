@@ -51,6 +51,7 @@ const issuanceSubItems = [
 const adminItems = [
   { title: "Organization", url: "/organization", icon: Building2 },
   { title: "Team", url: "/team", icon: Users },
+  { title: "Audit log", url: "/audit-log", icon: Shield },
   { title: "Support", url: "/support", icon: HelpCircle },
   { title: "Settings", url: "/settings", icon: Settings },
 ];
