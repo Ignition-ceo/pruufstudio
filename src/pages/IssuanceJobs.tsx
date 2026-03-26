@@ -109,6 +109,7 @@ const statusConfig: Record<string, { label: string; variant: "default" | "second
 };
 
 const IssuanceJobs = () => {
+  const navigate = useNavigate();
   const [sourceFilter, setSourceFilter] = useState("all");
   const [statusFilter, setStatusFilter] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
