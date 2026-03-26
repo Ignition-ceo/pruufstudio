@@ -24,6 +24,7 @@ import Organization from "./pages/Organization";
 import Activity from "./pages/Activity";
 import Analytics from "./pages/Analytics";
 import Settings from "./pages/Settings";
+import CredentialDetail from "./pages/CredentialDetail";
 import NotFound from "./pages/NotFound";
 import ClaimCredential from "./pages/ClaimCredential";
 import VerifyCredential from "./pages/VerifyCredential";
