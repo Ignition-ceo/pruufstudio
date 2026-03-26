@@ -702,6 +702,16 @@ export default function Organization() {
             </CardContent>
           </Card>
         </TabsContent>
+
+        {/* ───── API Keys Tab ───── */}
+        <TabsContent value="api-keys">
+          <ApiKeysTab />
+        </TabsContent>
+
+        {/* ───── Billing Tab ───── */}
+        <TabsContent value="billing">
+          <BillingTab />
+        </TabsContent>
       </Tabs>
 
       {/* Modals */}
