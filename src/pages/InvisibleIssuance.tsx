@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { AddInvisibleProfileModal } from "@/components/AddInvisibleProfileModal";
+import { TreapDocumentUpload } from "@/components/TreapDocumentUpload";
 
 // Mock data for profiles
 const mockProfiles = [
