@@ -24,6 +24,7 @@ import Organization from "./pages/Organization";
 import Activity from "./pages/Activity";
 import Analytics from "./pages/Analytics";
 import Settings from "./pages/Settings";
+import CredentialDetail from "./pages/CredentialDetail";
 import NotFound from "./pages/NotFound";
 import ClaimCredential from "./pages/ClaimCredential";
 import VerifyCredential from "./pages/VerifyCredential";
@@ -60,6 +61,7 @@ const App = () => (
                       <Route path="/dashboard" element={<Dashboard />} />
                       <Route path="/smartdocs/create" element={<SmartDocCreate />} />
                       <Route path="/smartdocs/documents" element={<SmartDocDocuments />} />
+                      <Route path="/credentials/:id" element={<CredentialDetail />} />
                       <Route path="/templates" element={<Templates />} />
                       <Route path="/templates/:id" element={<TemplateDetail />} />
                       <Route path="/issuance" element={<StartIssuance />} />
