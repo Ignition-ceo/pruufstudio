@@ -9,11 +9,20 @@ import {
   Users,
   Check,
   Settings,
+  MoreVertical,
+  Search,
+  CheckCircle2,
+  Minus,
+  UserPlus,
+  ChevronDown,
+  ChevronRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Table,
   TableBody,
@@ -28,8 +37,28 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 import { AddDepartmentModal } from "@/components/AddDepartmentModal";
 import { EditOrganizationModal } from "@/components/EditOrganizationModal";
+import { InviteTeamMemberModal, type MemberRole } from "@/components/InviteTeamMemberModal";
+import { EditMemberRoleModal } from "@/components/EditMemberRoleModal";
 import { toast } from "sonner";
 
 interface Department {
