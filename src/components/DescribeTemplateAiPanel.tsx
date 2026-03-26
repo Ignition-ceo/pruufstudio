@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { Plus, Mic, ArrowRight, Sparkles, Edit3, Save, Send, ListChecks } from "lucide-react";
 import { ExtractionReviewPanel, type ExtractedField } from "./ExtractionReviewPanel";
+import { TemplatePublishWizard } from "./TemplatePublishWizard";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 import aiNetworkBg from "@/assets/ai-network-bg.jpeg";
 import { GeometricNetwork } from "./GeometricNetwork";
@@ -104,9 +103,7 @@ export const DescribeTemplateAiPanel = () => {
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([]);
   const [chatInput, setChatInput] = useState("");
   const [isChatLoading, setIsChatLoading] = useState(false);
-  const [saveDialogOpen, setSaveDialogOpen] = useState(false);
-  const [templateName, setTemplateName] = useState("");
-  const [templateDescription, setTemplateDescription] = useState("");
+  const [publishOpen, setPublishOpen] = useState(false);
   const [showReview, setShowReview] = useState(false);
 
   const handleGenerate = async () => {
@@ -168,26 +165,7 @@ export const DescribeTemplateAiPanel = () => {
     }
   };
 
-  const handleSaveTemplate = () => {
-    if (!templateName.trim()) {
-      toast({
-        title: "Name required",
-        description: "Please enter a name for your template",
-        variant: "destructive"
-      });
-      return;
-    }
 
-    // Save logic here
-    toast({
-      title: "Template saved!",
-      description: `"${templateName}" has been saved to your templates.`,
-    });
-
-    setSaveDialogOpen(false);
-    setTemplateName("");
-    setTemplateDescription("");
-  };
 
   return (
     <div className="w-full max-w-5xl space-y-6">
@@ -360,63 +338,10 @@ export const DescribeTemplateAiPanel = () => {
                 </div>
               </div>
               
-              <Dialog open={saveDialogOpen} onOpenChange={setSaveDialogOpen}>
-                <DialogTrigger asChild>
-                  <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg">
-                    <Save className="h-4 w-4 mr-2" />
-                    Save Template
-                  </Button>
-                </DialogTrigger>
-                <DialogContent className="sm:max-w-[500px]">
-                  <DialogHeader>
-                    <DialogTitle>Save Template</DialogTitle>
-                    <DialogDescription>
-                      Give your template a name and description to save it for future use.
-                    </DialogDescription>
-                  </DialogHeader>
-                  <div className="grid gap-4 py-4">
-                    <div className="grid gap-2">
-                      <Label htmlFor="name">Template Name *</Label>
-                      <Input
-                        id="name"
-                        placeholder="e.g., KYC Verification Form"
-                        value={templateName}
-                        onChange={(e) => setTemplateName(e.target.value)}
-                      />
-                    </div>
-                    <div className="grid gap-2">
-                      <Label htmlFor="description">Description (Optional)</Label>
-                      <Textarea
-                        id="description"
-                        placeholder="Describe what this template is used for..."
-                        value={templateDescription}
-                        onChange={(e) => setTemplateDescription(e.target.value)}
-                        rows={3}
-                      />
-                    </div>
-                    <div className="grid gap-2">
-                      <Label htmlFor="category">Category</Label>
-                      <select
-                        id="category"
-                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                        defaultValue={activeCategory}
-                      >
-                        {categories.map((cat) => (
-                          <option key={cat} value={cat}>{cat}</option>
-                        ))}
-                      </select>
-                    </div>
-                  </div>
-                  <DialogFooter>
-                    <Button variant="outline" onClick={() => setSaveDialogOpen(false)}>
-                      Cancel
-                    </Button>
-                    <Button onClick={handleSaveTemplate}>
-                      Save Template
-                    </Button>
-                  </DialogFooter>
-                </DialogContent>
-              </Dialog>
+              <Button onClick={() => setPublishOpen(true)} className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg">
+                <Save className="h-4 w-4 mr-2" />
+                Publish Template
+              </Button>
             </div>
             
             <ul className="space-y-3 mb-6">
@@ -523,6 +448,15 @@ export const DescribeTemplateAiPanel = () => {
         <Sparkles className="h-3 w-3 text-muted-foreground" />
         AI can make mistakes. Please review generated content carefully.
       </p>
+
+      {result && (
+        <TemplatePublishWizard
+          open={publishOpen}
+          onOpenChange={setPublishOpen}
+          defaultName={result.schemaName}
+          fields={result.fields.map((f) => ({ name: f, type: "text", required: false }))}
+        />
+      )}
     </div>
   );
 };
