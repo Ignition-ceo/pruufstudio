@@ -178,6 +178,9 @@ export const AddInvisibleProfileModal = ({
               onCheckedChange={setIsActive}
             />
           </div>
+          {/* Ingestion settings */}
+          <Separator />
+          <IngestionConfigPanel />
         </div>
 
         {/* Footer */}
