@@ -1,8 +1,8 @@
 import { FileText, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { RecentsGrid } from "@/components/RecentsGrid";
+import { EmptyState } from "@/components/EmptyState";
 
 export default function SmartDocDocuments() {
   return (
@@ -25,23 +25,14 @@ export default function SmartDocDocuments() {
 
       <RecentsGrid />
 
-      <div className="mt-8 md:mt-12 text-center px-4">
-        <Card className="max-w-md mx-auto">
-          <CardHeader>
-            <div className="w-10 h-10 md:w-12 md:h-12 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-3 md:mb-4">
-              <FileText className="h-5 w-5 md:h-6 md:w-6 text-blue-600" />
-            </div>
-            <CardTitle className="text-lg md:text-xl">No documents yet</CardTitle>
-            <CardDescription className="text-sm md:text-base">
-              Create your first SmartDoc to get started
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Button className="w-full h-10 md:h-11" asChild>
-              <a href="/smartdocs/create">Create SmartDoc</a>
-            </Button>
-          </CardContent>
-        </Card>
+      <div className="mt-8 md:mt-12">
+        <EmptyState
+          icon={FileText}
+          title="No documents yet"
+          description="Create your first SmartDoc to get started"
+          actionLabel="Create SmartDoc"
+          actionHref="/smartdocs/create"
+        />
       </div>
     </div>
   );
