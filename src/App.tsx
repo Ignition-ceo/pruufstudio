@@ -58,6 +58,7 @@ const App = () => (
                       <Route path="/issuance/csv" element={<CSVUploadIssuance />} />
                       <Route path="/issuance/treap" element={<InvisibleIssuance />} />
                       <Route path="/issuance/jobs" element={<IssuanceJobs />} />
+                      <Route path="/issuance/jobs/:id" element={<JobDetail />} />
                       <Route path="/organization" element={<Organization />} />
                       <Route path="/organization/:id" element={<Organization />} />
                       <Route path="/activity" element={<Activity />} />
