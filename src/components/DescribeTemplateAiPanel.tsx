@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
-import { cn } from "@/lib/utils";
 import aiNetworkBg from "@/assets/ai-network-bg.jpeg";
 import { GeometricNetwork } from "./GeometricNetwork";
 import { useToast } from "@/hooks/use-toast";
