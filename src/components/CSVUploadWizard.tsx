@@ -119,12 +119,7 @@ export const CSVUploadWizard = ({
   };
 
   const handleConfirm = () => {
-    toast({
-      title: "Issuance job started",
-      description: "Your CSV issuance job has been queued for processing.",
-    });
-    onOpenChange(false);
-    resetWizard();
+    setCurrentStep(5);
   };
 
   const resetWizard = () => {
