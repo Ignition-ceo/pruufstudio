@@ -167,26 +167,7 @@ export const DescribeTemplateAiPanel = () => {
     }
   };
 
-  const handleSaveTemplate = () => {
-    if (!templateName.trim()) {
-      toast({
-        title: "Name required",
-        description: "Please enter a name for your template",
-        variant: "destructive"
-      });
-      return;
-    }
 
-    // Save logic here
-    toast({
-      title: "Template saved!",
-      description: `"${templateName}" has been saved to your templates.`,
-    });
-
-    setSaveDialogOpen(false);
-    setTemplateName("");
-    setTemplateDescription("");
-  };
 
   return (
     <div className="w-full max-w-5xl space-y-6">
