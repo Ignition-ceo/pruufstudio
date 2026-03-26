@@ -105,9 +105,7 @@ export const DescribeTemplateAiPanel = () => {
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([]);
   const [chatInput, setChatInput] = useState("");
   const [isChatLoading, setIsChatLoading] = useState(false);
-  const [saveDialogOpen, setSaveDialogOpen] = useState(false);
-  const [templateName, setTemplateName] = useState("");
-  const [templateDescription, setTemplateDescription] = useState("");
+  const [publishOpen, setPublishOpen] = useState(false);
   const [showReview, setShowReview] = useState(false);
 
   const handleGenerate = async () => {
