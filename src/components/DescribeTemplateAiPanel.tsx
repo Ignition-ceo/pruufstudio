@@ -339,7 +339,7 @@ export const DescribeTemplateAiPanel = () => {
       </div>
 
       {/* Result card with save button */}
-      {result && (
+      {result && !showReview && (
         <div className="relative group px-4 animate-in fade-in slide-in-from-bottom-3 duration-200">
           <div className="relative bg-white rounded-xl border border-primary px-6 py-5 shadow-md overflow-hidden">
             {/* Decorative sparkles */}
