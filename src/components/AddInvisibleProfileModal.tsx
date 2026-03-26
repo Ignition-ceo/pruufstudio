@@ -18,7 +18,8 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
-
+import { IngestionConfigPanel } from "@/components/IngestionConfigPanel";
+import { Separator } from "@/components/ui/separator";
 // Mock templates
 const mockTemplates = [
   { id: "1", name: "University Diploma" },
@@ -177,6 +178,9 @@ export const AddInvisibleProfileModal = ({
               onCheckedChange={setIsActive}
             />
           </div>
+          {/* Ingestion settings */}
+          <Separator />
+          <IngestionConfigPanel />
         </div>
 
         {/* Footer */}
