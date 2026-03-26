@@ -118,14 +118,23 @@ const InvisibleIssuance = () => {
           <span className="text-foreground font-medium">Invisible Issuance (TREAP)</span>
         </nav>
 
+        {showUpload ? (
+          <TreapDocumentUpload onBack={() => setShowUpload(false)} />
+        ) : (
+        <>
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-2xl sm:text-3xl font-semibold text-foreground tracking-tight">
-            Invisible Issuance (TREAP)
-          </h1>
-          <p className="text-muted-foreground mt-1 text-sm sm:text-base">
-            Issue Smart Docs automatically whenever you print via the PRUUF virtual printer
-          </p>
+        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-8">
+          <div>
+            <h1 className="text-2xl sm:text-3xl font-semibold text-foreground tracking-tight">
+              Invisible Issuance (TREAP)
+            </h1>
+            <p className="text-muted-foreground mt-1 text-sm sm:text-base">
+              Issue Smart Docs automatically whenever you print via the PRUUF virtual printer
+            </p>
+          </div>
+          <Button onClick={() => setShowUpload(true)} className="rounded-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium h-10 px-5 shrink-0">
+            <Upload className="w-4 h-4 mr-2" /> Upload document
+          </Button>
         </div>
 
         {/* 3-Step Visual Flow Panel */}
