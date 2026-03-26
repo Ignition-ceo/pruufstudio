@@ -19,6 +19,7 @@ import StartIssuance from "./pages/StartIssuance";
 import CSVUploadIssuance from "./pages/CSVUploadIssuance";
 import InvisibleIssuance from "./pages/InvisibleIssuance";
 import IssuanceJobs from "./pages/IssuanceJobs";
+import JobDetail from "./pages/JobDetail";
 import Organization from "./pages/Organization";
 import Activity from "./pages/Activity";
 import Analytics from "./pages/Analytics";
