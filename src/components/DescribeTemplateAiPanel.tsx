@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Plus, Mic, ArrowRight, Sparkles, Edit3, Save, Send, ListChecks } from "lucide-react";
 import { ExtractionReviewPanel, type ExtractedField } from "./ExtractionReviewPanel";
+import { TemplatePublishWizard } from "./TemplatePublishWizard";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
