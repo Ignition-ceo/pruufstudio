@@ -52,6 +52,9 @@ const App = () => (
             <Route path="/verify" element={<VerifyCredential />} />
             <Route path="/verify/:credentialId" element={<VerifyCredential />} />
 
+            {/* Onboarding — protected but no Layout */}
+            <Route path="/onboarding" element={<ProtectedRoute><Onboarding /></ProtectedRoute>} />
+
             {/* Protected routes — wrapped in Layout + ProtectedRoute */}
             <Route
               path="/*"
