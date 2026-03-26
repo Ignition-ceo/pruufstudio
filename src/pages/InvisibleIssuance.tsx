@@ -88,6 +88,7 @@ const jobStatusConfig: Record<string, { label: string; variant: "default" | "sec
 const InvisibleIssuance = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showUpload, setShowUpload] = useState(false);
 
   const filteredProfiles = mockProfiles.filter((profile) =>
     searchQuery === "" ||
