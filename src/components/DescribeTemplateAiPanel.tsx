@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Plus, Mic, ArrowRight, Sparkles, Edit3, Save, Send } from "lucide-react";
+import { Plus, Mic, ArrowRight, Sparkles, Edit3, Save, Send, ListChecks } from "lucide-react";
+import { ExtractionReviewPanel, type ExtractedField } from "./ExtractionReviewPanel";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
@@ -106,6 +107,7 @@ export const DescribeTemplateAiPanel = () => {
   const [saveDialogOpen, setSaveDialogOpen] = useState(false);
   const [templateName, setTemplateName] = useState("");
   const [templateDescription, setTemplateDescription] = useState("");
+  const [showReview, setShowReview] = useState(false);
 
   const handleGenerate = async () => {
     if (!prompt.trim()) return;
@@ -337,7 +339,7 @@ export const DescribeTemplateAiPanel = () => {
       </div>
 
       {/* Result card with save button */}
-      {result && (
+      {result && !showReview && (
         <div className="relative group px-4 animate-in fade-in slide-in-from-bottom-3 duration-200">
           <div className="relative bg-white rounded-xl border border-primary px-6 py-5 shadow-md overflow-hidden">
             {/* Decorative sparkles */}
@@ -426,6 +428,14 @@ export const DescribeTemplateAiPanel = () => {
               ))}
             </ul>
 
+            {/* Review & customize button */}
+            <div className="mb-6">
+              <Button onClick={() => setShowReview(true)} variant="outline" className="rounded-full gap-2">
+                <ListChecks className="h-4 w-4" />
+                Review &amp; customize fields
+              </Button>
+            </div>
+
             {/* Chat Interface */}
             <div className="border-t border-gray-200 pt-6 space-y-4">
               <div className="flex items-center gap-2 text-sm font-semibold text-gray-700">
@@ -490,8 +500,27 @@ export const DescribeTemplateAiPanel = () => {
         </div>
       )}
 
-      <p className="text-xs text-gray-500 text-center px-4 flex items-center justify-center gap-2">
-        <Sparkles className="h-3 w-3 text-gray-400" />
+      {/* Extraction review panel */}
+      {result && showReview && (
+        <div className="px-4">
+          <ExtractionReviewPanel
+            templateName={result.schemaName}
+            initialFields={result.fields.map((f, i) => ({
+              id: `ai-${i}`,
+              name: f,
+              type: "text",
+              required: i < 2,
+            }))}
+            onBack={() => setShowReview(false)}
+            onContinue={(fields) => {
+              toast({ title: "Fields confirmed", description: `${fields.length} fields ready for card design.` });
+            }}
+          />
+        </div>
+      )}
+
+      <p className="text-xs text-muted-foreground text-center px-4 flex items-center justify-center gap-2">
+        <Sparkles className="h-3 w-3 text-muted-foreground" />
         AI can make mistakes. Please review generated content carefully.
       </p>
     </div>

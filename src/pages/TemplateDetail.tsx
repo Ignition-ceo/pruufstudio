@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { ArrowLeft, Edit, Plus } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
+import { SchemaFieldEditor, type SchemaField } from "@/components/SchemaFieldEditor";
 
 // Mock data - in real app this would come from API/state
 const templateData = {
@@ -97,51 +98,19 @@ export default function TemplateDetail() {
           </TabsTrigger>
         </TabsList>
 
-        {/* Fields Tab */}
         <TabsContent value="fields" className="space-y-4 mt-6">
-          <div className="flex items-center justify-between">
-            <p className="text-sm text-muted-foreground">
-              Define the data fields that will be included in this credential
-            </p>
-            <Button variant="outline" size="sm">
-              <Plus className="h-4 w-4 mr-2" />
-              Add Field
-            </Button>
-          </div>
-          
-          <Card>
-            <CardContent className="p-0">
-              <div className="divide-y">
-                {/* Header Row */}
-                <div className="grid grid-cols-12 gap-4 px-6 py-3 bg-muted/50 text-sm font-medium text-muted-foreground">
-                  <div className="col-span-4">Field Name</div>
-                  <div className="col-span-3">Type</div>
-                  <div className="col-span-3">Required</div>
-                  <div className="col-span-2">Actions</div>
-                </div>
-                
-                {/* Data Rows */}
-                {templateData.fields.map((field) => (
-                  <div key={field.id} className="grid grid-cols-12 gap-4 px-6 py-4 items-center hover:bg-muted/30 transition-colors">
-                    <div className="col-span-4 font-medium">{field.name}</div>
-                    <div className="col-span-3">
-                      <Badge variant="outline" className="capitalize">
-                        {field.type}
-                      </Badge>
-                    </div>
-                    <div className="col-span-3">
-                      <Switch checked={field.required} />
-                    </div>
-                    <div className="col-span-2">
-                      <Button variant="ghost" size="sm">
-                        <Edit className="h-4 w-4" />
-                      </Button>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
+          <SchemaFieldEditor
+            initialFields={templateData.fields.map((f) => ({
+              id: f.id,
+              name: f.name,
+              displayLabel: f.name,
+              type: f.type,
+              required: f.required,
+              enumValues: f.options || [],
+              validation: "",
+              description: "",
+            } as SchemaField))}
+          />
         </TabsContent>
 
         {/* Rules Tab */}
