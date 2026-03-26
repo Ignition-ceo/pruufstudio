@@ -5,6 +5,10 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { Layout } from "./components/Layout";
+import { ProtectedRoute } from "./components/ProtectedRoute";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import ForgotPassword from "./pages/ForgotPassword";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import SmartDocCreate from "./pages/SmartDocCreate";
@@ -29,27 +33,41 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <Layout>
-            <Routes>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/home" element={<Home />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/smartdocs/create" element={<SmartDocCreate />} />
-              <Route path="/smartdocs/documents" element={<SmartDocDocuments />} />
-              <Route path="/templates" element={<Templates />} />
-              <Route path="/templates/:id" element={<TemplateDetail />} />
-              <Route path="/issuance" element={<StartIssuance />} />
-              <Route path="/issuance/csv" element={<CSVUploadIssuance />} />
-              <Route path="/issuance/treap" element={<InvisibleIssuance />} />
-              <Route path="/issuance/jobs" element={<IssuanceJobs />} />
-              <Route path="/organization" element={<Organization />} />
-              <Route path="/organization/:id" element={<Organization />} />
-              <Route path="/activity" element={<Activity />} />
-              <Route path="/analytics" element={<Analytics />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </Layout>
+          <Routes>
+            {/* Public auth routes — no Layout */}
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+
+            {/* Protected routes — wrapped in Layout + ProtectedRoute */}
+            <Route
+              path="/*"
+              element={
+                <ProtectedRoute>
+                  <Layout>
+                    <Routes>
+                      <Route path="/" element={<Dashboard />} />
+                      <Route path="/home" element={<Home />} />
+                      <Route path="/dashboard" element={<Dashboard />} />
+                      <Route path="/smartdocs/create" element={<SmartDocCreate />} />
+                      <Route path="/smartdocs/documents" element={<SmartDocDocuments />} />
+                      <Route path="/templates" element={<Templates />} />
+                      <Route path="/templates/:id" element={<TemplateDetail />} />
+                      <Route path="/issuance" element={<StartIssuance />} />
+                      <Route path="/issuance/csv" element={<CSVUploadIssuance />} />
+                      <Route path="/issuance/treap" element={<InvisibleIssuance />} />
+                      <Route path="/issuance/jobs" element={<IssuanceJobs />} />
+                      <Route path="/organization" element={<Organization />} />
+                      <Route path="/organization/:id" element={<Organization />} />
+                      <Route path="/activity" element={<Activity />} />
+                      <Route path="/analytics" element={<Analytics />} />
+                      <Route path="*" element={<NotFound />} />
+                    </Routes>
+                  </Layout>
+                </ProtectedRoute>
+              }
+            />
+          </Routes>
         </BrowserRouter>
       </TooltipProvider>
     </ThemeProvider>
