@@ -28,6 +28,7 @@ const steps = [
   { id: 2, title: "Map Columns", description: "Match fields to template" },
   { id: 3, title: "Validate", description: "Preview and verify" },
   { id: 4, title: "Confirm", description: "Start issuance" },
+  { id: 5, title: "Progress", description: "Issuing credentials" },
 ];
 
 // Mock template fields
