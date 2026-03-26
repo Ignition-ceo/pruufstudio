@@ -61,6 +61,7 @@ const App = () => (
                       <Route path="/dashboard" element={<Dashboard />} />
                       <Route path="/smartdocs/create" element={<SmartDocCreate />} />
                       <Route path="/smartdocs/documents" element={<SmartDocDocuments />} />
+                      <Route path="/credentials/:id" element={<CredentialDetail />} />
                       <Route path="/templates" element={<Templates />} />
                       <Route path="/templates/:id" element={<TemplateDetail />} />
                       <Route path="/issuance" element={<StartIssuance />} />

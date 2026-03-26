@@ -33,6 +33,7 @@ import pruufStudioLogo from "@/assets/pruuf-studio-logo.png";
 const mainItems = [
   { title: "Dashboard", url: "/dashboard", icon: LayoutDashboard },
   { title: "Smart Docs", url: "/smartdocs/create", icon: FileText },
+  { title: "Documents", url: "/smartdocs/documents", icon: ClipboardList },
   { title: "Templates", url: "/templates", icon: Layout },
   { title: "Activity", url: "/activity", icon: Activity },
   { title: "Analytics", url: "/analytics", icon: BarChart3 },
