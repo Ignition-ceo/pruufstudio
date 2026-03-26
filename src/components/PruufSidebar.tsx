@@ -26,6 +26,7 @@ import {
   ClipboardList,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { OrgSwitcher } from "@/components/OrgSwitcher";
 import pruufFavicon from "@/assets/pruuf-favicon.png";
 import pruufStudioLogo from "@/assets/pruuf-studio-logo.png";
 
@@ -104,6 +105,11 @@ export const PruufSidebar = ({
             <img src={pruufStudioLogo} alt="PRUUF Studio" className="h-6" />
           </div>
           <img src={pruufFavicon} alt="PRUUF" className={cn("w-8 h-8 rounded hidden md:block lg:hidden", isCollapsed && "lg:block")} />
+        </div>
+
+        {/* Org Switcher */}
+        <div className="px-3 pb-2 border-b border-border">
+          <OrgSwitcher isTextVisible={isTextVisible} />
         </div>
 
         {/* Navigation */}
