@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { X, Upload, CheckCircle2, AlertCircle, FileSpreadsheet, ArrowRight, ArrowLeft } from "lucide-react";
+import { BatchIssuanceProgress } from "./BatchIssuanceProgress";
 import {
   Dialog,
   DialogContent,
