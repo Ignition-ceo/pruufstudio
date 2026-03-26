@@ -340,63 +340,10 @@ export const DescribeTemplateAiPanel = () => {
                 </div>
               </div>
               
-              <Dialog open={saveDialogOpen} onOpenChange={setSaveDialogOpen}>
-                <DialogTrigger asChild>
-                  <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg">
-                    <Save className="h-4 w-4 mr-2" />
-                    Save Template
-                  </Button>
-                </DialogTrigger>
-                <DialogContent className="sm:max-w-[500px]">
-                  <DialogHeader>
-                    <DialogTitle>Save Template</DialogTitle>
-                    <DialogDescription>
-                      Give your template a name and description to save it for future use.
-                    </DialogDescription>
-                  </DialogHeader>
-                  <div className="grid gap-4 py-4">
-                    <div className="grid gap-2">
-                      <Label htmlFor="name">Template Name *</Label>
-                      <Input
-                        id="name"
-                        placeholder="e.g., KYC Verification Form"
-                        value={templateName}
-                        onChange={(e) => setTemplateName(e.target.value)}
-                      />
-                    </div>
-                    <div className="grid gap-2">
-                      <Label htmlFor="description">Description (Optional)</Label>
-                      <Textarea
-                        id="description"
-                        placeholder="Describe what this template is used for..."
-                        value={templateDescription}
-                        onChange={(e) => setTemplateDescription(e.target.value)}
-                        rows={3}
-                      />
-                    </div>
-                    <div className="grid gap-2">
-                      <Label htmlFor="category">Category</Label>
-                      <select
-                        id="category"
-                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                        defaultValue={activeCategory}
-                      >
-                        {categories.map((cat) => (
-                          <option key={cat} value={cat}>{cat}</option>
-                        ))}
-                      </select>
-                    </div>
-                  </div>
-                  <DialogFooter>
-                    <Button variant="outline" onClick={() => setSaveDialogOpen(false)}>
-                      Cancel
-                    </Button>
-                    <Button onClick={handleSaveTemplate}>
-                      Save Template
-                    </Button>
-                  </DialogFooter>
-                </DialogContent>
-              </Dialog>
+              <Button onClick={() => setPublishOpen(true)} className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg">
+                <Save className="h-4 w-4 mr-2" />
+                Publish Template
+              </Button>
             </div>
             
             <ul className="space-y-3 mb-6">
