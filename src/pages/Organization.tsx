@@ -59,6 +59,8 @@ import { AddDepartmentModal } from "@/components/AddDepartmentModal";
 import { EditOrganizationModal } from "@/components/EditOrganizationModal";
 import { InviteTeamMemberModal, type MemberRole } from "@/components/InviteTeamMemberModal";
 import { EditMemberRoleModal } from "@/components/EditMemberRoleModal";
+import { ApiKeysTab } from "@/components/ApiKeysTab";
+import { BillingTab } from "@/components/BillingTab";
 import { toast } from "sonner";
 
 interface Department {
