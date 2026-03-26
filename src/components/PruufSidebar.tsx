@@ -24,6 +24,8 @@ import {
   FileSpreadsheet,
   Printer,
   ClipboardList,
+  Shield,
+  FileBarChart,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { OrgSwitcher } from "@/components/OrgSwitcher";
