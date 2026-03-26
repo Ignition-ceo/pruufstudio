@@ -59,6 +59,8 @@ import { AddDepartmentModal } from "@/components/AddDepartmentModal";
 import { EditOrganizationModal } from "@/components/EditOrganizationModal";
 import { InviteTeamMemberModal, type MemberRole } from "@/components/InviteTeamMemberModal";
 import { EditMemberRoleModal } from "@/components/EditMemberRoleModal";
+import { ApiKeysTab } from "@/components/ApiKeysTab";
+import { BillingTab } from "@/components/BillingTab";
 import { toast } from "sonner";
 
 interface Department {
@@ -375,6 +377,8 @@ export default function Organization() {
         <TabsList>
           <TabsTrigger value="departments">Departments</TabsTrigger>
           <TabsTrigger value="team">Team</TabsTrigger>
+          <TabsTrigger value="api-keys">API Keys</TabsTrigger>
+          <TabsTrigger value="billing">Billing & Plan</TabsTrigger>
           <TabsTrigger value="settings">Settings</TabsTrigger>
         </TabsList>
 
@@ -697,6 +701,16 @@ export default function Organization() {
               </div>
             </CardContent>
           </Card>
+        </TabsContent>
+
+        {/* ───── API Keys Tab ───── */}
+        <TabsContent value="api-keys">
+          <ApiKeysTab />
+        </TabsContent>
+
+        {/* ───── Billing Tab ───── */}
+        <TabsContent value="billing">
+          <BillingTab />
         </TabsContent>
       </Tabs>
 
