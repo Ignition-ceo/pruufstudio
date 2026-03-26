@@ -145,6 +145,16 @@ function getInitials(name: string): string {
     .slice(0, 2);
 }
 
+interface TeamMember {
+  id: string;
+  name: string;
+  email: string;
+  role: string;
+  department: string;
+  status: "active" | "invited" | "deactivated";
+}
+
+
 export default function Organization() {
   const [departments, setDepartments] = useState<Department[]>(mockDepartments);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
