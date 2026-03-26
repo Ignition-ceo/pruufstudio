@@ -26,6 +26,7 @@ import {
   ClipboardList,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { OrgSwitcher } from "@/components/OrgSwitcher";
 import pruufFavicon from "@/assets/pruuf-favicon.png";
 import pruufStudioLogo from "@/assets/pruuf-studio-logo.png";
 
