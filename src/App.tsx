@@ -25,6 +25,8 @@ import Activity from "./pages/Activity";
 import Analytics from "./pages/Analytics";
 import Settings from "./pages/Settings";
 import CredentialDetail from "./pages/CredentialDetail";
+import AuditLog from "./pages/AuditLog";
+import ReportBuilder from "./pages/ReportBuilder";
 import NotFound from "./pages/NotFound";
 import ClaimCredential from "./pages/ClaimCredential";
 import VerifyCredential from "./pages/VerifyCredential";
@@ -73,6 +75,8 @@ const App = () => (
                       <Route path="/organization/:id" element={<Organization />} />
                       <Route path="/activity" element={<Activity />} />
                       <Route path="/analytics" element={<Analytics />} />
+                      <Route path="/analytics/reports" element={<ReportBuilder />} />
+                      <Route path="/audit-log" element={<AuditLog />} />
                       <Route path="/settings" element={<Settings />} />
                       <Route path="*" element={<NotFound />} />
                     </Routes>

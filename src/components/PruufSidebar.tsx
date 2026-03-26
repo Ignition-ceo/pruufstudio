@@ -24,6 +24,8 @@ import {
   FileSpreadsheet,
   Printer,
   ClipboardList,
+  Shield,
+  FileBarChart,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { OrgSwitcher } from "@/components/OrgSwitcher";
@@ -37,6 +39,7 @@ const mainItems = [
   { title: "Templates", url: "/templates", icon: Layout },
   { title: "Activity", url: "/activity", icon: Activity },
   { title: "Analytics", url: "/analytics", icon: BarChart3 },
+  { title: "Reports", url: "/analytics/reports", icon: FileBarChart },
 ];
 
 const issuanceSubItems = [
@@ -48,6 +51,7 @@ const issuanceSubItems = [
 const adminItems = [
   { title: "Organization", url: "/organization", icon: Building2 },
   { title: "Team", url: "/team", icon: Users },
+  { title: "Audit log", url: "/audit-log", icon: Shield },
   { title: "Support", url: "/support", icon: HelpCircle },
   { title: "Settings", url: "/settings", icon: Settings },
 ];
