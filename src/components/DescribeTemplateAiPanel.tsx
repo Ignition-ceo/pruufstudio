@@ -107,6 +107,7 @@ export const DescribeTemplateAiPanel = () => {
   const [saveDialogOpen, setSaveDialogOpen] = useState(false);
   const [templateName, setTemplateName] = useState("");
   const [templateDescription, setTemplateDescription] = useState("");
+  const [showReview, setShowReview] = useState(false);
 
   const handleGenerate = async () => {
     if (!prompt.trim()) return;
