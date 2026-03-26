@@ -107,6 +107,11 @@ export const PruufSidebar = ({
           <img src={pruufFavicon} alt="PRUUF" className={cn("w-8 h-8 rounded hidden md:block lg:hidden", isCollapsed && "lg:block")} />
         </div>
 
+        {/* Org Switcher */}
+        <div className="px-3 pb-2 border-b border-border">
+          <OrgSwitcher isTextVisible={isTextVisible} />
+        </div>
+
         {/* Navigation */}
         <nav className="flex-1 overflow-y-auto p-4">
           {/* MAIN Section */}
