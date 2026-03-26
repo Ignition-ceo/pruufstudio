@@ -428,6 +428,14 @@ export const DescribeTemplateAiPanel = () => {
               ))}
             </ul>
 
+            {/* Review & customize button */}
+            <div className="mb-6">
+              <Button onClick={() => setShowReview(true)} variant="outline" className="rounded-full gap-2">
+                <ListChecks className="h-4 w-4" />
+                Review &amp; customize fields
+              </Button>
+            </div>
+
             {/* Chat Interface */}
             <div className="border-t border-gray-200 pt-6 space-y-4">
               <div className="flex items-center gap-2 text-sm font-semibold text-gray-700">
