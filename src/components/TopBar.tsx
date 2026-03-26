@@ -1,10 +1,43 @@
-import { Moon, Sun, Bell, User } from "lucide-react";
+import { Moon, Sun, Bell, User, Settings, LogOut } from "lucide-react";
 import { useTheme } from "next-themes";
+import { useNavigate } from "react-router-dom";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
+function getUserInitial(): string {
+  try {
+    const user = JSON.parse(localStorage.getItem("pruuf_user") || "{}");
+    return user.name ? user.name.charAt(0).toUpperCase() : "U";
+  } catch {
+    return "U";
+  }
+}
+
+function getUserName(): string {
+  try {
+    const user = JSON.parse(localStorage.getItem("pruuf_user") || "{}");
+    return user.name || "User";
+  } catch {
+    return "User";
+  }
+}
 
 export function TopBar() {
   const { theme, setTheme } = useTheme();
+  const navigate = useNavigate();
+
+  const handleSignOut = () => {
+    localStorage.removeItem("pruuf_auth_token");
+    localStorage.removeItem("pruuf_user");
+    navigate("/login");
+  };
 
   return (
     <div className="w-full px-4 pt-2 sticky top-0 z-30 bg-background/80 backdrop-blur-sm md:relative md:bg-transparent">
@@ -16,7 +49,7 @@ export function TopBar() {
       >
         {/* Left side: User name and plan badge */}
         <div className="flex items-center gap-2 md:gap-3 px-3 py-2 md:px-4 rounded-full bg-white/60 backdrop-blur-sm border border-gray-200/50">
-          <span className="text-xs md:text-sm font-semibold text-foreground truncate">John Smith</span>
+          <span className="text-xs md:text-sm font-semibold text-foreground truncate">{getUserName()}</span>
           <div className="px-2 py-0.5 rounded-full bg-primary/10 border border-primary/20 flex-shrink-0">
             <span className="text-xs font-bold text-primary">PRO</span>
           </div>
@@ -24,7 +57,6 @@ export function TopBar() {
 
         {/* Right side: Light mode, dark mode, notifications, and avatar */}
         <div className="flex items-center gap-1.5 md:gap-2 px-3 py-2 md:px-4 rounded-full bg-white/60 backdrop-blur-sm border border-gray-200/50">
-          {/* Light mode toggle */}
           <Button
             variant="ghost"
             size="icon"
@@ -35,7 +67,6 @@ export function TopBar() {
             <span className="sr-only">Light mode</span>
           </Button>
 
-          {/* Dark mode toggle */}
           <Button
             variant="ghost"
             size="icon"
@@ -46,7 +77,6 @@ export function TopBar() {
             <span className="sr-only">Dark mode</span>
           </Button>
 
-          {/* Notifications */}
           <Button
             variant="ghost"
             size="icon"
@@ -57,12 +87,26 @@ export function TopBar() {
             <span className="sr-only">Notifications</span>
           </Button>
 
-          {/* User avatar */}
-          <Avatar className="h-7 w-7 md:h-8 md:w-8 cursor-pointer hover:ring-2 hover:ring-primary/20 transition-all">
-            <AvatarFallback className="bg-primary/10 text-primary text-xs font-semibold">
-              <User className="h-4 w-4 md:h-[18px] md:w-[18px]" />
-            </AvatarFallback>
-          </Avatar>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Avatar className="h-7 w-7 md:h-8 md:w-8 cursor-pointer hover:ring-2 hover:ring-primary/20 transition-all">
+                <AvatarFallback className="bg-primary/10 text-primary text-xs font-semibold">
+                  {getUserInitial()}
+                </AvatarFallback>
+              </Avatar>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-48">
+              <DropdownMenuItem onClick={() => navigate("/settings")} className="cursor-pointer">
+                <Settings className="mr-2 h-4 w-4" />
+                Settings
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem onClick={handleSignOut} className="cursor-pointer text-destructive focus:text-destructive">
+                <LogOut className="mr-2 h-4 w-4" />
+                Sign out
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </div>
     </div>
