@@ -75,6 +75,8 @@ const App = () => (
                       <Route path="/organization/:id" element={<Organization />} />
                       <Route path="/activity" element={<Activity />} />
                       <Route path="/analytics" element={<Analytics />} />
+                      <Route path="/analytics/reports" element={<ReportBuilder />} />
+                      <Route path="/audit-log" element={<AuditLog />} />
                       <Route path="/settings" element={<Settings />} />
                       <Route path="*" element={<NotFound />} />
                     </Routes>
