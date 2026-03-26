@@ -360,199 +360,378 @@ export default function Organization() {
         </CardContent>
       </Card>
 
-      {/* Full-Width Departments Card */}
-      <Card className="border border-border shadow-sm">
-        <CardHeader className="flex flex-row items-center justify-between pb-4">
-          <CardTitle className="text-lg font-semibold">Departments</CardTitle>
-          <Button size="sm" onClick={() => setIsAddModalOpen(true)}>
-            <Plus className="h-4 w-4 mr-1.5" />
-            Add Department
-          </Button>
-        </CardHeader>
-        <CardContent className="pt-0">
-          <div className="rounded-lg border border-border overflow-x-auto">
-            <Table>
-              <TableHeader>
-                <TableRow className="bg-muted/30">
-                  <TableHead className="font-medium">Department</TableHead>
-                  <TableHead className="font-medium">Code</TableHead>
-                  <TableHead className="font-medium">Type</TableHead>
-                  <TableHead className="font-medium text-center">Templates</TableHead>
-                  <TableHead className="font-medium text-center">Issued</TableHead>
-                  <TableHead className="font-medium text-center">Status</TableHead>
-                  <TableHead className="font-medium text-right">Actions</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {departments.map((dept) => (
-                  <TableRow key={dept.id} className="hover:bg-muted/20">
-                    <TableCell className="font-medium">{dept.name}</TableCell>
-                    <TableCell className="text-muted-foreground">
-                      {dept.code || "—"}
-                    </TableCell>
-                    <TableCell className="text-muted-foreground">
-                      {dept.type}
-                    </TableCell>
-                    <TableCell className="text-center">
-                      {dept.templateCount}
-                    </TableCell>
-                    <TableCell className="text-center">
-                      {dept.issuedCount}
-                    </TableCell>
-                    <TableCell className="text-center">
-                      <Badge
-                        variant={dept.active ? "default" : "secondary"}
-                        className={
-                          dept.active
-                            ? "bg-green-100 text-green-700 hover:bg-green-100"
-                            : "bg-muted text-muted-foreground"
-                        }
-                      >
-                        {dept.active ? "Active" : "Inactive"}
-                      </Badge>
-                    </TableCell>
-                    <TableCell className="text-right">
-                      <div className="flex items-center justify-end gap-1">
-                        <TooltipProvider>
-                          <Tooltip>
-                            <TooltipTrigger asChild>
-                              <Button
-                                variant="ghost"
-                                size="icon"
-                                className="h-8 w-8"
-                                onClick={() => setEditingDepartment(dept)}
-                              >
-                                <Pencil className="h-4 w-4" />
-                              </Button>
-                            </TooltipTrigger>
-                            <TooltipContent>Edit</TooltipContent>
-                          </Tooltip>
-                        </TooltipProvider>
-                        <TooltipProvider>
-                          <Tooltip>
-                            <TooltipTrigger asChild>
-                              <Button
-                                variant="ghost"
-                                size="icon"
-                                className="h-8 w-8"
-                                onClick={() => toggleDepartmentStatus(dept.id)}
-                              >
-                                <Ban className="h-4 w-4" />
-                              </Button>
-                            </TooltipTrigger>
-                            <TooltipContent>
-                              {dept.active ? "Disable" : "Enable"}
-                            </TooltipContent>
-                          </Tooltip>
-                        </TooltipProvider>
-                      </div>
-                    </TableCell>
-                  </TableRow>
-                ))}
-                {departments.length === 0 && (
-                  <TableRow>
-                    <TableCell colSpan={7} className="text-center py-8 text-muted-foreground">
-                      No departments yet. Add your first department to get started.
-                    </TableCell>
-                  </TableRow>
-                )}
-              </TableBody>
-            </Table>
-          </div>
-        </CardContent>
-      </Card>
+      {/* Tabs: Departments / Team */}
+      <Tabs defaultValue="departments" className="space-y-6">
+        <TabsList>
+          <TabsTrigger value="departments">Departments</TabsTrigger>
+          <TabsTrigger value="team">Team</TabsTrigger>
+          <TabsTrigger value="settings">Settings</TabsTrigger>
+        </TabsList>
 
-      {/* Issuance Capabilities */}
-      <Card className="border border-border shadow-sm">
-        <CardHeader className="pb-4">
-          <CardTitle className="text-lg font-semibold">Issuance Capabilities</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* CSV Issuance */}
-            <div className="flex items-start justify-between p-4 rounded-lg border border-border bg-muted/20">
-              <div className="space-y-1 pr-4">
-                <p className="font-medium text-foreground">Enable CSV Issuance</p>
-                <p className="text-sm text-muted-foreground">
-                  Issue credentials in bulk via CSV file upload
-                </p>
+        {/* ───── Departments Tab ───── */}
+        <TabsContent value="departments" className="space-y-6">
+          <Card className="border border-border shadow-sm">
+            <CardHeader className="flex flex-row items-center justify-between pb-4">
+              <CardTitle className="text-lg font-semibold">Departments</CardTitle>
+              <Button size="sm" onClick={() => setIsAddModalOpen(true)}>
+                <Plus className="h-4 w-4 mr-1.5" />
+                Add Department
+              </Button>
+            </CardHeader>
+            <CardContent className="pt-0">
+              <div className="rounded-lg border border-border overflow-x-auto">
+                <Table>
+                  <TableHeader>
+                    <TableRow className="bg-muted/30">
+                      <TableHead className="font-medium">Department</TableHead>
+                      <TableHead className="font-medium">Code</TableHead>
+                      <TableHead className="font-medium">Type</TableHead>
+                      <TableHead className="font-medium text-center">Templates</TableHead>
+                      <TableHead className="font-medium text-center">Issued</TableHead>
+                      <TableHead className="font-medium text-center">Status</TableHead>
+                      <TableHead className="font-medium text-right">Actions</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {departments.map((dept) => (
+                      <TableRow key={dept.id} className="hover:bg-muted/20">
+                        <TableCell className="font-medium">{dept.name}</TableCell>
+                        <TableCell className="text-muted-foreground">{dept.code || "—"}</TableCell>
+                        <TableCell className="text-muted-foreground">{dept.type}</TableCell>
+                        <TableCell className="text-center">{dept.templateCount}</TableCell>
+                        <TableCell className="text-center">{dept.issuedCount}</TableCell>
+                        <TableCell className="text-center">
+                          <Badge variant={dept.active ? "default" : "secondary"} className={dept.active ? "bg-green-100 text-green-700 hover:bg-green-100" : "bg-muted text-muted-foreground"}>
+                            {dept.active ? "Active" : "Inactive"}
+                          </Badge>
+                        </TableCell>
+                        <TableCell className="text-right">
+                          <div className="flex items-center justify-end gap-1">
+                            <TooltipProvider>
+                              <Tooltip>
+                                <TooltipTrigger asChild>
+                                  <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => setEditingDepartment(dept)}>
+                                    <Pencil className="h-4 w-4" />
+                                  </Button>
+                                </TooltipTrigger>
+                                <TooltipContent>Edit</TooltipContent>
+                              </Tooltip>
+                            </TooltipProvider>
+                            <TooltipProvider>
+                              <Tooltip>
+                                <TooltipTrigger asChild>
+                                  <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => toggleDepartmentStatus(dept.id)}>
+                                    <Ban className="h-4 w-4" />
+                                  </Button>
+                                </TooltipTrigger>
+                                <TooltipContent>{dept.active ? "Disable" : "Enable"}</TooltipContent>
+                              </Tooltip>
+                            </TooltipProvider>
+                          </div>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                    {departments.length === 0 && (
+                      <TableRow>
+                        <TableCell colSpan={7} className="text-center py-8 text-muted-foreground">
+                          No departments yet. Add your first department to get started.
+                        </TableCell>
+                      </TableRow>
+                    )}
+                  </TableBody>
+                </Table>
               </div>
-              <Switch
-                checked={csvIssuance}
-                onCheckedChange={setCsvIssuance}
-              />
-            </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
 
-            {/* Invisible Issuance */}
-            <div className="flex items-start justify-between p-4 rounded-lg border border-border bg-muted/20">
-              <div className="space-y-1 pr-4">
-                <p className="font-medium text-foreground">Enable Invisible Issuance (TREAP)</p>
-                <p className="text-sm text-muted-foreground">
-                  Issue credentials without requiring recipient action
-                </p>
+        {/* ───── Team Tab ───── */}
+        <TabsContent value="team" className="space-y-6">
+          <Card className="border border-border shadow-sm">
+            <CardHeader className="pb-4">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div>
+                  <CardTitle className="text-lg font-semibold">Team members</CardTitle>
+                  <p className="text-sm text-muted-foreground mt-0.5">{members.length} members</p>
+                </div>
+                <Button size="sm" onClick={() => setIsInviteOpen(true)}>
+                  <UserPlus className="h-4 w-4 mr-1.5" />
+                  Invite member
+                </Button>
               </div>
-              <Switch
-                checked={invisibleIssuance}
-                onCheckedChange={setInvisibleIssuance}
-              />
-            </div>
 
-            {/* API Access */}
-            <div className="flex items-start justify-between p-4 rounded-lg border border-border bg-muted/20 opacity-60">
-              <div className="space-y-1 pr-4">
-                <p className="font-medium text-foreground">
-                  Enable API Access{" "}
-                  <Badge variant="outline" className="ml-2 text-xs">
-                    Coming Soon
-                  </Badge>
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  Integrate issuance via REST API
-                </p>
+              {/* Filters */}
+              <div className="flex flex-col sm:flex-row gap-3 mt-4">
+                <div className="relative flex-1">
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                  <Input placeholder="Search by name or email…" value={teamSearch} onChange={(e) => setTeamSearch(e.target.value)} className="pl-9 h-9" />
+                </div>
+                <Select value={teamRoleFilter} onValueChange={setTeamRoleFilter}>
+                  <SelectTrigger className="w-[140px] h-9"><SelectValue placeholder="Role" /></SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All roles</SelectItem>
+                    <SelectItem value="owner">Owner</SelectItem>
+                    <SelectItem value="admin">Admin</SelectItem>
+                    <SelectItem value="issuer">Issuer</SelectItem>
+                    <SelectItem value="viewer">Viewer</SelectItem>
+                  </SelectContent>
+                </Select>
+                <Select value={teamDeptFilter} onValueChange={setTeamDeptFilter}>
+                  <SelectTrigger className="w-[180px] h-9"><SelectValue placeholder="Department" /></SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All departments</SelectItem>
+                    {departments.map((d) => <SelectItem key={d.id} value={d.name}>{d.name}</SelectItem>)}
+                  </SelectContent>
+                </Select>
               </div>
-              <Switch checked={apiAccess} disabled />
-            </div>
-          </div>
-        </CardContent>
-      </Card>
+            </CardHeader>
+            <CardContent className="pt-0">
+              {(() => {
+                const filtered = members.filter((m) => {
+                  const q = teamSearch.toLowerCase();
+                  if (q && !m.name.toLowerCase().includes(q) && !m.email.toLowerCase().includes(q)) return false;
+                  if (teamRoleFilter !== "all" && m.role !== teamRoleFilter) return false;
+                  if (teamDeptFilter !== "all" && m.department !== teamDeptFilter) return false;
+                  return true;
+                });
 
-      {/* Add Department Modal */}
-      <AddDepartmentModal
-        open={isAddModalOpen}
-        onOpenChange={setIsAddModalOpen}
-        onSubmit={handleAddDepartment}
-      />
+                const roleBadgeCls: Record<string, string> = {
+                  owner: "bg-purple-100 text-purple-700 border-purple-200",
+                  admin: "bg-blue-100 text-blue-700 border-blue-200",
+                  issuer: "bg-primary/10 text-primary border-primary/20",
+                  viewer: "bg-muted text-muted-foreground border-border",
+                };
+                const statusBadgeCls: Record<string, string> = {
+                  active: "bg-green-100 text-green-700 border-green-200",
+                  invited: "bg-amber-100 text-amber-700 border-amber-200",
+                  deactivated: "bg-muted text-muted-foreground border-border",
+                };
 
-      {/* Edit Department Modal */}
+                return (
+                  <>
+                    {/* Desktop */}
+                    <div className="hidden md:block rounded-lg border border-border overflow-x-auto">
+                      <Table>
+                        <TableHeader>
+                          <TableRow className="bg-muted/30">
+                            <TableHead className="font-medium">Member</TableHead>
+                            <TableHead className="font-medium">Role</TableHead>
+                            <TableHead className="font-medium">Department</TableHead>
+                            <TableHead className="font-medium">Status</TableHead>
+                            <TableHead className="font-medium text-right">Actions</TableHead>
+                          </TableRow>
+                        </TableHeader>
+                        <TableBody>
+                          {filtered.map((m) => (
+                            <TableRow key={m.id} className="hover:bg-muted/20">
+                              <TableCell>
+                                <div className="flex items-center gap-3">
+                                  <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center text-xs font-bold text-primary shrink-0">
+                                    {getInitials(m.name)}
+                                  </div>
+                                  <div>
+                                    <p className="font-medium text-foreground text-sm">{m.name}</p>
+                                    <p className="text-xs text-muted-foreground">{m.email}</p>
+                                  </div>
+                                </div>
+                              </TableCell>
+                              <TableCell>
+                                <Badge variant="outline" className={`capitalize ${roleBadgeCls[m.role]}`}>{m.role}</Badge>
+                              </TableCell>
+                              <TableCell className="text-muted-foreground text-sm">{m.department || "—"}</TableCell>
+                              <TableCell>
+                                <Badge variant="outline" className={`capitalize ${statusBadgeCls[m.status]}`}>{m.status}</Badge>
+                              </TableCell>
+                              <TableCell className="text-right">
+                                {m.role !== "owner" && (
+                                  <DropdownMenu>
+                                    <DropdownMenuTrigger asChild>
+                                      <Button variant="ghost" size="icon" className="h-8 w-8"><MoreVertical className="h-4 w-4" /></Button>
+                                    </DropdownMenuTrigger>
+                                    <DropdownMenuContent align="end">
+                                      <DropdownMenuItem onClick={() => setEditingMember({ id: m.id, name: m.name, role: m.role as MemberRole })}>Edit role</DropdownMenuItem>
+                                      <DropdownMenuItem onClick={() => {
+                                        setMembers((prev) => prev.map((x) => x.id === m.id ? { ...x, department: "" } : x));
+                                        toast.success("Department cleared");
+                                      }}>Change department</DropdownMenuItem>
+                                      <DropdownMenuItem onClick={() => {
+                                        const next = m.status === "deactivated" ? "active" : "deactivated";
+                                        setMembers((prev) => prev.map((x) => x.id === m.id ? { ...x, status: next as any } : x));
+                                        toast.success(next === "active" ? "Member reactivated" : "Member deactivated");
+                                      }}>{m.status === "deactivated" ? "Reactivate" : "Deactivate"}</DropdownMenuItem>
+                                      <DropdownMenuItem className="text-destructive" onClick={() => {
+                                        setMembers((prev) => prev.filter((x) => x.id !== m.id));
+                                        toast.success("Member removed");
+                                      }}>Remove</DropdownMenuItem>
+                                    </DropdownMenuContent>
+                                  </DropdownMenu>
+                                )}
+                              </TableCell>
+                            </TableRow>
+                          ))}
+                          {filtered.length === 0 && (
+                            <TableRow><TableCell colSpan={5} className="text-center py-8 text-muted-foreground">No members match your filters.</TableCell></TableRow>
+                          )}
+                        </TableBody>
+                      </Table>
+                    </div>
+
+                    {/* Mobile */}
+                    <div className="md:hidden space-y-3">
+                      {filtered.map((m) => (
+                        <div key={m.id} className="p-4 rounded-xl border border-border bg-background">
+                          <div className="flex items-start justify-between mb-2">
+                            <div className="flex items-center gap-2">
+                              <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center text-xs font-bold text-primary">{getInitials(m.name)}</div>
+                              <div>
+                                <p className="font-medium text-sm text-foreground">{m.name}</p>
+                                <p className="text-xs text-muted-foreground">{m.email}</p>
+                              </div>
+                            </div>
+                            <Badge variant="outline" className={`capitalize ${statusBadgeCls[m.status]}`}>{m.status}</Badge>
+                          </div>
+                          <div className="flex items-center gap-2 mt-2">
+                            <Badge variant="outline" className={`capitalize ${roleBadgeCls[m.role]}`}>{m.role}</Badge>
+                            <span className="text-xs text-muted-foreground">{m.department || "Unassigned"}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                );
+              })()}
+            </CardContent>
+          </Card>
+
+          {/* Role Permissions */}
+          <Collapsible open={permissionsOpen} onOpenChange={setPermissionsOpen}>
+            <Card className="border border-border shadow-sm">
+              <CollapsibleTrigger asChild>
+                <CardHeader className="cursor-pointer hover:bg-muted/20 transition-colors flex flex-row items-center justify-between pb-4">
+                  <CardTitle className="text-lg font-semibold">Role permissions</CardTitle>
+                  {permissionsOpen ? <ChevronDown className="h-5 w-5 text-muted-foreground" /> : <ChevronRight className="h-5 w-5 text-muted-foreground" />}
+                </CardHeader>
+              </CollapsibleTrigger>
+              <CollapsibleContent>
+                <CardContent className="pt-0">
+                  <div className="rounded-lg border border-border overflow-x-auto">
+                    <Table>
+                      <TableHeader>
+                        <TableRow className="bg-muted/30">
+                          <TableHead className="font-medium">Permission</TableHead>
+                          <TableHead className="font-medium text-center">Owner</TableHead>
+                          <TableHead className="font-medium text-center">Admin</TableHead>
+                          <TableHead className="font-medium text-center">Issuer</TableHead>
+                          <TableHead className="font-medium text-center">Viewer</TableHead>
+                        </TableRow>
+                      </TableHeader>
+                      <TableBody>
+                        {[
+                          ["View dashboard", true, true, true, true],
+                          ["Create templates", true, true, true, false],
+                          ["Issue credentials", true, true, true, false],
+                          ["Manage team", true, true, false, false],
+                          ["Organization settings", true, true, false, false],
+                          ["API access", true, true, false, false],
+                          ["Billing", true, false, false, false],
+                        ].map(([perm, ...vals]) => (
+                          <TableRow key={perm as string}>
+                            <TableCell className="font-medium text-sm">{perm as string}</TableCell>
+                            {(vals as boolean[]).map((v, i) => (
+                              <TableCell key={i} className="text-center">
+                                {v ? <CheckCircle2 className="h-4 w-4 text-green-600 mx-auto" /> : <Minus className="h-4 w-4 text-muted-foreground/40 mx-auto" />}
+                              </TableCell>
+                            ))}
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </div>
+                </CardContent>
+              </CollapsibleContent>
+            </Card>
+          </Collapsible>
+        </TabsContent>
+
+        {/* ───── Settings Tab ───── */}
+        <TabsContent value="settings" className="space-y-6">
+          <Card className="border border-border shadow-sm">
+            <CardHeader className="pb-4">
+              <CardTitle className="text-lg font-semibold">Issuance Capabilities</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="flex items-start justify-between p-4 rounded-lg border border-border bg-muted/20">
+                  <div className="space-y-1 pr-4">
+                    <p className="font-medium text-foreground">Enable CSV Issuance</p>
+                    <p className="text-sm text-muted-foreground">Issue credentials in bulk via CSV file upload</p>
+                  </div>
+                  <Switch checked={csvIssuance} onCheckedChange={setCsvIssuance} />
+                </div>
+                <div className="flex items-start justify-between p-4 rounded-lg border border-border bg-muted/20">
+                  <div className="space-y-1 pr-4">
+                    <p className="font-medium text-foreground">Enable Invisible Issuance (TREAP)</p>
+                    <p className="text-sm text-muted-foreground">Issue credentials without requiring recipient action</p>
+                  </div>
+                  <Switch checked={invisibleIssuance} onCheckedChange={setInvisibleIssuance} />
+                </div>
+                <div className="flex items-start justify-between p-4 rounded-lg border border-border bg-muted/20 opacity-60">
+                  <div className="space-y-1 pr-4">
+                    <p className="font-medium text-foreground">
+                      Enable API Access <Badge variant="outline" className="ml-2 text-xs">Coming Soon</Badge>
+                    </p>
+                    <p className="text-sm text-muted-foreground">Integrate issuance via REST API</p>
+                  </div>
+                  <Switch checked={apiAccess} disabled />
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+      </Tabs>
+
+      {/* Modals */}
+      <AddDepartmentModal open={isAddModalOpen} onOpenChange={setIsAddModalOpen} onSubmit={handleAddDepartment} />
       <AddDepartmentModal
         open={!!editingDepartment}
         onOpenChange={(open) => !open && setEditingDepartment(null)}
         onSubmit={handleEditDepartment}
-        editData={
-          editingDepartment
-            ? {
-                name: editingDepartment.name,
-                code: editingDepartment.code,
-                description: editingDepartment.description,
-                type: editingDepartment.type,
-                active: editingDepartment.active,
-              }
-            : null
-        }
+        editData={editingDepartment ? { name: editingDepartment.name, code: editingDepartment.code, description: editingDepartment.description, type: editingDepartment.type, active: editingDepartment.active } : null}
       />
-
-      {/* Edit Organization Modal */}
       <EditOrganizationModal
         open={isEditOrgModalOpen}
         onOpenChange={setIsEditOrgModalOpen}
         onSubmit={handleSaveOrganization}
-        initialData={{
-          name: orgName,
-          shortCode,
-          category,
-          description,
+        initialData={{ name: orgName, shortCode, category, description }}
+      />
+      <InviteTeamMemberModal
+        open={isInviteOpen}
+        onOpenChange={setIsInviteOpen}
+        onInvite={(data) => {
+          data.emails.forEach((email, i) => {
+            setMembers((prev) => [...prev, {
+              id: crypto.randomUUID(),
+              name: email.split("@")[0],
+              email,
+              role: data.role,
+              department: data.department,
+              status: "invited" as const,
+            }]);
+          });
         }}
       />
+      {editingMember && (
+        <EditMemberRoleModal
+          open={!!editingMember}
+          onOpenChange={(open) => !open && setEditingMember(null)}
+          memberName={editingMember.name}
+          currentRole={editingMember.role}
+          onSave={(role) => {
+            setMembers((prev) => prev.map((m) => m.id === editingMember.id ? { ...m, role } : m));
+            setEditingMember(null);
+          }}
+        />
+      )}
     </div>
   );
 }
