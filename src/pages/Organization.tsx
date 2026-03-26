@@ -169,15 +169,15 @@ export default function Organization() {
   const [description, setDescription] = useState(mockOrganization.description);
 
   // Team members
-  const [members, setMembers] = useState([
-    { id: "1", name: "Alice Nguyen", email: "alice@acme.edu", role: "owner" as const, department: "Office of the Registrar", status: "active" as const },
-    { id: "2", name: "Brian Chowdhury", email: "brian@acme.edu", role: "admin" as const, department: "Human Resources", status: "active" as const },
-    { id: "3", name: "Clara Rodriguez", email: "clara@acme.edu", role: "issuer" as const, department: "Office of the Registrar", status: "active" as const },
-    { id: "4", name: "David Kim", email: "david@acme.edu", role: "issuer" as const, department: "Admissions Office", status: "active" as const },
-    { id: "5", name: "Emma Fischer", email: "emma@acme.edu", role: "viewer" as const, department: "Finance Department", status: "active" as const },
-    { id: "6", name: "Faisal Qureshi", email: "faisal@acme.edu", role: "issuer" as const, department: "", status: "invited" as const },
-    { id: "7", name: "Grace Tanaka", email: "grace@acme.edu", role: "viewer" as const, department: "Human Resources", status: "deactivated" as const },
-    { id: "8", name: "Hassan Ali", email: "hassan@acme.edu", role: "admin" as const, department: "", status: "invited" as const },
+  const [members, setMembers] = useState<TeamMember[]>([
+    { id: "1", name: "Alice Nguyen", email: "alice@acme.edu", role: "owner", department: "Office of the Registrar", status: "active" },
+    { id: "2", name: "Brian Chowdhury", email: "brian@acme.edu", role: "admin", department: "Human Resources", status: "active" },
+    { id: "3", name: "Clara Rodriguez", email: "clara@acme.edu", role: "issuer", department: "Office of the Registrar", status: "active" },
+    { id: "4", name: "David Kim", email: "david@acme.edu", role: "issuer", department: "Admissions Office", status: "active" },
+    { id: "5", name: "Emma Fischer", email: "emma@acme.edu", role: "viewer", department: "Finance Department", status: "active" },
+    { id: "6", name: "Faisal Qureshi", email: "faisal@acme.edu", role: "issuer", department: "", status: "invited" },
+    { id: "7", name: "Grace Tanaka", email: "grace@acme.edu", role: "viewer", department: "Human Resources", status: "deactivated" },
+    { id: "8", name: "Hassan Ali", email: "hassan@acme.edu", role: "admin", department: "", status: "invited" },
   ]);
   const [isInviteOpen, setIsInviteOpen] = useState(false);
   const [editingMember, setEditingMember] = useState<{ id: string; name: string; role: MemberRole } | null>(null);
