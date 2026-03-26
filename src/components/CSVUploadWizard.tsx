@@ -386,46 +386,37 @@ export const CSVUploadWizard = ({
               </div>
             </div>
           )}
+
+          {/* Step 5: Progress */}
+          {currentStep === 5 && (
+            <BatchIssuanceProgress
+              total={15}
+              templateName={selectedTemplate || "University Diploma"}
+              onClose={handleClose}
+            />
+          )}
         </div>
 
-        {/* Footer */}
-        <div className="p-6 pt-4 border-t border-border flex items-center justify-between">
-          <Button
-            variant="outline"
-            onClick={handleBack}
-            disabled={currentStep === 1}
-            className="rounded-full h-10 px-5"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back
-          </Button>
-          <div className="flex gap-3">
-            <Button
-              variant="outline"
-              onClick={handleClose}
-              className="rounded-full h-10 px-5"
-            >
-              Cancel
+        {/* Footer — hidden during progress */}
+        {currentStep < 5 && (
+          <div className="p-6 pt-4 border-t border-border flex items-center justify-between">
+            <Button variant="outline" onClick={handleBack} disabled={currentStep === 1} className="rounded-full h-10 px-5">
+              <ArrowLeft className="w-4 h-4 mr-2" /> Back
             </Button>
-            {currentStep < 4 ? (
-              <Button
-                onClick={handleNext}
-                disabled={!canProceed()}
-                className="rounded-full bg-primary hover:bg-primary/90 text-primary-foreground h-10 px-5"
-              >
-                Next
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            ) : (
-              <Button
-                onClick={handleConfirm}
-                className="rounded-full bg-primary hover:bg-primary/90 text-primary-foreground h-10 px-5"
-              >
-                Start Issuance
-              </Button>
-            )}
+            <div className="flex gap-3">
+              <Button variant="outline" onClick={handleClose} className="rounded-full h-10 px-5">Cancel</Button>
+              {currentStep < 4 ? (
+                <Button onClick={handleNext} disabled={!canProceed()} className="rounded-full bg-primary hover:bg-primary/90 text-primary-foreground h-10 px-5">
+                  Next <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              ) : (
+                <Button onClick={handleConfirm} className="rounded-full bg-primary hover:bg-primary/90 text-primary-foreground h-10 px-5">
+                  Start Issuance
+                </Button>
+              )}
+            </div>
           </div>
-        </div>
+        )}
       </DialogContent>
     </Dialog>
   );
