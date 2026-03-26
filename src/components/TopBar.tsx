@@ -1,4 +1,4 @@
-import { Moon, Sun, Bell, User, Settings, LogOut } from "lucide-react";
+import { Moon, Sun, User, Settings, LogOut } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useNavigate } from "react-router-dom";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
@@ -10,6 +10,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { NotificationCenter } from "@/components/NotificationCenter";
+import { GlobalSearch } from "@/components/GlobalSearch";
 
 function getUserInitial(): string {
   try {
@@ -55,7 +57,10 @@ export function TopBar() {
           </div>
         </div>
 
-        {/* Right side: Light mode, dark mode, notifications, and avatar */}
+        {/* Center: Global search */}
+        <GlobalSearch />
+
+        {/* Right side: theme, notifications, avatar */}
         <div className="flex items-center gap-1.5 md:gap-2 px-3 py-2 md:px-4 rounded-full bg-white/60 backdrop-blur-sm border border-gray-200/50">
           <Button
             variant="ghost"
@@ -77,15 +82,7 @@ export function TopBar() {
             <span className="sr-only">Dark mode</span>
           </Button>
 
-          <Button
-            variant="ghost"
-            size="icon"
-            className="h-8 w-8 md:h-9 md:w-9 hover:bg-accent/50 relative"
-          >
-            <Bell className="h-4 w-4 md:h-[18px] md:w-[18px]" />
-            <span className="absolute top-1 right-1 md:top-1.5 md:right-1.5 h-2 w-2 rounded-full bg-primary animate-pulse" />
-            <span className="sr-only">Notifications</span>
-          </Button>
+          <NotificationCenter />
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
