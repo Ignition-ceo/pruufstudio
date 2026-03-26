@@ -500,8 +500,27 @@ export const DescribeTemplateAiPanel = () => {
         </div>
       )}
 
-      <p className="text-xs text-gray-500 text-center px-4 flex items-center justify-center gap-2">
-        <Sparkles className="h-3 w-3 text-gray-400" />
+      {/* Extraction review panel */}
+      {result && showReview && (
+        <div className="px-4">
+          <ExtractionReviewPanel
+            templateName={result.schemaName}
+            initialFields={result.fields.map((f, i) => ({
+              id: `ai-${i}`,
+              name: f,
+              type: "text",
+              required: i < 2,
+            }))}
+            onBack={() => setShowReview(false)}
+            onContinue={(fields) => {
+              toast({ title: "Fields confirmed", description: `${fields.length} fields ready for card design.` });
+            }}
+          />
+        </div>
+      )}
+
+      <p className="text-xs text-muted-foreground text-center px-4 flex items-center justify-center gap-2">
+        <Sparkles className="h-3 w-3 text-muted-foreground" />
         AI can make mistakes. Please review generated content carefully.
       </p>
     </div>
